@@ -1,0 +1,1 @@
+export const EXAMPLEACTION = 'EXAMPLE_ACTION';
