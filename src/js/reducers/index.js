@@ -1,4 +1,4 @@
 import { combineReducers } from 'redux';
-import exampleReducer from './exampleReducer';
+import fireReducer from './fireReducer';
 
-export default combineReducers({ ex: exampleReducer });
+export default combineReducers({ fireReducer });

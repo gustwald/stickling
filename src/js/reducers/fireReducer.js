@@ -1,6 +1,6 @@
 import { EXAMPLEACTION } from '../constants/action-types';
 
-const exampleReducer = (state = [], action) => {
+const fireReducer = (state = [], action) => {
   switch (action.type) {
     case EXAMPLEACTION:
       return state;
@@ -10,4 +10,4 @@ const exampleReducer = (state = [], action) => {
   }
 };
 
-export default exampleReducer;
+export default fireReducer;
