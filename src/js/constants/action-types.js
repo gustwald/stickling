@@ -1,1 +1,1 @@
-export const EXAMPLEACTION = 'EXAMPLE_ACTION';
+export const ADD_USERS = 'ADD_USERS';
