@@ -7,7 +7,11 @@ import GoogleSignup from '../GoogleSignup/GoogleSignup';
 
 import { addUsers } from '../../actions/index';
 
-class ConnectedApp extends Component {
+class App extends Component {
+  static propTypes = {
+    addUsers: PropTypes.func.isRequired
+  };
+
   componentWillMount() {
     initFirebase();
   }
@@ -27,6 +31,7 @@ class ConnectedApp extends Component {
     var errorMessage = error.message;
     console.log({ errorCode, errorMessage });
   };
+
   render() {
     return (
       <div className="container">
@@ -42,10 +47,5 @@ const mapDispatchToProps = dispatch => {
     addUsers: users => dispatch(addUsers(users))
   };
 };
-const App = connect(null, mapDispatchToProps)(ConnectedApp);
 
-ConnectedApp.propTypes = {
-  addUsers: PropTypes.func.isRequired
-};
-
-export default App;
+export default connect(null, mapDispatchToProps)(App);

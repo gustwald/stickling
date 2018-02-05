@@ -17,11 +17,8 @@ const onSuccess = result => {
 
 const onFailure = error => {
   console.log('error');
-  const errorCode = error.code;
-  const errorMessage = error.message;
-  const email = error.email;
-  const credential = error.credential;
-  console.log({ errorCode, errorMessage, email, credential });
+  const { email, credential, code, message } = error;
+  console.log({ email, credential, code, message });
 };
 
 const GoogleSignup = () => (

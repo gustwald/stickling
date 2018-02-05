@@ -28,7 +28,7 @@ module.exports = {
         ]
       },
       {
-        test: /\.(s*)css$/,
+        test: /\.scss$/,
         use: [
           'style-loader',
           {
@@ -39,7 +39,29 @@ module.exports = {
               localIdentName: '[name]-[local]'
             }
           },
-          'sass-loader'
+          'sass-loader',
+          {
+            loader: 'sass-resources-loader',
+            options: {
+              resources: [
+                './src/scss/resources/variables.scss',
+                './src/scss/resources/fonts.scss',
+                './src/scss/resources/mixins.scss'
+              ]
+            }
+          }
+        ]
+      },
+      {
+        test: /\.svg$/,
+        loaders: [
+          'babel-loader',
+          {
+            loader: 'react-svg-loader',
+            query: {
+              jsx: true
+            }
+          }
         ]
       }
     ]
