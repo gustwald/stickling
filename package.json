@@ -3,7 +3,7 @@
     "build": "webpack",
     "start": "webpack-dev-server --open",
     "server": "nodemon server.js",
-    "dev": "concurrently --kill-others-on-fail \"yarn server\" \"yarn start\" ",
+    "dev": "concurrently --kill-others-on-fail \"npm server\" \"npm start\" ",
     "lint": "eslint '**/*.{js,jsx}' --quiet",
     "format": "prettier --write '**/*.{js,jsx}'"
   },
