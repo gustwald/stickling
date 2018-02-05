@@ -3,7 +3,7 @@ import { ADD_USERS } from '../constants/action-types';
 const fireReducer = (state = [], action) => {
   switch (action.type) {
     case ADD_USERS:
-      console.log('lägger till user i state');
+      // console.log('lägger till user i state');
       console.log(action);
       return [
         ...state,

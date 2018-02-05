@@ -18,7 +18,6 @@ class ConnectedApp extends Component {
 
   onSuccess = result => {
     result.forEach(doc => {
-      console.log(doc.data());
       this.props.addUsers(doc.data());
     });
   };
