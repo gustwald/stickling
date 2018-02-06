@@ -47,7 +47,6 @@ export const addUserToFirestore = (id, fName, lName) => {
 
 export const getAllUsers = (onSucces, onFailure) => {
   const db = firebase.firestore();
-  console.log('inne');
   db
     .collection('users')
     .get()
@@ -55,11 +54,11 @@ export const getAllUsers = (onSucces, onFailure) => {
     .catch(onFailure);
 };
 
-export const currentUser = () => {
-  const user = firebase.auth().currentUser;
-  console.log(user);
-  return user.uid;
-};
+// export const currentUser = () => {
+//   const user = firebase.auth().currentUser;
+//   console.log(user);
+//   return user.uid;
+// };
 
 export const signOutUser = (onSucces, onFailure) => {
   firebase
