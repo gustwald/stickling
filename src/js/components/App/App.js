@@ -6,6 +6,7 @@ import styles from './App.scss';
 import { initFirebase, getAllUsers, currentUser, checkForAuthChange } from '../../utils/firebase';
 import GoogleSignup from '../GoogleSignup/GoogleSignup';
 import SignOut from '../SignOut/SignOut';
+import CurrentUser from '../CurrentUser/CurrentUser';
 import { addUsers, setCurrentUser, removeCurrentUser } from '../../actions/index';
 import { getCurrentUser } from '../../Selector';
 
@@ -13,7 +14,7 @@ class App extends Component {
   static propTypes = {
     addUsers: PropTypes.func.isRequired
   };
-  //
+
   componentWillMount() {
     initFirebase();
 
@@ -48,15 +49,10 @@ class App extends Component {
 
   render() {
     console.log('Nuvarande:', this.props.currentUser);
-    // console.log(this.props.state);
     return (
       <div className="container">
         <h1 className={styles.heading}>stickling</h1>
-        <h1>
-          {this.props.currentUser !== null &&
-            this.props.currentUser !== undefined &&
-            this.props.currentUser.firstName}
-        </h1>
+        <CurrentUser />
         {this.props.currentUser ? null : <GoogleSignup />}
         {this.props.currentUser ? <SignOut /> : null}
       </div>
