@@ -7,7 +7,6 @@ const onSuccess = () => {
 };
 
 const onFailure = error => {
-  console.log('något sket sig med utloggning');
   console.log(error);
 };
 

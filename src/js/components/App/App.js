@@ -19,8 +19,6 @@ class App extends Component {
 
     firebase.auth().onAuthStateChanged(user => {
       if (user) {
-        console.log('kommer in här när vi loggar in');
-        console.log(user);
         this.props.setCurrentUser(user.uid);
       } else {
         console.log('ingen user');

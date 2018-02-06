@@ -11,7 +11,6 @@ const reducer = (state = initialState, action) => {
       };
 
     case REMOVECURRENT_USER:
-      console.log({ action });
       return {
         ...initialState
       };

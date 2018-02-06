@@ -24,24 +24,22 @@ export const googleLogin = (onSuccess, onFailure) => {
 };
 
 export const addUserToFirestore = (id, fName, lName) => {
-  // todo
-  // om user finns, skapa inte
   // gör till global, hur?
-  console.log('addar till storage');
+
   const db = firebase.firestore();
-  console.log(db);
   db
     .collection('users')
-    .add({
+    .doc(id)
+    .set({
       first: fName,
       last: lName,
       uID: id
     })
-    .then(docRef => {
-      console.log('Document written with ID: ', docRef.id);
+    .then(() => {
+      console.log('inloggad');
     })
     .catch(error => {
-      console.error('Error adding document: ', error);
+      console.error('Error adding user: ', error);
     });
 };
 
@@ -53,12 +51,6 @@ export const getAllUsers = (onSucces, onFailure) => {
     .then(onSucces)
     .catch(onFailure);
 };
-
-// export const currentUser = () => {
-//   const user = firebase.auth().currentUser;
-//   console.log(user);
-//   return user.uid;
-// };
 
 export const signOutUser = (onSucces, onFailure) => {
   firebase
