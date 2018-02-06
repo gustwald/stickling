@@ -22,10 +22,12 @@ class App extends Component {
 
   onSuccess = result => {
     result.forEach(doc => {
-      this.props.addUsers(doc.data());
+      const firstName = doc.data().first;
+      const lastName = doc.data().last;
+      const uid = doc.data().uID;
+      this.props.addUsers(firstName, lastName, uid);
     });
     const id = currentUser();
-    console.log(id);
     this.props.addCurrentUser(id);
   };
 
@@ -48,7 +50,7 @@ class App extends Component {
 
 const mapDispatchToProps = dispatch => {
   return {
-    addUsers: users => dispatch(addUsers(users)),
+    addUsers: (firstName, lastName, uid) => dispatch(addUsers(firstName, lastName, uid)),
     addCurrentUser: id => dispatch(addCurrentUser(id))
   };
 };

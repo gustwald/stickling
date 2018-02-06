@@ -1,8 +1,10 @@
 import { ADD_USERS, CURRENT_USER } from '../constants/action-types';
 
-export const addUsers = users => ({
+export const addUsers = (firstName, lastName, uid) => ({
   type: ADD_USERS,
-  users,
+  firstName,
+  lastName,
+  uid,
   isCurrentUser: false
 });
 
