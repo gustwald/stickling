@@ -54,3 +54,17 @@ export const getAllUsers = (onSucces, onFailure) => {
     .then(onSucces)
     .catch(onFailure);
 };
+
+export const currentUser = () => {
+  const user = firebase.auth().currentUser;
+  console.log(user);
+  return user.uid;
+};
+
+export const signOutUser = (onSucces, onFailure) => {
+  firebase
+    .auth()
+    .signOut()
+    .then(onSucces)
+    .catch(onFailure);
+};

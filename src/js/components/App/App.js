@@ -2,10 +2,10 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import styles from './App.scss';
-import { initFirebase, getAllUsers } from '../../utils/firebase';
+import { initFirebase, getAllUsers, currentUser } from '../../utils/firebase';
 import GoogleSignup from '../GoogleSignup/GoogleSignup';
-
-import { addUsers } from '../../actions/index';
+import SignOut from '../SignOut/SignOut';
+import { addUsers, addCurrentUser } from '../../actions/index';
 
 class App extends Component {
   static propTypes = {
@@ -24,6 +24,9 @@ class App extends Component {
     result.forEach(doc => {
       this.props.addUsers(doc.data());
     });
+    const id = currentUser();
+    console.log(id);
+    this.props.addCurrentUser(id);
   };
 
   onFailure = error => {
@@ -37,6 +40,7 @@ class App extends Component {
       <div className="container">
         <h1 className={styles.heading}>stickling</h1>
         <GoogleSignup />
+        <SignOut />
       </div>
     );
   }
@@ -44,7 +48,8 @@ class App extends Component {
 
 const mapDispatchToProps = dispatch => {
   return {
-    addUsers: users => dispatch(addUsers(users))
+    addUsers: users => dispatch(addUsers(users)),
+    addCurrentUser: id => dispatch(addCurrentUser(id))
   };
 };
 

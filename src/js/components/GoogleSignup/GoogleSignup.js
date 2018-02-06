@@ -2,10 +2,6 @@ import React from 'react';
 import { googleLogin, addUserToFirestore } from '../../utils/firebase';
 import styles from './GoogleSignup.scss';
 
-const signIn = () => {
-  googleLogin(onSuccess, onFailure);
-};
-
 const onSuccess = result => {
   console.log('succes');
   const uID = result.user.uid;
@@ -19,6 +15,10 @@ const onFailure = error => {
   console.log('error');
   const { email, credential, code, message } = error;
   console.log({ email, credential, code, message });
+};
+
+const signIn = () => {
+  googleLogin(onSuccess, onFailure);
 };
 
 const GoogleSignup = () => (
