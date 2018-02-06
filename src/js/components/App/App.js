@@ -5,7 +5,7 @@ import styles from './App.scss';
 import { initFirebase, getAllUsers, currentUser } from '../../utils/firebase';
 import GoogleSignup from '../GoogleSignup/GoogleSignup';
 import SignOut from '../SignOut/SignOut';
-import { addUsers, addCurrentUser } from '../../actions/index';
+import { addUsers, setCurrentUser } from '../../actions/index';
 
 class App extends Component {
   static propTypes = {
@@ -28,7 +28,7 @@ class App extends Component {
       this.props.addUsers(firstName, lastName, uid);
     });
     const id = currentUser();
-    this.props.addCurrentUser(id);
+    this.props.setCurrentUser(id);
   };
 
   onFailure = error => {
@@ -51,7 +51,7 @@ class App extends Component {
 const mapDispatchToProps = dispatch => {
   return {
     addUsers: (firstName, lastName, uid) => dispatch(addUsers(firstName, lastName, uid)),
-    addCurrentUser: id => dispatch(addCurrentUser(id))
+    setCurrentUser: id => dispatch(setCurrentUser(id))
   };
 };
 

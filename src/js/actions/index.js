@@ -1,4 +1,4 @@
-import { ADD_USERS, CURRENT_USER } from '../constants/action-types';
+import { ADD_USERS, SETCURRENT_USER } from '../constants/action-types';
 
 export const addUsers = (firstName, lastName, uid) => ({
   type: ADD_USERS,
@@ -8,7 +8,7 @@ export const addUsers = (firstName, lastName, uid) => ({
   isCurrentUser: false
 });
 
-export const addCurrentUser = id => ({
-  type: CURRENT_USER,
+export const setCurrentUser = id => ({
+  type: SETCURRENT_USER,
   id
 });

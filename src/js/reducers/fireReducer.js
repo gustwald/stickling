@@ -1,4 +1,4 @@
-import { ADD_USERS, CURRENT_USER } from '../constants/action-types';
+import { ADD_USERS, SETCURRENT_USER } from '../constants/action-types';
 
 const fireReducer = (state = [], action) => {
   switch (action.type) {
@@ -12,7 +12,7 @@ const fireReducer = (state = [], action) => {
           isCurrentUser: action.isCurrentUser
         }
       ];
-    case CURRENT_USER:
+    case SETCURRENT_USER:
       return state.map(
         user => (user.uID === action.id ? { ...user, isCurrentUser: !user.isCurrentUser } : user)
       );
