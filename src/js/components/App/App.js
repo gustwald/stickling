@@ -37,8 +37,9 @@ class App extends Component {
     result.forEach(doc => {
       const firstName = doc.data().first;
       const lastName = doc.data().last;
+      const email = doc.data().email;
       const uid = doc.data().uID;
-      this.props.addUsers(firstName, lastName, uid);
+      this.props.addUsers(firstName, lastName, email, uid);
     });
   };
 
@@ -70,7 +71,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    addUsers: (firstName, lastName, uid) => dispatch(addUsers(firstName, lastName, uid)),
+    addUsers: (firstName, lastName, email, uid) => dispatch(addUsers(firstName, lastName, email, uid)),
     setCurrentUser: id => dispatch(setCurrentUser(id)),
     removeCurrentUser: () => dispatch(removeCurrentUser())
   };

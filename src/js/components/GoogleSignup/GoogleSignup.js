@@ -3,11 +3,13 @@ import { googleLogin, addUserToFirestore } from '../../utils/firebase';
 import styles from './GoogleSignup.scss';
 
 const onSuccess = result => {
+  console.log(result);
   const uID = result.user.uid;
+  const email = result.user.email;
   const fName = result.additionalUserInfo.profile.given_name;
   const lName = result.additionalUserInfo.profile.family_name;
 
-  addUserToFirestore(uID, fName, lName);
+  addUserToFirestore(uID, fName, lName, email);
 };
 
 const onFailure = error => {

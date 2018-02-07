@@ -23,7 +23,7 @@ export const googleLogin = (onSuccess, onFailure) => {
     .catch(onFailure);
 };
 
-export const addUserToFirestore = (id, fName, lName) => {
+export const addUserToFirestore = (id, fName, lName, email) => {
   // gör till global, hur?
 
   const db = firebase.firestore();
@@ -33,6 +33,7 @@ export const addUserToFirestore = (id, fName, lName) => {
     .set({
       first: fName,
       last: lName,
+      email: email,
       uID: id
     })
     .then(() => {

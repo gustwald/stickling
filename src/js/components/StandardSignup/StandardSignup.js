@@ -23,9 +23,10 @@ class StandardSignup extends Component {
         const uID = result.uid;
         const fName = this.state.firstName;
         const lName = this.state.lastName;
+        const email = this.state.username;
 
         console.log({ uID, fName, lName });
-        addUserToFirestore(uID, fName, lName);
+        addUserToFirestore(uID, fName, lName, email);
     }
 
     onFailure = error => {

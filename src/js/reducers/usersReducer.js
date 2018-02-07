@@ -8,6 +8,7 @@ const reducer = (state = [], action) => {
         {
           firstName: action.firstName,
           lastName: action.lastName,
+          email: action.email,
           uID: action.uid,
           isCurrentUser: action.isCurrentUser
         }
