@@ -87,7 +87,9 @@ class StandardSignup extends Component {
                     <button
                         type="button"
                         onClick={this.register}
-                    />
+                    >
+                        Registrera
+                    </button>
                     <p>{this.state.error}</p>
                 </form>
             </div>

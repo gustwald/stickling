@@ -1,3 +1,15 @@
+@mixin primary-btn {
+  background:#73b99f;
+  color:#FFFFFF;
+  border:none;
+  border-radius:10px;
+  height:40px;
+  padding:0 20px 0 20px;
+  font-size:14px;
+  font-weight:400;
+  outline:none;
+}
+
 @mixin b($width) {
   @media (min-width: $width) {
     @content;
