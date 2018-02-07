@@ -10,6 +10,7 @@ import CurrentUser from '../CurrentUser/CurrentUser';
 import { addUsers, setCurrentUser, removeCurrentUser } from '../../actions/index';
 import { getCurrentUser } from '../../Selector';
 import StandardSignup from '../StandardSignup/StandardSignup';
+import StandardSignin from '../StandardSingIn/StandardSignin';
 
 class App extends Component {
   static propTypes = {
@@ -55,9 +56,15 @@ class App extends Component {
       <div className="container">
         <h1 className={styles.heading}>stickling</h1>
         <CurrentUser />
-        {this.props.currentUser ? null : <GoogleSignup />}
+        {
+          this.props.currentUser ? null :
+            [
+              <GoogleSignup />,
+              <StandardSignup />,
+              <StandardSignin />
+            ]
+        }
         {this.props.currentUser ? <SignOut /> : null}
-        <StandardSignup />
       </div>
     );
   }

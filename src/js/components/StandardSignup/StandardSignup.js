@@ -9,7 +9,8 @@ class StandardSignup extends Component {
         username: "",
         password: "",
         firstName: "",
-        lastName: ""
+        lastName: "",
+        error: ""
     }
 
     onChange = e => this.setState({ [e.target.name]: e.target.value });
@@ -32,6 +33,7 @@ class StandardSignup extends Component {
     onFailure = error => {
 
         console.log(error);
+        this.setState({ error: error.message });
         const { email, credential, code, message } = error;
         console.log({ email, credential, code, message });
     }
@@ -40,6 +42,7 @@ class StandardSignup extends Component {
     render() {
         return (
             <div className="Signup">
+                <h1>Registrera</h1>
                 <form className="SignupForm">
                     <label for="Email">
                         <input
@@ -85,6 +88,7 @@ class StandardSignup extends Component {
                         type="button"
                         onClick={this.register}
                     />
+                    <p>{this.state.error}</p>
                 </form>
             </div>
         )
