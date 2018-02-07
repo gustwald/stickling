@@ -1,10 +1,12 @@
 import React from 'react';
 import FirebaseSetup from '../../FirebaseSetup';
+import Navigation from '../Navigation/Navigation';
 
 const Root = ({ children }) => (
   <div>
-    {children}
     <FirebaseSetup />
+    <Navigation />
+    {children}
   </div>
 );
 
