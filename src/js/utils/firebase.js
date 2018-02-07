@@ -59,3 +59,13 @@ export const signOutUser = (onSucces, onFailure) => {
     .then(onSucces)
     .catch(onFailure);
 };
+
+
+export const createUserWithEmail = (onSucces, onFailure, user) => {
+  console.log("inne i createUserWithEmail");
+  firebase
+    .auth()
+    .createUserWithEmailAndPassword(user.username, user.password)
+    .then(onSucces)
+    .catch(onFailure);
+}

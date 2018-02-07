@@ -9,6 +9,7 @@ import SignOut from '../SignOut/SignOut';
 import CurrentUser from '../CurrentUser/CurrentUser';
 import { addUsers, setCurrentUser, removeCurrentUser } from '../../actions/index';
 import { getCurrentUser } from '../../Selector';
+import StandardSignup from '../StandardSignup/StandardSignup';
 
 class App extends Component {
   static propTypes = {
@@ -55,6 +56,7 @@ class App extends Component {
         <CurrentUser />
         {this.props.currentUser ? null : <GoogleSignup />}
         {this.props.currentUser ? <SignOut /> : null}
+        <StandardSignup />
       </div>
     );
   }
