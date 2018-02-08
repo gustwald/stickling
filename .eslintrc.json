@@ -2,16 +2,20 @@
   "extends": ["airbnb", "plugin:react/recommended", "prettier"],
   "env": {
     "browser": true,
-    "node": true
+    "node": true,
+    "es6": true
   },
+  "parser": "babel-eslint",
   "plugins": ["react", "prettier"],
   "rules": {
+    "strict": 0,
     "no-console": "off",
     "react/jsx-filename-extension": 0,
     "import/prefer-default-export": 0,
     "import/no-extraneous-dependencies": 0,
     "no-case-declarations": 0,
     "react/forbid-prop-types": 0,
-    "react/no-array-index-key": 0
+    "react/no-array-index-key": 0,
+    "jsx-a11y/anchor-is-valid": 0
   }
 }

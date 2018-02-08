@@ -1,30 +1,43 @@
-import React from 'react';
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import { googleLogin, addUserToFirestore } from '../../utils/firebase';
+import { addUser } from '../../actions/index';
 import styles from './GoogleSignup.scss';
 
-const onSuccess = result => {
-  console.log(result);
-  const uID = result.user.uid;
-  const email = result.user.email;
-  const fName = result.additionalUserInfo.profile.given_name;
-  const lName = result.additionalUserInfo.profile.family_name;
+class GoogleSignup extends React.Component {
+  onSuccess = result => {
+    console.log(result);
+    console.log('saddasdadsdasdads');
+    const uID = result.user.uid;
+    const email = result.user.email;
+    const fName = result.additionalUserInfo.profile.given_name;
+    const lName = result.additionalUserInfo.profile.family_name;
 
-  addUserToFirestore(uID, fName, lName, email);
+    this.props.addUser(fName, lName, email, uID);
+    addUserToFirestore(uID, fName, lName, email);
+  };
+
+  onFailure = error => {
+    const { email, credential, code, message } = error;
+    console.log({ email, credential, code, message });
+  };
+
+  signIn = () => {
+    googleLogin(this.onSuccess, this.onFailure);
+  };
+
+  render() {
+    return (
+      <div className="GoogleSignup">
+        <button onClick={this.signIn}>Logga in med Google</button>
+      </div>
+    );
+  }
+}
+const mapDispatchToProps = dispatch => {
+  return {
+    addUser: (firstName, lastName, email, uid) => dispatch(addUser(firstName, lastName, email, uid))
+  };
 };
 
-const onFailure = error => {
-  const { email, credential, code, message } = error;
-  console.log({ email, credential, code, message });
-};
-
-const signIn = () => {
-  googleLogin(onSuccess, onFailure);
-};
-
-const GoogleSignup = () => (
-  <div className="GoogleSignup">
-    <button onClick={signIn}>Logga in med Google</button>
-  </div>
-);
-
-export default GoogleSignup;
+export default connect(null, mapDispatchToProps)(GoogleSignup);

@@ -6,10 +6,9 @@ import { getCurrentUser } from '../../Selector';
 
 const CurrentUser = ({ currentUser }) => {
   if (!currentUser) return null;
-
   return (
     <div className="CurrentUser">
-      <h1>{currentUser.firstName}</h1>
+      <h1>{currentUser.first}</h1>
     </div>
   );
 };

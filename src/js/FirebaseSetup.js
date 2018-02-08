@@ -15,6 +15,7 @@ class FirebaseSetup extends Component {
     initFirebase();
 
     firebase.auth().onAuthStateChanged(user => {
+      console.log(user);
       if (user) {
         this.props.setCurrentUser(user.uid);
       } else {
@@ -28,15 +29,22 @@ class FirebaseSetup extends Component {
   }
 
   onSuccess = result => {
+    const users = [];
     result.forEach(doc => {
       const { first, last, email, uID } = doc.data();
-      this.props.addUsers(first, last, email, uID);
+      users.push({
+        first,
+        last,
+        email,
+        uID
+      });
     });
+    this.props.addUsers(users);
   };
 
   onFailure = error => {
-    var errorCode = error.code;
-    var errorMessage = error.message;
+    const { message, code } = error;
+    console.log({ message, code });
   };
 
   render() {

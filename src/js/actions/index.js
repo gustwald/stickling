@@ -1,12 +1,21 @@
-import { ADD_USERS, SETCURRENT_USER, REMOVECURRENT_USER } from '../constants/action-types';
+import {
+  ADD_USER,
+  ADD_USERS,
+  SETCURRENT_USER,
+  REMOVECURRENT_USER
+} from '../constants/action-types';
 
-export const addUsers = (firstName, lastName, email, uid) => ({
-  type: ADD_USERS,
+export const addUser = (firstName, lastName, email, uid) => ({
+  type: ADD_USER,
   firstName,
   lastName,
   email,
-  uid,
-  isCurrentUser: false
+  uid
+});
+
+export const addUsers = users => ({
+  type: ADD_USERS,
+  users
 });
 
 export const setCurrentUser = id => ({

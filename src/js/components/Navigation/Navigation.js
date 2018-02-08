@@ -4,8 +4,9 @@ import styles from './Navigation.scss';
 
 const Navigation = () => (
   <div>
-    <Link to={'/'}>Home</Link>
-    <Link to={'/profile'}>Profile</Link>
+    <Link to="/">Hem</Link>
+    <Link to="/profile">Profil</Link>
+    <Link to="/ads">Annonser</Link>
   </div>
 );
 

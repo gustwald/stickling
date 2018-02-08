@@ -33,7 +33,7 @@ export const addUserToFirestore = (id, fName, lName, email) => {
     .set({
       first: fName,
       last: lName,
-      email: email,
+      email,
       uID: id
     })
     .then(() => {
@@ -61,15 +61,13 @@ export const signOutUser = (onSucces, onFailure) => {
     .catch(onFailure);
 };
 
-
 export const createUserWithEmail = (onSucces, onFailure, user) => {
-  console.log("inne i createUserWithEmail");
   firebase
     .auth()
     .createUserWithEmailAndPassword(user.username, user.password)
     .then(onSucces)
     .catch(onFailure);
-}
+};
 
 export const logInWithEmail = (onSucces, onFailure, user) => {
   firebase
@@ -77,4 +75,22 @@ export const logInWithEmail = (onSucces, onFailure, user) => {
     .signInWithEmailAndPassword(user.username, user.password)
     .then(onSucces)
     .catch(onFailure);
-}
+};
+
+export const addAdToFirestore = ad => {
+  const db = firebase.firestore();
+  const { adTitle, adText, uId } = ad;
+  db
+    .collection('ads')
+    .add({
+      adTitle,
+      adText,
+      uId
+    })
+    .then(() => {
+      console.log('lagt till annons');
+    })
+    .catch(error => {
+      console.error('Error adding ad: ', error);
+    });
+};

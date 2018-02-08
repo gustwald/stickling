@@ -1,18 +1,19 @@
-import { ADD_USERS } from '../constants/action-types';
+import { ADD_USER, ADD_USERS } from '../constants/action-types';
 
 const reducer = (state = [], action) => {
   switch (action.type) {
-    case ADD_USERS:
+    case ADD_USER:
       return [
         ...state,
         {
-          firstName: action.firstName,
-          lastName: action.lastName,
+          first: action.firstName,
+          last: action.lastName,
           email: action.email,
-          uID: action.uid,
-          isCurrentUser: action.isCurrentUser
+          uID: action.uid
         }
       ];
+    case ADD_USERS:
+      return [...action.users];
 
     default:
       return state;
