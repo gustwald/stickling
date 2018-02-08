@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import { addAdToFirestore } from '../../utils/firebase';
 import { getCurrentUser } from '../../Selector';
 import styles from './CreateAd.scss';
@@ -62,8 +63,8 @@ const mapStateToProps = state => ({
   currentUser: getCurrentUser(state)
 });
 
-// CurrentUser.propTypes = {
-//   currentUser: PropTypes.object.isRequired
-// };
+CreateAd.propTypes = {
+  currentUser: PropTypes.object.isRequired
+};
 
 export default connect(mapStateToProps)(CreateAd);
