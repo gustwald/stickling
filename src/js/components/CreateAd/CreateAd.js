@@ -9,17 +9,25 @@ class CreateAd extends Component {
   state = {
     adTitle: '',
     adText: '',
-    adPrice: '',
-    uId: this.props.currentUser.uID
+    adPrice: ''
   };
 
   onChange = e => this.setState({ [e.target.name]: e.target.value });
 
   createAd = () => {
-    addAdToFirestore(this.state);
+    const { uID } = this.props.currentUser;
+    const { adTitle, adText, adPrice } = this.state;
+    const item = {
+      uId: uID,
+      adTitle,
+      adText,
+      adPrice
+    };
+    addAdToFirestore(item);
   };
 
   render() {
+    if (!this.props.currentUser) return null;
     return (
       <div className="CreateAd">
         <form className="CreateAdForm">
@@ -64,7 +72,8 @@ const mapStateToProps = state => ({
 });
 
 CreateAd.propTypes = {
-  currentUser: PropTypes.object.isRequired
+  currentUser: PropTypes.object
 };
+CreateAd.defaultProps = { currentUser: null };
 
 export default connect(mapStateToProps)(CreateAd);
