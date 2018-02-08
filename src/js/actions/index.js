@@ -3,7 +3,8 @@ import {
   ADD_USERS,
   SETCURRENT_USER,
   REMOVECURRENT_USER,
-  ADD_AD
+  ADD_AD,
+  ADD_ADS
 } from '../constants/action-types';
 
 export const addUser = (firstName, lastName, email, uid) => ({
@@ -29,10 +30,15 @@ export const removeCurrentUser = () => ({
 });
 
 export const addAd = (title, text, price, uid, adId) => ({
-  type: ADD_USER,
+  type: ADD_AD,
   title,
   text,
   price,
   uid,
   adId
+});
+
+export const addAds = ads => ({
+  type: ADD_ADS,
+  ads
 });

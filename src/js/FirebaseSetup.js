@@ -2,13 +2,15 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import firebase from 'firebase';
 import PropTypes from 'prop-types';
-import { initFirebase, getAllUsers, currentUser, checkForAuthChange } from './utils/firebase';
+import { initFirebase, getAllUsers, getAdsFromFirestore } from './utils/firebase';
 import { addUsers, setCurrentUser, removeCurrentUser } from './actions/index';
 import { getCurrentUser } from './Selector';
 
 class FirebaseSetup extends Component {
   static propTypes = {
-    addUsers: PropTypes.func.isRequired
+    addUsers: PropTypes.func.isRequired,
+    setCurrentUser: PropTypes.func.isRequired,
+    removeCurrentUser: PropTypes.func.isRequired
   };
 
   componentWillMount() {
@@ -25,10 +27,18 @@ class FirebaseSetup extends Component {
   }
 
   componentDidMount() {
-    getAllUsers(this.onSuccess, this.onFailure);
+    getAllUsers(this.onUsersSuccess, this.onUsersFailure);
+    getAdsFromFirestore(this.onAdSuccess, this.onAdFailure);
   }
 
-  onSuccess = result => {
+  onAdSuccess = result => {
+    result.forEach(doc => {
+      // doc.data() is never undefined for query doc snapshots
+      console.log(doc.id, ' => ', doc.data());
+    });
+  };
+
+  onUsersSuccess = result => {
     const users = [];
     result.forEach(doc => {
       const { first, last, email, uID } = doc.data();
@@ -42,7 +52,7 @@ class FirebaseSetup extends Component {
     this.props.addUsers(users);
   };
 
-  onFailure = error => {
+  onUsersFailure = error => {
     const { message, code } = error;
     console.log({ message, code });
   };
@@ -52,13 +62,11 @@ class FirebaseSetup extends Component {
   }
 }
 
-const mapDispatchToProps = dispatch => {
-  return {
-    addUsers: (firstName, lastName, email, uid) =>
-      dispatch(addUsers(firstName, lastName, email, uid)),
-    setCurrentUser: id => dispatch(setCurrentUser(id)),
-    removeCurrentUser: () => dispatch(removeCurrentUser())
-  };
-};
+const mapDispatchToProps = dispatch => ({
+  addUsers: (firstName, lastName, email, uid) =>
+    dispatch(addUsers(firstName, lastName, email, uid)),
+  setCurrentUser: id => dispatch(setCurrentUser(id)),
+  removeCurrentUser: () => dispatch(removeCurrentUser())
+});
 
 export default connect(null, mapDispatchToProps)(FirebaseSetup);
