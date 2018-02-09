@@ -94,3 +94,12 @@ export const addAdToFirestore = ad => {
       console.error('Error adding ad: ', error);
     });
 };
+
+export const getAdsFromFirestore = (onSucces, onFailure) => {
+  const db = firebase.firestore();
+  db
+    .collection('ads')
+    .get()
+    .then(onSucces)
+    .catch(onFailure);
+};

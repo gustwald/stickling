@@ -54,13 +54,12 @@ module.exports = {
         ]
       },
       {
-        test: /\.svg$/,
-        loaders: [
-          'babel-loader',
+        test: /\.(jpg|png|gif|svg|pdf|ico)$/,
+        use: [
           {
-            loader: 'react-svg-loader',
-            query: {
-              jsx: true
+            loader: 'file-loader',
+            options: {
+              name: '[path][name]-[hash:8].[ext]'
             }
           }
         ]
