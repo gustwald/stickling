@@ -1,10 +1,9 @@
 import React from 'react';
-import App from '../components/App/App';
+import LoginModal from '../components/LoginModal/LoginModal';
 
 const HomePage = () => (
   <div>
-    <h1>home</h1>
-    <App />
+    <LoginModal />
   </div>
 );
 
