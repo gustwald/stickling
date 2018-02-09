@@ -1,10 +1,19 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import styles from './DisplayAds.scss';
 
-const DisplayAds = () => (
+const DisplayAds = ({ ads }) => (
   <div>
-    <h1>Ads</h1>
+    {ads.map(ad => (
+      <div key={ad.id}>
+        {ad.adTitle} {ad.adText}
+        {ad.adPrice}
+      </div>
+    ))}
   </div>
 );
 
-export default DisplayAds;
+const mapStateToProps = state => ({
+  ads: state.adsReducer
+});
+export default connect(mapStateToProps)(DisplayAds);

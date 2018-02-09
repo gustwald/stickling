@@ -19,7 +19,6 @@ class FirebaseSetup extends Component {
 
     firebase.auth().onAuthStateChanged(user => {
       if (user) {
-        console.log(`vi har en user${user}`);
         this.props.setCurrentUser(user.uid);
       } else {
         this.props.removeCurrentUser();
@@ -29,19 +28,20 @@ class FirebaseSetup extends Component {
 
   componentDidMount() {
     getAllUsers(this.onUsersSuccess, this.onUsersFailure);
-    // getAdsFromFirestore(this.onAdSuccess, this.onAdFailure);
+    getAdsFromFirestore(this.onAdSuccess, this.onAdFailure);
   }
 
   onAdSuccess = result => {
     const ads = [];
     result.forEach(doc => {
-      const { adText, adTitle, adPrice, uID, id } = doc.data();
+      const id = doc.id;
+      const { adText, adTitle, adPrice, uId } = doc.data();
       ads.push({
         adText,
         adTitle,
         adPrice,
         id,
-        uID
+        uId
       });
     });
     this.props.addAds(ads);
