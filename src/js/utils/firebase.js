@@ -77,7 +77,7 @@ export const logInWithEmail = (onSucces, onFailure, user) => {
     .catch(onFailure);
 };
 
-export const addAdToFirestore = ad => {
+export const addAdToFirestore = (onSucces, onFailure, ad) => {
   const db = firebase.firestore();
   const { adTitle, adText, adPrice, uId } = ad;
   db
@@ -88,12 +88,8 @@ export const addAdToFirestore = ad => {
       adPrice,
       uId
     })
-    .then(() => {
-      console.log('lagt till annons');
-    })
-    .catch(error => {
-      console.error('Error adding ad: ', error);
-    });
+    .then(onSucces)
+    .catch(onFailure);
 };
 
 export const getAdsFromFirestore = (onSucces, onFailure) => {

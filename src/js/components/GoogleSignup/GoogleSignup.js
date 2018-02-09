@@ -6,8 +6,6 @@ import styles from './GoogleSignup.scss';
 
 class GoogleSignup extends React.Component {
   onSuccess = result => {
-    console.log(result);
-    console.log('saddasdadsdasdads');
     const uID = result.user.uid;
     const email = result.user.email;
     const fName = result.additionalUserInfo.profile.given_name;

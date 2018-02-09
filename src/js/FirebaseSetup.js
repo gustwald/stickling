@@ -37,11 +37,11 @@ class FirebaseSetup extends Component {
       const id = doc.id;
       const { adText, adTitle, adPrice, uId } = doc.data();
       ads.push({
-        adText,
         adTitle,
+        adText,
         adPrice,
-        id,
-        uId
+        uId,
+        id
       });
     });
     this.props.addAds(ads);
