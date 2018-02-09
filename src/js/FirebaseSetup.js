@@ -3,12 +3,13 @@ import { connect } from 'react-redux';
 import firebase from 'firebase';
 import PropTypes from 'prop-types';
 import { initFirebase, getAllUsers, getAdsFromFirestore } from './utils/firebase';
-import { addUsers, setCurrentUser, removeCurrentUser } from './actions/index';
+import { addUsers, setCurrentUser, removeCurrentUser, addAds } from './actions/index';
 import { getCurrentUser } from './Selector';
 
 class FirebaseSetup extends Component {
   static propTypes = {
     addUsers: PropTypes.func.isRequired,
+    addAds: PropTypes.func.isRequired,
     setCurrentUser: PropTypes.func.isRequired,
     removeCurrentUser: PropTypes.func.isRequired
   };
@@ -17,8 +18,8 @@ class FirebaseSetup extends Component {
     initFirebase();
 
     firebase.auth().onAuthStateChanged(user => {
-      console.log(user);
       if (user) {
+        console.log(`vi har en user${user}`);
         this.props.setCurrentUser(user.uid);
       } else {
         this.props.removeCurrentUser();
@@ -28,14 +29,26 @@ class FirebaseSetup extends Component {
 
   componentDidMount() {
     getAllUsers(this.onUsersSuccess, this.onUsersFailure);
-    getAdsFromFirestore(this.onAdSuccess, this.onAdFailure);
+    // getAdsFromFirestore(this.onAdSuccess, this.onAdFailure);
   }
 
   onAdSuccess = result => {
+    const ads = [];
     result.forEach(doc => {
-      // doc.data() is never undefined for query doc snapshots
-      console.log(doc.id, ' => ', doc.data());
+      const { adText, adTitle, adPrice, uID, id } = doc.data();
+      ads.push({
+        adText,
+        adTitle,
+        adPrice,
+        id,
+        uID
+      });
     });
+    this.props.addAds(ads);
+  };
+  onAdFailure = error => {
+    const { message, code } = error;
+    console.log({ message, code });
   };
 
   onUsersSuccess = result => {
@@ -66,7 +79,8 @@ const mapDispatchToProps = dispatch => ({
   addUsers: (firstName, lastName, email, uid) =>
     dispatch(addUsers(firstName, lastName, email, uid)),
   setCurrentUser: id => dispatch(setCurrentUser(id)),
-  removeCurrentUser: () => dispatch(removeCurrentUser())
+  removeCurrentUser: () => dispatch(removeCurrentUser()),
+  addAds: (adTitle, adText, adPrice, uId, id) => dispatch(addAds(adTitle, adText, adPrice, uId, id))
 });
 
 export default connect(null, mapDispatchToProps)(FirebaseSetup);

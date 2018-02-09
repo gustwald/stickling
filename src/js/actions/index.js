@@ -29,14 +29,14 @@ export const removeCurrentUser = () => ({
   type: REMOVECURRENT_USER
 });
 
-export const addAd = (title, text, price, uid, adId) => ({
-  type: ADD_AD,
-  title,
-  text,
-  price,
-  uid,
-  adId
-});
+// export const addAd = (title, text, price, uid, adId) => ({
+//   type: ADD_AD,
+//   title,
+//   text,
+//   price,
+//   uid,
+//   adId
+// });
 
 export const addAds = ads => ({
   type: ADD_ADS,

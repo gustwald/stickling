@@ -79,12 +79,13 @@ export const logInWithEmail = (onSucces, onFailure, user) => {
 
 export const addAdToFirestore = ad => {
   const db = firebase.firestore();
-  const { adTitle, adText, uId } = ad;
+  const { adTitle, adText, adPrice, uId } = ad;
   db
     .collection('ads')
     .add({
       adTitle,
       adText,
+      adPrice,
       uId
     })
     .then(() => {
