@@ -3,9 +3,9 @@ import { connect } from 'react-redux';
 import styles from './DisplayAds.scss';
 
 const DisplayAds = ({ ads }) => (
-  <div>
+  <div className={styles.grid}>
     {ads.map(ad => (
-      <div key={ad.id}>
+      <div className={styles.gridItem} key={ad.id}>
         {ad.adTitle} {ad.adText}
         {ad.adPrice}
       </div>
