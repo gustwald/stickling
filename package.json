@@ -10,6 +10,7 @@
   "dependencies": {
     "@firebase/firestore": "^0.3.2",
     "@version/react-router-v3": "^1.0.0",
+    "antd": "^3.2.0",
     "babel-core": "^6.26.0",
     "babel-eslint": "^7.2.3",
     "babel-loader": "^7.1.2",
@@ -37,6 +38,7 @@
     "prop-types": "^15.6.0",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
+    "react-dropzone": "^4.2.7",
     "react-favicon": "0.0.13",
     "react-redux": "^5.0.6",
     "react-router": "^3.0.4",
@@ -53,6 +55,7 @@
   },
   "devDependencies": {
     "@babel/preset-env": "^7.0.0-beta.39",
+    "babel-plugin-import": "^1.6.3",
     "eslint-plugin-prettier": "^2.6.0",
     "eslint-plugin-react": "^7.6.1",
     "file-loader": "^1.1.6",

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Dropzone from 'react-dropzone';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { addAdToFirestore } from '../../utils/firebase';
@@ -11,7 +12,14 @@ class CreateAd extends Component {
     adTitle: '',
     adText: '',
     adPrice: '',
-    error: ''
+    error: '',
+    files: []
+  };
+
+  onDrop = files => {
+    this.setState({
+      files
+    });
   };
 
   onChange = e => this.setState({ [e.target.name]: e.target.value });
@@ -80,6 +88,22 @@ class CreateAd extends Component {
             Skapa annons
           </button>
           <p>{this.state.error}</p>
+          <section>
+            <div className="dropzone">
+              <Dropzone multiple={false} onDrop={this.onDrop}>
+                <p>Try dropping some files here, or click to select files to upload.</p>
+              </Dropzone>
+            </div>
+            <aside>
+              <ul>
+                {this.state.files.map(f => (
+                  <li key={f.name}>
+                    {f.name} - {f.size} bytes
+                  </li>
+                ))}
+              </ul>
+            </aside>
+          </section>
         </form>
       </div>
     );
