@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Dropzone from 'react-dropzone';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { addAdToFirestore } from '../../utils/firebase';
+import { addAdToFirestore, uploadFile } from '../../utils/firebase';
 import { getCurrentUser } from '../../Selector';
 import { addAd } from '../../actions/index';
 import styles from './CreateAd.scss';
@@ -24,13 +24,16 @@ class CreateAd extends Component {
 
   onChange = e => this.setState({ [e.target.name]: e.target.value });
 
-  onSucces = result => {
+  onSucces = async (result, model) => {
     const { id } = result;
-    // måste detta upprepas??
     const uId = this.props.currentUser.uID;
-    const { adTitle, adText, adPrice } = this.state;
+    const ad = {
+      id,
+      ...model
+    };
 
-    this.props.addAd(adTitle, adText, adPrice, id, uId);
+    console.log(ad);
+    this.props.addAd(ad);
   };
 
   onFailure = error => {
@@ -40,16 +43,20 @@ class CreateAd extends Component {
     console.log({ email, credential, code, message });
   };
 
-  createAd = () => {
+  createAd = async () => {
     const { uID } = this.props.currentUser;
     const { adTitle, adText, adPrice } = this.state;
+    const uploadedFile = await uploadFile(this.state.files[0]);
+    console.log(uploadedFile);
     const ad = {
-      uId: uID,
       adTitle,
       adText,
-      adPrice
+      adPrice,
+      uId: uID,
+      image: uploadedFile.downloadURL
     };
-    addAdToFirestore(this.onSucces, this.onFailure, ad);
+
+    addAdToFirestore(result => this.onSucces(result, ad), this.onFailure, ad);
   };
 
   render() {
@@ -114,7 +121,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  addAd: (adTitle, adText, adPrice, uId, id) => dispatch(addAd(adTitle, adText, adPrice, uId, id))
+  addAd: ad => dispatch(addAd(ad))
 });
 
 CreateAd.propTypes = {

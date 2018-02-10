@@ -78,16 +78,11 @@ export const logInWithEmail = (onSucces, onFailure, user) => {
 };
 
 export const addAdToFirestore = (onSucces, onFailure, ad) => {
+  console.log(ad);
   const db = firebase.firestore();
-  const { adTitle, adText, adPrice, uId } = ad;
   db
     .collection('ads')
-    .add({
-      adTitle,
-      adText,
-      adPrice,
-      uId
-    })
+    .add(ad)
     .then(onSucces)
     .catch(onFailure);
 };
@@ -99,4 +94,17 @@ export const getAdsFromFirestore = (onSucces, onFailure) => {
     .get()
     .then(onSucces)
     .catch(onFailure);
+};
+
+export const uploadFile = img => {
+  const storageRef = firebase.storage().ref();
+  const file = img;
+
+  return new Promise((resolve, reject) => {
+    storageRef
+      .child('/images')
+      .put(file)
+      .then(resolve)
+      .catch(reject);
+  });
 };

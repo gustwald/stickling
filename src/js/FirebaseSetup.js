@@ -35,13 +35,14 @@ class FirebaseSetup extends Component {
     const ads = [];
     result.forEach(doc => {
       const id = doc.id;
-      const { adText, adTitle, adPrice, uId } = doc.data();
+      const { adText, adTitle, adPrice, uId, image } = doc.data();
       ads.push({
         adTitle,
         adText,
         adPrice,
         uId,
-        id
+        id,
+        image
       });
     });
     this.props.addAds(ads);

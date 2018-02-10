@@ -29,13 +29,9 @@ export const removeCurrentUser = () => ({
   type: REMOVECURRENT_USER
 });
 
-export const addAd = (adTitle, adText, adPrice, id, uId) => ({
+export const addAd = ad => ({
   type: ADD_AD,
-  adTitle,
-  adText,
-  adPrice,
-  id,
-  uId
+  ad
 });
 
 export const addAds = ads => ({

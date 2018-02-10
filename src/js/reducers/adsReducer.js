@@ -5,16 +5,7 @@ const initialState = {};
 const reducer = (state = [], action) => {
   switch (action.type) {
     case ADD_AD:
-      return [
-        ...state,
-        {
-          adTitle: action.adTitle,
-          adText: action.adText,
-          adPrice: action.adPrice,
-          uId: action.uId,
-          id: action.id
-        }
-      ];
+      return [...state, action.ad];
     case ADD_ADS:
       return [...action.ads];
     default:
