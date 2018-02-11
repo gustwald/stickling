@@ -97,7 +97,7 @@ class CreateAd extends Component {
           <p>{this.state.error}</p>
           <section>
             <div className="dropzone">
-              <Dropzone multiple={false} onDrop={this.onDrop}>
+              <Dropzone accept="image/jpeg, image/png" multiple={false} onDrop={this.onDrop}>
                 <p>Try dropping some files here, or click to select files to upload.</p>
               </Dropzone>
             </div>
