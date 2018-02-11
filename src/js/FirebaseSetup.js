@@ -35,14 +35,28 @@ class FirebaseSetup extends Component {
     const ads = [];
     result.forEach(doc => {
       const id = doc.id;
-      const { adText, adTitle, adPrice, uId, image } = doc.data();
+      const {
+        adText,
+        adTitle,
+        adPrice,
+        uId,
+        image,
+        adShips,
+        adFreightcost,
+        adPickup,
+        addToMap
+      } = doc.data();
       ads.push({
         adTitle,
         adText,
         adPrice,
         uId,
         id,
-        image
+        image,
+        adShips,
+        adFreightcost,
+        adPickup,
+        addToMap
       });
     });
     this.props.addAds(ads);
@@ -81,7 +95,7 @@ const mapDispatchToProps = dispatch => ({
     dispatch(addUsers(firstName, lastName, email, uid)),
   setCurrentUser: id => dispatch(setCurrentUser(id)),
   removeCurrentUser: () => dispatch(removeCurrentUser()),
-  addAds: (adTitle, adText, adPrice, uId, id) => dispatch(addAds(adTitle, adText, adPrice, uId, id))
+  addAds: ads => dispatch(addAds(ads))
 });
 
 export default connect(null, mapDispatchToProps)(FirebaseSetup);

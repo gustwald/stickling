@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import Dropzone from 'react-dropzone';
-import firebase from 'firebase';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import uuidv1 from 'uuid';
 import { addAdToFirestore, uploadFile } from '../../utils/firebase';
 import { getCurrentUser } from '../../Selector';
 import { addAd } from '../../actions/index';
@@ -14,7 +14,11 @@ class CreateAd extends Component {
     adText: '',
     adPrice: '',
     error: '',
-    files: []
+    files: [],
+    adShips: true,
+    adFreightCost: 0,
+    adPickup: true,
+    addToMap: true
   };
 
   onDrop = files => {
@@ -24,6 +28,7 @@ class CreateAd extends Component {
   };
 
   onChange = e => this.setState({ [e.target.name]: e.target.value });
+  onCheckBoxChange = e => this.setState({ [e.target.name]: e.target.checked });
 
   onSucces = async (result, model) => {
     const { id } = result;
@@ -44,15 +49,19 @@ class CreateAd extends Component {
 
   createAd = async () => {
     const { uID } = this.props.currentUser;
-    const { adTitle, adText, adPrice } = this.state;
-    // skicka med något unikt till uploadFile som namn
-    const uploadedFile = await uploadFile(this.state.files[0], adTitle);
+    const { adTitle, adText, adPrice, adShips, adFreightCost, adPickup, addToMap } = this.state;
+    const imageId = uuidv1();
+    const uploadedFile = await uploadFile(this.state.files[0], imageId);
 
     const ad = {
       adTitle,
       adText,
       adPrice,
       uId: uID,
+      adShips,
+      adFreightCost,
+      adPickup,
+      addToMap,
       image: uploadedFile.downloadURL
     };
 
@@ -89,6 +98,45 @@ class CreateAd extends Component {
               id="AdPrice"
               placeholder="Pris"
               onChange={this.onChange}
+            />
+          </label>
+          <label htmlFor="adShips">
+            Skickas
+            <input
+              type="checkbox"
+              name="adShips"
+              id="adShips"
+              defaultChecked={this.state.adShips}
+              onChange={this.onCheckBoxChange}
+            />
+          </label>
+          <label htmlFor="adPickup">
+            Hämtas
+            <input
+              type="checkbox"
+              name="adPickup"
+              id="adPickup"
+              defaultChecked={this.state.adPickup}
+              onChange={this.onCheckBoxChange}
+            />
+          </label>
+          <label htmlFor="adFreightCost">
+            <input
+              type="text"
+              name="adFreightCost"
+              id="adFreightCost"
+              placeholder="Fraktkostnad"
+              onChange={this.onChange}
+            />
+          </label>
+          <label htmlFor="addToMap">
+            Lägg till i sticklingskartan
+            <input
+              type="checkbox"
+              name="addToMap"
+              id="addToMap"
+              defaultChecked={this.state.addToMap}
+              onChange={this.onCheckBoxChange}
             />
           </label>
           <button type="button" onClick={this.createAd}>
