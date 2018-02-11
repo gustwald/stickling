@@ -2,6 +2,7 @@ import Root from './components/Root/Root';
 import HomePage from './pages/HomePage';
 import ProfilePage from './pages/ProfilePage';
 import AdsPage from './pages/AdsPage';
+import MapPage from './pages/MapPage';
 
 export default {
   component: Root,
@@ -11,12 +12,16 @@ export default {
       component: HomePage
     },
     {
-      path: '/profile',
+      path: '/profil',
       component: ProfilePage
     },
     {
-      path: '/ads',
+      path: '/annonser',
       component: AdsPage
+    },
+    {
+      path: '/karta',
+      component: MapPage
     }
   ]
 };
