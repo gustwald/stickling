@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import uuidv1 from 'uuid';
 import { addAdToFirestore, uploadFile } from '../../utils/firebase';
+import { getCurrentPosition } from '../../utils/getCurrentPosition';
 import { getCurrentUser } from '../../Selector';
 import { addAd } from '../../actions/index';
 import styles from './CreateAd.scss';
@@ -16,9 +17,11 @@ class CreateAd extends Component {
     error: '',
     files: [],
     adShips: true,
-    adFreightCost: 0,
+    adFreightCost: '',
     adPickup: true,
-    addToMap: true
+    addToMap: false,
+    adLatitude: '',
+    adLongitude: ''
   };
 
   onDrop = files => {
@@ -30,9 +33,26 @@ class CreateAd extends Component {
   onChange = e => this.setState({ [e.target.name]: e.target.value });
   onCheckBoxChange = e => this.setState({ [e.target.name]: e.target.checked });
 
+  onPositionSucces = position => {
+    const { latitude, longitude } = position.coords;
+    this.setState({ adLatitude: latitude, adLongitude: longitude });
+  };
+
+  onPositionFailure = error => {
+    console.log(error);
+  };
+
+  onCheckBoxMapChange = e => {
+    if (e.target.checked === true) {
+      getCurrentPosition(this.onPositionSucces, this.onPositionFailure);
+    }
+
+    this.setState({ [e.target.name]: e.target.checked });
+  };
+
   onSucces = async (result, model) => {
     const { id } = result;
-    const uId = this.props.currentUser.uID;
+    // const uId = this.props.currentUser.uID;
     const ad = {
       id,
       ...model
@@ -49,7 +69,17 @@ class CreateAd extends Component {
 
   createAd = async () => {
     const { uID } = this.props.currentUser;
-    const { adTitle, adText, adPrice, adShips, adFreightCost, adPickup, addToMap } = this.state;
+    const {
+      adTitle,
+      adText,
+      adPrice,
+      adShips,
+      adFreightCost,
+      adPickup,
+      addToMap,
+      adLatitude,
+      adLongitude
+    } = this.state;
     const imageId = uuidv1();
     const uploadedFile = await uploadFile(this.state.files[0], imageId);
 
@@ -62,7 +92,9 @@ class CreateAd extends Component {
       adFreightCost,
       adPickup,
       addToMap,
-      image: uploadedFile.downloadURL
+      image: uploadedFile.downloadURL,
+      adLatitude,
+      adLongitude
     };
 
     addAdToFirestore(result => this.onSucces(result, ad), this.onFailure, ad);
@@ -136,7 +168,7 @@ class CreateAd extends Component {
               name="addToMap"
               id="addToMap"
               defaultChecked={this.state.addToMap}
-              onChange={this.onCheckBoxChange}
+              onChange={this.onCheckBoxMapChange}
             />
           </label>
           <button type="button" onClick={this.createAd}>
@@ -173,7 +205,8 @@ const mapDispatchToProps = dispatch => ({
 });
 
 CreateAd.propTypes = {
-  currentUser: PropTypes.object
+  currentUser: PropTypes.object,
+  addAd: PropTypes.func.isRequired
 };
 
 CreateAd.defaultProps = { currentUser: null };
