@@ -96,13 +96,13 @@ export const getAdsFromFirestore = (onSucces, onFailure) => {
     .catch(onFailure);
 };
 
-export const uploadFile = img => {
+export const uploadFile = (img, adTitle) => {
   const storageRef = firebase.storage().ref();
   const file = img;
 
   return new Promise((resolve, reject) => {
     storageRef
-      .child('/images')
+      .child(`images/${adTitle}`)
       .put(file)
       .then(resolve)
       .catch(reject);

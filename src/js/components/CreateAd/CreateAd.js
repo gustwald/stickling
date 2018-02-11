@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Dropzone from 'react-dropzone';
+import firebase from 'firebase';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { addAdToFirestore, uploadFile } from '../../utils/firebase';
@@ -31,8 +32,6 @@ class CreateAd extends Component {
       id,
       ...model
     };
-
-    console.log(ad);
     this.props.addAd(ad);
   };
 
@@ -46,8 +45,9 @@ class CreateAd extends Component {
   createAd = async () => {
     const { uID } = this.props.currentUser;
     const { adTitle, adText, adPrice } = this.state;
-    const uploadedFile = await uploadFile(this.state.files[0]);
-    console.log(uploadedFile);
+    // skicka med något unikt till uploadFile som namn
+    const uploadedFile = await uploadFile(this.state.files[0], adTitle);
+
     const ad = {
       adTitle,
       adText,
