@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { googleLogin, addUserToFirestore } from '../../utils/firebase';
 import { addUser } from '../../actions/index';
+import Google from '../../../../assets/Google.svg';
+import GoogleOutline from '../../../../assets/Google-outline.svg';
 import styles from './GoogleSignup.scss';
 
 class GoogleSignup extends React.Component {
@@ -27,7 +29,9 @@ class GoogleSignup extends React.Component {
   render() {
     return (
       <div className={styles.container}>
-        <button onClick={this.signIn}>Logga in med Google</button>
+        <button onClick={this.signIn}>
+          <span style={{ backgroundImage: `url(${GoogleOutline})` }} />Logga in med Google
+        </button>
       </div>
     );
   }

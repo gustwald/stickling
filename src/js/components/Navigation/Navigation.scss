@@ -1,24 +1,24 @@
 .navBar {
-    width:100%;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    height:70px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 70px;
 }
 
 .links {
-    color:$c-black;
-    text-decoration: none;
-    font-size:20px;
-    font-family:$open-sans; 
-    padding:0 10px 0 10px;
-    text-transform:lowercase;
-    :visited {
-        color:$c-secondary;
-    }
+  color: $c-black;
+  text-decoration: none;
+  font-size: 26px;
+  font-family: $Maven;
+  padding: 0 10px 0 10px;
+  text-transform: lowercase;
+  :visited {
+    color: $c-secondary;
+  }
 }
 
 .logo {
-    height:40px;
-    width:40px;
+  height: 40px;
+  width: 40px;
 }
