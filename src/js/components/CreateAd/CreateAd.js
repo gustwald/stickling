@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import Dropzone from 'react-dropzone';
-import firebase from 'firebase';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import uuidv1 from 'uuid';
 import { addAdToFirestore, uploadFile } from '../../utils/firebase';
+import { getCurrentPosition } from '../../utils/getCurrentPosition';
 import { getCurrentUser } from '../../Selector';
 import { addAd } from '../../actions/index';
 import styles from './CreateAd.scss';
@@ -14,7 +15,13 @@ class CreateAd extends Component {
     adText: '',
     adPrice: '',
     error: '',
-    files: []
+    files: [],
+    adShips: true,
+    adFreightCost: '',
+    adPickup: true,
+    addToMap: false,
+    adLatitude: '',
+    adLongitude: ''
   };
 
   onDrop = files => {
@@ -24,10 +31,28 @@ class CreateAd extends Component {
   };
 
   onChange = e => this.setState({ [e.target.name]: e.target.value });
+  onCheckBoxChange = e => this.setState({ [e.target.name]: e.target.checked });
+
+  onPositionSucces = position => {
+    const { latitude, longitude } = position.coords;
+    this.setState({ adLatitude: latitude, adLongitude: longitude });
+  };
+
+  onPositionFailure = error => {
+    console.log(error);
+  };
+
+  onCheckBoxMapChange = e => {
+    if (e.target.checked === true) {
+      getCurrentPosition(this.onPositionSucces, this.onPositionFailure);
+    }
+
+    this.setState({ [e.target.name]: e.target.checked });
+  };
 
   onSucces = async (result, model) => {
     const { id } = result;
-    const uId = this.props.currentUser.uID;
+    // const uId = this.props.currentUser.uID;
     const ad = {
       id,
       ...model
@@ -44,16 +69,32 @@ class CreateAd extends Component {
 
   createAd = async () => {
     const { uID } = this.props.currentUser;
-    const { adTitle, adText, adPrice } = this.state;
-    // skicka med något unikt till uploadFile som namn
-    const uploadedFile = await uploadFile(this.state.files[0], adTitle);
+    const {
+      adTitle,
+      adText,
+      adPrice,
+      adShips,
+      adFreightCost,
+      adPickup,
+      addToMap,
+      adLatitude,
+      adLongitude
+    } = this.state;
+    const imageId = uuidv1();
+    const uploadedFile = await uploadFile(this.state.files[0], imageId);
 
     const ad = {
       adTitle,
       adText,
       adPrice,
       uId: uID,
-      image: uploadedFile.downloadURL
+      adShips,
+      adFreightCost,
+      adPickup,
+      addToMap,
+      image: uploadedFile.downloadURL,
+      adLatitude,
+      adLongitude
     };
 
     addAdToFirestore(result => this.onSucces(result, ad), this.onFailure, ad);
@@ -91,6 +132,45 @@ class CreateAd extends Component {
               onChange={this.onChange}
             />
           </label>
+          <label htmlFor="adShips">
+            Skickas
+            <input
+              type="checkbox"
+              name="adShips"
+              id="adShips"
+              defaultChecked={this.state.adShips}
+              onChange={this.onCheckBoxChange}
+            />
+          </label>
+          <label htmlFor="adPickup">
+            Hämtas
+            <input
+              type="checkbox"
+              name="adPickup"
+              id="adPickup"
+              defaultChecked={this.state.adPickup}
+              onChange={this.onCheckBoxChange}
+            />
+          </label>
+          <label htmlFor="adFreightCost">
+            <input
+              type="text"
+              name="adFreightCost"
+              id="adFreightCost"
+              placeholder="Fraktkostnad"
+              onChange={this.onChange}
+            />
+          </label>
+          <label htmlFor="addToMap">
+            Lägg till i sticklingskartan
+            <input
+              type="checkbox"
+              name="addToMap"
+              id="addToMap"
+              defaultChecked={this.state.addToMap}
+              onChange={this.onCheckBoxMapChange}
+            />
+          </label>
           <button type="button" onClick={this.createAd}>
             Skapa annons
           </button>
@@ -125,7 +205,8 @@ const mapDispatchToProps = dispatch => ({
 });
 
 CreateAd.propTypes = {
-  currentUser: PropTypes.object
+  currentUser: PropTypes.object,
+  addAd: PropTypes.func.isRequired
 };
 
 CreateAd.defaultProps = { currentUser: null };
