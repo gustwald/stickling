@@ -1,11 +1,72 @@
 .modal {
-    display:flex;
-    flex-direction:column;
+  position: relative;
+  display: flex;
+  flex-direction: column;
 
-    background-color:#fbfbfb;
-    border-radius:2px;
+  background-color: #fbfbfb;
+  border-radius: 2px;
 
-    width:350px;
-    height:500px;
-    padding:20px;
+  width: 350px;
+  height: 100%;
+  padding: 50px 20px 20px 20px;
+
+  .leaf {
+    height: 60px;
+    width: 60px;
+    position: absolute;
+    left: 165px;
+    top: -30px;
+  }
+
+  button {
+    @include primary-btn;
+  }
+
+  .switch {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    margin-bottom: 20px;
+
+    .signUp {
+      width: 50%;
+      border-radius: 0px;
+      background-color: rgba(115, 185, 159, 0.5);
+    }
+    .signIn {
+      width: 50%;
+      border-radius: 0px;
+    }
+  }
+
+  label {
+    input {
+      background-color: transparent;
+      border: none;
+      outline: none;
+      border-bottom: 1px solid $c-black;
+      width: 100%;
+      margin-top: 20px;
+      margin-bottom: 20px;
+      padding: 20px 0 20px 0;
+      font-size: 14px;
+      font-family: $open-sans;
+      color: $c-black;
+      box-shadow: inset 0 0 0 0 transparent;
+      transition: all 0.4s ease;
+
+      &:focus {
+        border-bottom: 1px solid transparent;
+        box-shadow: inset 0 -2px 0 0 $c-altprimary;
+        transition: all 0.7s ease;
+      }
+
+      &::placeholder {
+        font-size: 14px;
+        font-family: $open-sans;
+        font-style: italic;
+        opacity: 0.5;
+      }
+    }
+  }
 }

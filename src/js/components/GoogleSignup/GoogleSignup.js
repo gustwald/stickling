@@ -26,7 +26,7 @@ class GoogleSignup extends React.Component {
 
   render() {
     return (
-      <div className="GoogleSignup">
+      <div className={styles.container}>
         <button onClick={this.signIn}>Logga in med Google</button>
       </div>
     );

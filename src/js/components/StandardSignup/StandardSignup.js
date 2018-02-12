@@ -37,8 +37,7 @@ class StandardSignup extends Component {
 
   render() {
     return (
-      <div className="Signup">
-        <h1>Registrera</h1>
+      <div className={styles.signUp}>
         <form className="SignupForm">
           <label htmlFor="Email">
             <input
@@ -54,7 +53,7 @@ class StandardSignup extends Component {
               type="text"
               name="firstName"
               id="FirstName"
-              placeholder="Firstname"
+              placeholder="Förnamn"
               onChange={this.onChange}
             />
           </label>
@@ -63,7 +62,7 @@ class StandardSignup extends Component {
               type="text"
               name="lastName"
               id="LastName"
-              placeholder="LastName:"
+              placeholder="Efternamn"
               onChange={this.onChange}
             />
           </label>
@@ -72,11 +71,13 @@ class StandardSignup extends Component {
               type="password"
               name="password"
               id="Password"
-              placeholder="Password"
+              placeholder="Lösenord"
               onChange={this.onChange}
             />
           </label>
-          <button type="button" onClick={this.register} />
+          <button type="button" onClick={this.register}>
+            Registrera
+          </button>
           <p>{this.state.error}</p>
         </form>
       </div>

@@ -1,3 +1,11 @@
-button {
-    @include primary-btn;
+.container {
+    form {
+        display:flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    button {
+        width:100%;
+    }
 }

@@ -27,8 +27,7 @@ class StandardSignin extends Component {
 
   render() {
     return (
-      <div className="Signin">
-        <h1>Logga in</h1>
+      <div className={styles.container}>
         <form className="SigninForm">
           <label htmlFor="Email">
             <input type="text" name="username" placeholder="Email" onChange={this.onChange} />
@@ -37,7 +36,7 @@ class StandardSignin extends Component {
             <input
               type="password"
               name="password"
-              placeholder="Password"
+              placeholder="Lösenord"
               onChange={this.onChange}
             />
           </label>
