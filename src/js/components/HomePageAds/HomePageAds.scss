@@ -1,13 +1,13 @@
 .container {
   position: relative;
   display: flex;
-  flex-flow: row wrap;
+  flex-direction: row;
+  flex-wrap: wrap;
   justify-content: center;
   align-items: center;
   align-content: center;
-  width: 78%;
   height: 100%;
-  padding-right: 60px;
+  padding-left: 100px;
 
   h1 {
     position: absolute;
