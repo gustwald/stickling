@@ -14,14 +14,18 @@ class HomePageAds extends Component {
     return (
       <div className={styles.container}>
         <h1>Stickli.ng</h1>
-        <div style={{ backgroundImage: `url(${testad1})` }} className={styles.ad} />
-        <div style={{ backgroundImage: `url(${testad2})` }} className={styles.ad} />
-        <div style={{ backgroundImage: `url(${testad3})` }} className={styles.ad} />
-        <div style={{ backgroundImage: `url(${testad4})` }} className={styles.ad} />
-        <div style={{ backgroundImage: `url(${testad5})` }} className={styles.ad} />
-        <div style={{ backgroundImage: `url(${testad6})` }} className={styles.ad} />
-        <div style={{ backgroundImage: `url(${testad7})` }} className={styles.ad} />
-        <div style={{ backgroundImage: `url(${testad8})` }} className={styles.ad} />
+        <h3>Stickli.ng är en samlingsplats för köp&sälj av sticklingar på det smidigaste sättet</h3>
+        <div className={styles.adContainer}>
+          <div style={{ backgroundImage: `url(${testad1})` }} className={styles.ad} />
+          <div style={{ backgroundImage: `url(${testad2})` }} className={styles.ad} />
+          <div style={{ backgroundImage: `url(${testad3})` }} className={styles.ad} />
+          <div style={{ backgroundImage: `url(${testad4})` }} className={styles.ad} />
+          <div style={{ backgroundImage: `url(${testad5})` }} className={styles.ad} />
+          <div style={{ backgroundImage: `url(${testad6})` }} className={styles.ad} />
+          <div style={{ backgroundImage: `url(${testad7})` }} className={styles.ad} />
+          <div style={{ backgroundImage: `url(${testad8})` }} className={styles.ad} />
+        </div>
+        <h3>Skapa ett konto för att komma igång</h3>
       </div>
     );
   }
