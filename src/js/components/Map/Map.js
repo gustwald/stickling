@@ -159,7 +159,10 @@ const Map = withScriptjs(
     >
       {props.isMarkerShown &&
         props.ads.map(ad => (
-          <Marker key={ad.id} position={{ lat: ad.adLatitude, lng: ad.adLongitude }} />
+          <Marker
+            key={ad.id}
+            position={{ lat: parseFloat(ad.adLatitude), lng: parseFloat(ad.adLongitude) }}
+          />
         ))}
     </GoogleMap>
   ))
