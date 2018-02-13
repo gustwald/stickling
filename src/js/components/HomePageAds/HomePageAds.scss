@@ -6,6 +6,7 @@
   align-items: center;
   align-content: center;
   width: 78%;
+  height: 100%;
   padding-right: 60px;
 
   h1 {
@@ -19,8 +20,8 @@
   }
 
   .ad {
-    height: 200px;
-    width: 200px;
+    height: 150px;
+    width: 150px;
     background-color: red;
     background-position: contain;
     background-repeat: no-repeat;

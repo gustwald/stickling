@@ -10,15 +10,42 @@ import StandardSignin from '../StandardSingIn/StandardSignin';
 import leaf from '../../../../assets/leaf.svg';
 
 class LoginModal extends Component {
+  state = {
+    showRegister: false,
+    showLogin: true
+  };
+
+  showRegister = () => {
+    this.setState({
+      showRegister: true,
+      showLogin: false
+    });
+  };
+
+  showLogin = () => {
+    this.setState({
+      showRegister: false,
+      showLogin: true
+    });
+  };
+
   render() {
     return (
       <div className={styles.modal}>
         <div style={{ backgroundImage: `url(${leaf})` }} className={styles.leaf} />
         <div className={styles.switch}>
-          <button className={styles.signIn}>Logga in</button>
-          <button className={styles.signUp}>Registrera</button>
+          <button className={styles.signIn} onClick={this.showLogin}>
+            Logga in
+          </button>
+          <button className={styles.signUp} onClick={this.showRegister}>
+            Registrera
+          </button>
         </div>
-        <CurrentUser />
+
+        {this.state.showRegister ? <StandardSignup /> : null}
+        {this.state.showLogin ? <StandardSignin /> : null}
+        <GoogleSignup />
+        {/* <CurrentUser />
         {this.props.currentUser
           ? null
           : [
@@ -26,7 +53,7 @@ class LoginModal extends Component {
               <StandardSignin key="standardSignIn" />,
               <GoogleSignup key="googleSignup" />
             ]}
-        {this.props.currentUser ? <SignOut /> : null}
+        {this.props.currentUser ? <SignOut /> : null} */}
       </div>
     );
   }

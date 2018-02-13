@@ -1,13 +1,28 @@
-import React from 'react';
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import CurrentUser from '../components/CurrentUser/CurrentUser';
+import { getCurrentUser } from '../Selector';
 import LoginModal from '../components/LoginModal/LoginModal';
 import HomePageAds from '../components/HomePageAds/HomePageAds';
+import SignOut from '../components/SignOut/SignOut';
 import styles from './HomePage.scss';
 
-const HomePage = () => (
-  <div className={styles.container}>
-    <HomePageAds />
-    <LoginModal />
-  </div>
-);
+class HomePage extends Component {
+  render() {
+    return (
+      <div className={styles.container}>
+        <HomePageAds />
 
-export default HomePage;
+        <CurrentUser />
+        {this.props.currentUser ? null : <LoginModal />}
+        {this.props.currentUser ? <SignOut /> : null}
+      </div>
+    );
+  }
+}
+
+const mapStateToProps = state => ({
+  currentUser: getCurrentUser(state)
+});
+
+export default connect(mapStateToProps)(HomePage);

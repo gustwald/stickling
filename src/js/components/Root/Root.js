@@ -7,7 +7,7 @@ import styles from './Root.scss';
 const Root = ({ children }) => (
   <div className={styles.container}>
     <FirebaseSetup />
-    <Navigation />
+    {/* <Navigation /> */}
     <Header />
     {children}
   </div>
