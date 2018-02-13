@@ -1,4 +1,5 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import { withScriptjs, withGoogleMap, GoogleMap, Marker } from 'react-google-maps';
 
 const mapStyle = [
@@ -156,9 +157,16 @@ const Map = withScriptjs(
         styles: mapStyle
       }}
     >
-      {props.isMarkerShown && <Marker position={{ lat: 59.276275, lng: 18.067017 }} />}
+      {props.isMarkerShown &&
+        props.ads.map(ad => (
+          <Marker key={ad.id} position={{ lat: ad.adLatitude, lng: ad.adLongitude }} />
+        ))}
     </GoogleMap>
   ))
 );
 
-export default Map;
+const mapStateToProps = state => ({
+  ads: state.adsReducer
+});
+
+export default connect(mapStateToProps)(Map);
