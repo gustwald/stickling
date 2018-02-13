@@ -1,0 +1,30 @@
+.container {
+  position: relative;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  width: 78%;
+  padding-right: 60px;
+
+  h1 {
+    position: absolute;
+    font-family: $Title;
+    color: #7dd181;
+    top: -70px;
+    left: 0;
+    font-size: 70px;
+    transform: rotate(-14deg);
+  }
+
+  .ad {
+    height: 350px;
+    width: 350px;
+    background-color: red;
+    background-position: contain;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    margin: 5px;
+  }
+}
