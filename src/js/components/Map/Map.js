@@ -149,6 +149,7 @@ const Map = withScriptjs(
         scaleControl: false,
         mapTypeControl: false,
         panControl: false,
+        scrollwheel: false,
         // zoomControl: false,
         rotateControl: false,
         fullscreenControl: false,
