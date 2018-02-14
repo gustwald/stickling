@@ -139,6 +139,9 @@ const mapStyle = [
     ]
   }
 ];
+const markerClick = ad => {
+  console.log(ad);
+};
 const Map = withScriptjs(
   withGoogleMap(props => (
     <GoogleMap
@@ -160,6 +163,7 @@ const Map = withScriptjs(
       {props.isMarkerShown &&
         props.ads.map(ad => (
           <Marker
+            onClick={() => markerClick(ad)}
             key={ad.id}
             position={{ lat: parseFloat(ad.adLatitude), lng: parseFloat(ad.adLongitude) }}
           />
