@@ -3,26 +3,35 @@ import Map from '../components/Map/Map';
 
 class MapPage extends React.PureComponent {
   state = {
-    isMarkerShown: false
+    isMarkerShown: true,
+    mapWidth: '100%'
   };
 
-  componentDidMount() {
-    this.delayedShowMarker();
-  }
+  // componentDidMount() {
+  //   this.delayedShowMarker();
+  // }
 
-  delayedShowMarker = () => {
-    setTimeout(() => {
-      this.setState({ isMarkerShown: true });
-    }, 3000);
-  };
+  // delayedShowMarker = () => {
+  //   setTimeout(() => {
+  //     this.setState({ isMarkerShown: true });
+  //   }, 3000);
+  // };
 
   handleMarkerClick = () => {
-    this.setState({ isMarkerShown: false });
-    this.delayedShowMarker();
+    this.setState({ mapWidth: '70%' });
   };
 
   render() {
-    return <Map isMarkerShown={this.state.isMarkerShown} onMarkerClick={this.handleMarkerClick} />;
+    return (
+      <Map
+        isMarkerShown={this.state.isMarkerShown}
+        googleMapURL="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places"
+        loadingElement={<div style={{ height: `100%` }} />}
+        containerElement={<div style={{ height: `400px`, width: this.state.mapWidth }} />}
+        mapElement={<div style={{ height: `100%` }} />}
+        onMarkerClick={this.handleMarkerClick}
+      />
+    );
   }
 }
 
