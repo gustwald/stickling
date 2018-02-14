@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { compose, withProps } from 'recompose';
 import { withScriptjs, withGoogleMap, GoogleMap, Marker } from 'react-google-maps';
 
 const mapStyle = [
@@ -142,37 +143,46 @@ const mapStyle = [
 const markerClick = ad => {
   console.log(ad);
 };
-const Map = withScriptjs(
-  withGoogleMap(props => (
-    <GoogleMap
-      defaultZoom={11}
-      defaultCenter={{ lat: 59.334591, lng: 18.06324 }}
-      defaultOptions={{
-        // these following 7 options turn certain controls off see link below
-        streetViewControl: false,
-        scaleControl: false,
-        mapTypeControl: false,
-        panControl: false,
-        scrollwheel: false,
-        // zoomControl: false,
-        rotateControl: false,
-        fullscreenControl: false,
-        styles: mapStyle
-      }}
-    >
-      {props.isMarkerShown &&
-        props.ads.map(ad => (
-          <Marker
-            onClick={() => markerClick(ad)}
-            key={ad.id}
-            position={{ lat: parseFloat(ad.adLatitude), lng: parseFloat(ad.adLongitude) }}
-          />
-        ))}
-    </GoogleMap>
-  ))
-);
+const Map = compose(
+  withProps({
+    googleMapURL:
+      'https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places',
+    loadingElement: <div style={{ height: `100%` }} />,
+    containerElement: <div style={{ height: `400px` }} />,
+    mapElement: <div style={{ height: `100%` }} />
+  }),
+  withScriptjs,
+  withGoogleMap
+)(props => (
+  <GoogleMap
+    defaultZoom={11}
+    defaultCenter={{ lat: 59.334591, lng: 18.06324 }}
+    defaultOptions={{
+      // these following 7 options turn certain controls off see link below
+      streetViewControl: false,
+      scaleControl: false,
+      mapTypeControl: false,
+      panControl: false,
+      scrollwheel: false,
+      // zoomControl: false,
+      rotateControl: false,
+      fullscreenControl: false,
+      styles: mapStyle
+    }}
+  >
+    {props.isMarkerShown &&
+      props.ads.map(ad => (
+        <Marker
+          onClick={() => markerClick(ad)}
+          key={ad.id}
+          position={{ lat: parseFloat(ad.adLatitude), lng: parseFloat(ad.adLongitude) }}
+        />
+      ))}
+  </GoogleMap>
+));
 
 const mapStateToProps = state => ({
+  // filtrera så vi bara får ads me prop addToMap: true
   ads: state.adsReducer
 });
 
