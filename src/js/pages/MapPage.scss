@@ -1,0 +1,5 @@
+.container {
+  @include b($b-mobile) {
+  }
+  transition: width 0.4s ease;
+}
