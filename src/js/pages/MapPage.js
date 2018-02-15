@@ -17,7 +17,8 @@ class MapPage extends React.PureComponent {
   //   }, 3000);
   // };
 
-  handleMarkerClick = () => {
+  handleMarkerClick = ad => {
+    console.log(ad);
     this.setState({ mapWidth: '70%' });
   };
 

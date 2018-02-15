@@ -167,7 +167,7 @@ const Map = withScriptjs(
           <Marker
             key={ad.id}
             position={{ lat: parseFloat(ad.adLatitude), lng: parseFloat(ad.adLongitude) }}
-            onClick={props.onMarkerClick}
+            onClick={() => props.onMarkerClick(ad)}
           />
         ))}
     </GoogleMap>
