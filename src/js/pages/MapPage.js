@@ -31,14 +31,14 @@ class MapPage extends React.PureComponent {
 
   render() {
     return (
-      <div>
+      <div className={styles.container}>
         <Map
           isMarkerShown={this.state.isMarkerShown}
           googleMapURL="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places"
           loadingElement={<div style={{ height: `100%` }} />}
           containerElement={
             <div
-              className={styles.container}
+              className={styles.mapContainer}
               style={{ height: `400px`, width: this.state.mapWidth }}
             />
           }
@@ -46,11 +46,11 @@ class MapPage extends React.PureComponent {
           onMarkerClick={this.handleMarkerClick}
         />
         {this.state.mapWidth === '100%' ? null : (
-          <div>
+          <div className={styles.adContainer}>
             <button onClick={this.closeMarkerClick}>stäng</button>
-            <h1>{this.state.ad.adTitle}</h1>
-            <p>{this.state.ad.adText}</p>
-            <p>{this.state.ad.adPrice}</p>
+            <h1 className={styles.adItem}>{this.state.ad.adTitle}</h1>
+            <p className={styles.adItem}>{this.state.ad.adText}</p>
+            <p className={styles.adItem}>{this.state.ad.adPrice}</p>
           </div>
         )}
       </div>

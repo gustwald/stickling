@@ -1,5 +1,23 @@
-.container {
+.mapContainer {
   @include b($b-mobile) {
   }
   transition: width 0.4s ease;
+}
+
+.container {
+  @include b($b-mobile) {
+    display: flex;
+  }
+}
+.adContainer {
+  width: 40%;
+}
+
+.adItem {
+  //   transform: translateX(400px);
+
+  //   &.showAd {
+  //     transform: translateX(0);
+  //   }
+  //   transition: transform 0.4s ease-in-out;
 }
