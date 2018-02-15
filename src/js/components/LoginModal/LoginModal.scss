@@ -9,15 +9,13 @@
   padding: 50px 20px 20px 20px;
   margin-right: 100px;
 
+  transition: height 0.5s ease;
+
   .leaf {
     height: 60px;
     width: 60px;
     position: absolute;
     top: -30px;
-  }
-
-  button {
-    @include primary-btn;
   }
 
   .switch {
@@ -27,12 +25,11 @@
 
     .signUp {
       width: 50%;
-      border-radius: 0px;
-      background-color: rgba(125, 209, 129, 0.5);
+      @include primary-btn;
     }
     .signIn {
       width: 50%;
-      border-radius: 0px;
+      @include primary-btn;
     }
   }
 

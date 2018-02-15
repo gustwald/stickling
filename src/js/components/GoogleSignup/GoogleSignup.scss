@@ -3,7 +3,8 @@
   button {
     width: 100%;
     position: relative;
-    background-color: #4285f4;
+    background-color: rgba(66, 133, 244, 1) !important;
+    @include primary-btn;
 
     span {
       position: absolute;

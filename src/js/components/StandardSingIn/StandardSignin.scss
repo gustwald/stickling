@@ -1,11 +1,12 @@
 .container {
-    form {
-        display:flex;
-        flex-direction: column;
-        justify-content: center;
-    }
+  form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
 
-    button {
-        width:100%;
-    }
+  button {
+    width: 100%;
+    @include primary-btn;
+  }
 }

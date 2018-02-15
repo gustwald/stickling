@@ -12,20 +12,26 @@ import leaf from '../../../../assets/leaf.svg';
 class LoginModal extends Component {
   state = {
     showRegister: false,
-    showLogin: true
+    showLogin: true,
+    activeLogin: true,
+    activeRegister: false
   };
 
   showRegister = () => {
     this.setState({
       showRegister: true,
-      showLogin: false
+      showLogin: false,
+      activeLogin: false,
+      activeRegister: true
     });
   };
 
   showLogin = () => {
     this.setState({
       showRegister: false,
-      showLogin: true
+      showLogin: true,
+      activeLogin: true,
+      activeRegister: false
     });
   };
 
@@ -34,10 +40,16 @@ class LoginModal extends Component {
       <div className={styles.modal}>
         <div style={{ backgroundImage: `url(${leaf})` }} className={styles.leaf} />
         <div className={styles.switch}>
-          <button className={styles.signIn} onClick={this.showLogin}>
+          <button
+            className={styles.signIn + ' ' + (this.state.activeLogin ? 'active' : 'hidden')}
+            onClick={this.showLogin}
+          >
             Logga in
           </button>
-          <button className={styles.signUp} onClick={this.showRegister}>
+          <button
+            className={styles.signUp + ' ' + (this.state.activeRegister ? 'active' : 'hidden')}
+            onClick={this.showRegister}
+          >
             Registrera
           </button>
         </div>
