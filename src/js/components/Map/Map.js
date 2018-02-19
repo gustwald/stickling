@@ -174,9 +174,12 @@ const Map = withScriptjs(
   ))
 );
 
-const mapStateToProps = state => ({
-  // filtrera så vi bara får ads me prop addToMap: true
-  ads: state.adsReducer
-});
+const mapStateToProps = state => {
+  const mapAds = state.adsReducer.filter(ad => ad.addToMap === true);
+
+  return {
+    ads: mapAds
+  };
+};
 
 export default connect(mapStateToProps)(Map);

@@ -8,7 +8,8 @@ const DisplayAds = ({ ads }) => (
       <div className={styles.gridItem} key={ad.id}>
         {ad.adTitle} {ad.adText}
         {ad.adPrice}
-        <img className={styles.img} src={ad.image} />
+        {ad.date}
+        <img className={styles.img} alt={ad.title} src={ad.image} />
       </div>
     ))}
   </div>
