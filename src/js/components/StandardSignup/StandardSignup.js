@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { createUserWithEmail, addUserToFirestore } from '../../utils/firebase';
 import styles from './StandardSignup.scss';
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
 class StandardSignup extends Component {
   state = {

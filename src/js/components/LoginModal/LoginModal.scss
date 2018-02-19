@@ -9,8 +9,6 @@
   padding: 50px 20px 20px 20px;
   margin-right: 100px;
 
-  transition: height 0.5s ease;
-
   .leaf {
     height: 60px;
     width: 60px;
@@ -26,10 +24,20 @@
     .signUp {
       width: 50%;
       @include primary-btn;
+      transition: all 0.5s ease;
     }
     .signIn {
       width: 50%;
       @include primary-btn;
+      transition: all 0.5s ease;
+    }
+
+    .hidden {
+      background-color: rgba(125, 209, 129, 0.5);
+      transition: all 0.5s ease;
+    }
+    .active {
+      transition: all 0.5s ease;
     }
   }
 
