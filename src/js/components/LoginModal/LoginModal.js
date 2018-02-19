@@ -8,6 +8,7 @@ import { getCurrentUser } from '../../Selector';
 import StandardSignup from '../StandardSignup/StandardSignup';
 import StandardSignin from '../StandardSingIn/StandardSignin';
 import leaf from '../../../../assets/leaf.svg';
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
 class LoginModal extends Component {
   state = {
@@ -41,31 +42,25 @@ class LoginModal extends Component {
         <div style={{ backgroundImage: `url(${leaf})` }} className={styles.leaf} />
         <div className={styles.switch}>
           <button
-            className={styles.signIn + ' ' + (this.state.activeLogin ? 'active' : 'hidden')}
+            className={
+              styles.signIn + ' ' + (this.state.activeLogin ? styles.active : styles.hidden)
+            }
             onClick={this.showLogin}
           >
             Logga in
           </button>
           <button
-            className={styles.signUp + ' ' + (this.state.activeRegister ? 'active' : 'hidden')}
+            className={
+              styles.signUp + ' ' + (this.state.activeRegister ? styles.active : styles.hidden)
+            }
             onClick={this.showRegister}
           >
             Registrera
           </button>
         </div>
-
         {this.state.showRegister ? <StandardSignup /> : null}
         {this.state.showLogin ? <StandardSignin /> : null}
         <GoogleSignup />
-        {/* <CurrentUser />
-        {this.props.currentUser
-          ? null
-          : [
-              <StandardSignup key="signIn" />,
-              <StandardSignin key="standardSignIn" />,
-              <GoogleSignup key="googleSignup" />
-            ]}
-        {this.props.currentUser ? <SignOut /> : null} */}
       </div>
     );
   }
