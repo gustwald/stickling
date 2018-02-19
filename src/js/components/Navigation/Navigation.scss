@@ -4,6 +4,15 @@
   align-items: center;
   justify-content: center;
   height: 70px;
+
+  .example-appear {
+    opacity: 0.01 !important;
+  }
+  
+  .example-appear.example-appear-active {
+    opacity: 1;
+    transition: opacity 3s ease-in !important;
+  }
 }
 
 .links {
@@ -21,4 +30,8 @@
 .logo {
   height: 40px;
   width: 40px;
+}
+
+ul {
+  list-style:none;
 }
