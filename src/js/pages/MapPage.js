@@ -6,7 +6,8 @@ class MapPage extends React.PureComponent {
   state = {
     isMarkerShown: true,
     mapWidth: '100%',
-    ad: {}
+    ad: {},
+    adItem: styles.adItem
   };
 
   // componentDidMount() {
@@ -48,9 +49,9 @@ class MapPage extends React.PureComponent {
         {this.state.mapWidth === '100%' ? null : (
           <div className={styles.adContainer}>
             <button onClick={this.closeMarkerClick}>stäng</button>
-            <h1 className={styles.adItem}>{this.state.ad.adTitle}</h1>
-            <p className={styles.adItem}>{this.state.ad.adText}</p>
-            <p className={styles.adItem}>{this.state.ad.adPrice}</p>
+            <h1 className={this.state.adItem}>{this.state.ad.adTitle}</h1>
+            <p className={this.state.adItem}>{this.state.ad.adText}</p>
+            <p className={this.state.adItem}>{this.state.ad.adPrice}</p>
           </div>
         )}
       </div>

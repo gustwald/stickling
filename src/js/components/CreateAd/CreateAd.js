@@ -7,6 +7,7 @@ import { addAdToFirestore, uploadFile } from '../../utils/firebase';
 import { getCurrentPosition } from '../../utils/getCurrentPosition';
 import { getCurrentUser } from '../../Selector';
 import { addAd } from '../../actions/index';
+import { getCurrentTime } from '../../utils/date';
 import styles from './CreateAd.scss';
 
 class CreateAd extends Component {
@@ -69,6 +70,7 @@ class CreateAd extends Component {
 
   createAd = async () => {
     const { uID } = this.props.currentUser;
+    const date = getCurrentTime();
     const {
       adTitle,
       adText,
@@ -94,7 +96,8 @@ class CreateAd extends Component {
       addToMap,
       image: uploadedFile.downloadURL,
       adLatitude,
-      adLongitude
+      adLongitude,
+      date
     };
 
     addAdToFirestore(result => this.onSucces(result, ad), this.onFailure, ad);

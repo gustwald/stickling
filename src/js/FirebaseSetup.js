@@ -46,7 +46,8 @@ class FirebaseSetup extends Component {
         adPickup,
         addToMap,
         adLatitude,
-        adLongitude
+        adLongitude,
+        date
       } = doc.data();
       ads.push({
         adTitle,
@@ -60,7 +61,8 @@ class FirebaseSetup extends Component {
         adPickup,
         addToMap,
         adLatitude,
-        adLongitude
+        adLongitude,
+        date
       });
     });
     this.props.addAds(ads);
