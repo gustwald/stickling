@@ -110,6 +110,7 @@ class CreateAd extends Component {
         <form className={styles.createAdForm}>
           <label htmlFor="adTitle">
             <input
+              required
               type="text"
               name="adTitle"
               id="adTitle"
@@ -119,6 +120,7 @@ class CreateAd extends Component {
           </label>
           <label htmlFor="AdText">
             <textarea
+              required
               type="text"
               name="adText"
               id="AdText"
@@ -128,7 +130,8 @@ class CreateAd extends Component {
           </label>
           <label htmlFor="AdPrice">
             <input
-              type="text"
+              required
+              type="number"
               name="adPrice"
               id="AdPrice"
               placeholder="Pris"
