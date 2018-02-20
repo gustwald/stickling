@@ -106,8 +106,8 @@ class CreateAd extends Component {
   render() {
     if (!this.props.currentUser) return null;
     return (
-      <div className="CreateAd">
-        <form className="CreateAdForm">
+      <div className={styles.createAd}>
+        <form className={styles.createAdForm}>
           <label htmlFor="adTitle">
             <input
               type="text"
@@ -118,7 +118,7 @@ class CreateAd extends Component {
             />
           </label>
           <label htmlFor="AdText">
-            <input
+            <textarea
               type="text"
               name="adText"
               id="AdText"

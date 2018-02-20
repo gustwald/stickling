@@ -6,10 +6,11 @@ const DisplayAds = ({ ads }) => (
   <div className={styles.grid}>
     {ads.map(ad => (
       <div className={styles.gridItem} key={ad.id}>
-        {ad.adTitle} {ad.adText}
-        {ad.adPrice}
-        {ad.date}
+        <h3>{ad.adTitle}</h3>
         <img className={styles.img} alt={ad.title} src={ad.image} />
+        <p>{ad.adText}</p>
+        <p>{ad.adPrice}</p>
+        <p>{ad.date}</p>
       </div>
     ))}
   </div>

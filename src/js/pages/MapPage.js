@@ -10,16 +10,6 @@ class MapPage extends React.PureComponent {
     adItem: styles.adItem
   };
 
-  // componentDidMount() {
-  //   this.delayedShowMarker();
-  // }
-
-  // delayedShowMarker = () => {
-  //   setTimeout(() => {
-  //     this.setState({ isMarkerShown: true });
-  //   }, 3000);
-  // };
-
   handleMarkerClick = ad => {
     console.log(ad);
     this.setState({ mapWidth: '60%', ad });
@@ -40,7 +30,7 @@ class MapPage extends React.PureComponent {
           containerElement={
             <div
               className={styles.mapContainer}
-              style={{ height: `400px`, width: this.state.mapWidth }}
+              style={{ height: `100vh`, width: this.state.mapWidth }}
             />
           }
           mapElement={<div style={{ height: `100%` }} />}
