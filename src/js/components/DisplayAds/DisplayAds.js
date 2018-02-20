@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { Button } from 'react-materialize';
 import styles from './DisplayAds.scss';
 
 const DisplayAds = ({ ads }) => (
@@ -11,6 +12,7 @@ const DisplayAds = ({ ads }) => (
         <p>{ad.adText}</p>
         <p>{ad.adPrice}</p>
         <p>{ad.date}</p>
+        <Button waves="light">button</Button>
       </div>
     ))}
   </div>
