@@ -3,35 +3,57 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 70px;
+  height: 80px;
+  position: relative;
 
-  .example-appear {
-    opacity: 0.01 !important;
-  }
-  
-  .example-appear.example-appear-active {
-    opacity: 1;
-    transition: opacity 3s ease-in !important;
+  .companyName {
+    position: absolute;
+    left: 40px;
+    top: 35px;
+    font-family: $Raleway;
+    color: $c-primary;
   }
 }
 
 .links {
-  color: $c-black;
+  color: $c-secondary;
   text-decoration: none;
-  font-size: 26px;
-  font-family: $Maven;
+  font-size: 18px;
+  font-family: $Raleway;
   padding: 0 10px 0 10px;
   text-transform: lowercase;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   :visited {
     color: $c-secondary;
   }
 }
 
+.links:hover {
+  &:after {
+    width: 100%;
+    transition: all 0.5s ease;
+  }
+}
+
+.links:after {
+  content: '';
+  position: relative;
+  height: 1px;
+  width: 0%;
+  background-color: $c-secondary;
+  transition: all 0.5s ease;
+}
+
 .logo {
-  height: 40px;
-  width: 40px;
+  position: absolute;
+  left: 0;
+  top: 7.5px;
+  height: 60px;
+  width: 60px;
 }
 
 ul {
-  list-style:none;
+  list-style: none;
 }

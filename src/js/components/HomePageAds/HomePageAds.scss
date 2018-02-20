@@ -10,7 +10,7 @@
 
   h1 {
     position: absolute;
-    font-family: $Title;
+    font-family: $Raleway;
     color: #7dd181;
     top: -70px;
     left: 0;
@@ -19,7 +19,7 @@
   }
 
   h3 {
-    font-family: $Catamaran;
+    font-family: $Raleway;
     color: #000;
     font-size: 20px;
     line-height: 26px;
@@ -34,8 +34,8 @@
   }
 
   .ad {
-    height: 150px;
-    width: 150px;
+    height: 100px;
+    width: 100px;
     background-position: contain;
     background-repeat: no-repeat;
     background-size: 100% 100%;

@@ -7,6 +7,7 @@ import HomePageAds from '../components/HomePageAds/HomePageAds';
 import Navigation from '../components/Navigation/Navigation';
 import SignOut from '../components/SignOut/SignOut';
 import styles from './HomePage.scss';
+import hero from '../../../assets/hero.jpg';
 
 class HomePage extends Component {
   render() {
