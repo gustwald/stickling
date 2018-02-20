@@ -16,7 +16,7 @@
 }
 
 .links {
-  color: $c-secondary;
+  color: $c-black;
   text-decoration: none;
   font-size: 18px;
   font-family: $Raleway;
@@ -26,7 +26,7 @@
   flex-direction: column;
   justify-content: center;
   :visited {
-    color: $c-secondary;
+    color: $c-black;
   }
 }
 
@@ -42,16 +42,8 @@
   position: relative;
   height: 1px;
   width: 0%;
-  background-color: $c-secondary;
+  background-color: $c-black;
   transition: all 0.5s ease;
-}
-
-.logo {
-  position: absolute;
-  left: 0;
-  top: 7.5px;
-  height: 60px;
-  width: 60px;
 }
 
 ul {

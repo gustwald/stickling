@@ -6,7 +6,6 @@ import { CSSTransitionGroup } from 'react-transition-group';
 
 const Navigation = () => (
   <div className={styles.navBar}>
-    <div style={{ backgroundImage: `url(${logo})` }} className={styles.logo} />
     <Link className={styles.links} to="/">
       Hem
     </Link>

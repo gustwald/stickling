@@ -1,9 +1,18 @@
-.container {
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start space-between;
-  align-content: center;
-  align-items: center;
+.wrapper {
   height: 100%;
-  width: 100%;
+}
+
+.rowWrapper {
+  height: 100%;
+}
+
+.logoWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.mainLogo {
+  height: 400px;
+  width: 400px;
 }
