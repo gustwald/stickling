@@ -2,12 +2,14 @@ import React, { Component } from 'react';
 import Dropzone from 'react-dropzone';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import { Input } from 'react-materialize';
 import uuidv1 from 'uuid';
 import { addAdToFirestore, uploadFile } from '../../utils/firebase';
 import { getCurrentPosition } from '../../utils/getCurrentPosition';
 import { getCurrentUser } from '../../Selector';
 import { addAd } from '../../actions/index';
 import { getCurrentTime } from '../../utils/date';
+
 import styles from './CreateAd.scss';
 
 class CreateAd extends Component {
@@ -108,75 +110,31 @@ class CreateAd extends Component {
     return (
       <div className={styles.createAd}>
         <form className={styles.createAdForm}>
-          <label htmlFor="adTitle">
-            <input
-              required
-              type="text"
-              name="adTitle"
-              id="adTitle"
-              placeholder="Titel"
-              onChange={this.onChange}
-            />
-          </label>
-          <label htmlFor="AdText">
-            <textarea
-              required
-              type="text"
-              name="adText"
-              id="AdText"
-              placeholder="Text"
-              onChange={this.onChange}
-            />
-          </label>
-          <label htmlFor="AdPrice">
-            <input
-              required
-              type="number"
-              name="adPrice"
-              id="AdPrice"
-              placeholder="Pris"
-              onChange={this.onChange}
-            />
-          </label>
-          <label htmlFor="adShips">
-            Skickas
-            <input
-              type="checkbox"
-              name="adShips"
-              id="adShips"
-              defaultChecked={this.state.adShips}
-              onChange={this.onCheckBoxChange}
-            />
-          </label>
-          <label htmlFor="adPickup">
-            Hämtas
-            <input
-              type="checkbox"
-              name="adPickup"
-              id="adPickup"
-              defaultChecked={this.state.adPickup}
-              onChange={this.onCheckBoxChange}
-            />
-          </label>
-          <label htmlFor="adFreightCost">
-            <input
-              type="text"
-              name="adFreightCost"
-              id="adFreightCost"
-              placeholder="Fraktkostnad"
-              onChange={this.onChange}
-            />
-          </label>
-          <label htmlFor="addToMap">
-            Lägg till i sticklingskartan
-            <input
-              type="checkbox"
-              name="addToMap"
-              id="addToMap"
-              defaultChecked={this.state.addToMap}
-              onChange={this.onCheckBoxMapChange}
-            />
-          </label>
+          <Input required type="text" name="adTitle" label="Title" onChange={this.onChange} />
+          <Input required type="textarea" name="adText" label="Text" onChange={this.onChange} />
+          <Input required type="number" name="adPrice" label="Pris" onChange={this.onChange} />
+          <Input
+            name="adShips"
+            type="checkbox"
+            label="Skickas"
+            defaultChecked={this.state.adShips}
+            onChange={this.onCheckBoxChange}
+          />
+          <Input
+            type="checkbox"
+            name="adPickup"
+            label="Hämtas"
+            defaultChecked={this.state.adPickup}
+            onChange={this.onCheckBoxChange}
+          />
+          <Input type="text" name="adFreightCost" label="Fraktkostnad" onChange={this.onChange} />
+          <Input
+            type="checkbox"
+            name="addToMap"
+            label="Lägg till i kartan"
+            defaultChecked={this.state.addToMap}
+            onChange={this.onCheckBoxMapChange}
+          />
           <button type="button" onClick={this.createAd}>
             Skapa annons
           </button>
