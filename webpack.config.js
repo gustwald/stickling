@@ -47,7 +47,9 @@ module.exports = {
               resources: [
                 './src/scss/resources/variables.scss',
                 './src/scss/resources/fonts.scss',
-                './src/scss/resources/mixins.scss'
+                './src/scss/resources/mixins.scss',
+                './src/scss/resources/materialize.scss',
+                './src/scss/main.scss'
               ]
             }
           }
