@@ -1,5 +1,6 @@
 import React from 'react';
 import Map from '../components/Map/Map';
+import { Icon } from 'react-materialize';
 import styles from './MapPage.scss';
 
 class MapPage extends React.PureComponent {
@@ -38,7 +39,9 @@ class MapPage extends React.PureComponent {
         />
         {this.state.mapWidth === '100%' ? null : (
           <div className={styles.adContainer}>
-            <button onClick={this.closeMarkerClick}>stäng</button>
+            <a onClick={this.closeMarkerClick}>
+              <Icon>close</Icon>
+            </a>
             <h1 className={this.state.adItem}>{this.state.ad.adTitle}</h1>
             <p className={this.state.adItem}>{this.state.ad.adText}</p>
             <p className={this.state.adItem}>{this.state.ad.adPrice}</p>

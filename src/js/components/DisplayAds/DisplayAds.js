@@ -4,10 +4,10 @@ import { Row, Col, Card, CardTitle } from 'react-materialize';
 import styles from './DisplayAds.scss';
 
 const DisplayAds = ({ ads }) => (
-  <div className={styles.grid}>
+  <div className="container">
     <Row>
       {ads.map(ad => (
-        <Col className={styles.gridItem} key={ad.id} s={12} m={6} l={2}>
+        <Col className={styles.gridItem} key={ad.id} s={12} m={6} l={4}>
           <Card
             className={styles.card}
             header={

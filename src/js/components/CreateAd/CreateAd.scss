@@ -1,8 +1,11 @@
 .createAd {
-  width: 50%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
 }
 
 .createAdForm {
-  display: flex;
-  flex-direction: column;
+  width: 500px;
+  background-color: $c-secondary;
+  padding: 20px;
 }
