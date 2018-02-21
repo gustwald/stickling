@@ -169,6 +169,7 @@ const Map = withScriptjs(
             key={ad.id}
             position={{ lat: parseFloat(ad.adLatitude), lng: parseFloat(ad.adLongitude) }}
             onClick={() => props.onMarkerClick(ad)}
+            animation={google.maps.Animation.DROP}
             options={{}}
           />
         ))}
