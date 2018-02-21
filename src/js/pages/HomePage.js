@@ -14,15 +14,19 @@ class HomePage extends Component {
   render() {
     return (
       <div className={styles.wrapper}>
-        <Row className={styles.rowWrapper}>
-          <Col s={6} className={styles.logoWrapper}>
-            <div className={styles.mainLogo} style={{ backgroundImage: `url(${logo})` }} />
-          </Col>
-          <Col s={3}>
-            {this.props.currentUser ? null : <LoginModal />}
-            {this.props.currentUser ? <SignOut /> : null}
-          </Col>
-        </Row>
+        <div className={styles.mainLogo} style={{ backgroundImage: `url(${logo})` }} />
+        <div className={styles.textWrapper}>
+          <h1>Sticklingar.se</h1>
+          <h3>
+            Vi är sveriges ledande marknadsplats <br /> för köp&sälj av stickingar!
+          </h3>
+          <h5>
+            {' '}
+            Skapa ett <span>konto</span> för att komma igång{' '}
+          </h5>
+        </div>
+        {/* {this.props.currentUser ? null : <LoginModal />}
+          {this.props.currentUser ? <SignOut /> : null} */}
         {/* <CurrentUser /> */}
       </div>
     );

@@ -3,20 +3,21 @@ import { Link } from 'react-router';
 import styles from './Navigation.scss';
 import logo from './../../../../assets/logo.svg';
 import { CSSTransitionGroup } from 'react-transition-group';
+import { Icon } from 'react-materialize';
 
 const Navigation = () => (
   <div className={styles.navBar}>
     <Link className={styles.links} to="/">
-      Hem
+      <span>Hem</span>
     </Link>
     <Link className={styles.links} to="/profil">
-      Profil
+      <span>Profil</span>
     </Link>
     <Link className={styles.links} to="/annonser">
-      Annonser
+      <span>Annonser</span>
     </Link>
     <Link className={styles.links} to="/karta">
-      karta
+      <span>karta</span>
     </Link>
   </div>
 );

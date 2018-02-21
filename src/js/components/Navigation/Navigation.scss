@@ -2,50 +2,43 @@
   width: 100%;
   display: flex;
   align-items: center;
-  justify-content: center;
-  height: 80px;
+  justify-content: flex-end;
+  padding-right: 200px;
+  height: 10vh;
   position: relative;
-
-  .companyName {
-    position: absolute;
-    left: 40px;
-    top: 35px;
-    font-family: $Raleway;
-    color: $c-primary;
-  }
 }
 
 .links {
   color: $c-black;
   text-decoration: none;
   font-size: 18px;
-  font-family: $Raleway;
-  padding: 0 10px 0 10px;
+  font-family: $Mont;
+  margin: 0 15px 0 15px;
   text-transform: lowercase;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  height: 50%;
+  font-style: italic;
+  transition: all 0.7s ease;
+  span {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 130%;
+    transition: all 0.7s ease;
+  }
   :visited {
     color: $c-black;
   }
 }
 
 .links:hover {
-  &:after {
-    width: 100%;
+  & span {
+    background-color: $c-primary;
+    font-style: italic;
+    color: white;
     transition: all 0.5s ease;
   }
-}
-
-.links:after {
-  content: '';
-  position: relative;
-  height: 1px;
-  width: 0%;
-  background-color: $c-black;
-  transition: all 0.5s ease;
-}
-
-ul {
-  list-style: none;
 }

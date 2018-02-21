@@ -1,18 +1,47 @@
 .wrapper {
-  height: 100%;
-}
-
-.rowWrapper {
-  height: 100%;
-}
-
-.logoWrapper {
+  height: 90vh;
   display: flex;
-  justify-content: center;
-  align-items: center;
-}
+  flex-direction: column;
+  position: relative;
 
-.mainLogo {
-  height: 400px;
-  width: 400px;
+  .textWrapper {
+    margin-left: 450px;
+    margin-top: 70px;
+
+    span {
+      background-color: rgba(136, 68, 1, 0.7);
+      padding: 2.5px 5px 2.5px 5px;
+      color: white;
+      font-style: italic;
+      cursor: pointer;
+      font-family: $Mont;
+      font-weight: 700;
+    }
+
+    h5 {
+      font-family: $Raleway;
+    }
+    h3 {
+      font-family: $Raleway;
+      margin-bottom: 40px;
+    }
+    h1 {
+      font-family: $Mont;
+      font-style: italic;
+      color: white;
+      font-weight: 700;
+      background-color: $c-primary;
+      display: inline-block;
+      padding: 10px;
+      text-transform: lowercase;
+    }
+  }
+
+  .mainLogo {
+    position: absolute;
+    bottom: 0;
+    left: -150px;
+    height: 650px;
+    width: 650px;
+  }
 }
