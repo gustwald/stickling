@@ -10,7 +10,15 @@ const DisplayAds = ({ ads }) => (
         <Col className={styles.gridItem} key={ad.id} s={12} m={6} l={2}>
           <Card
             className={styles.card}
-            header={<CardTitle reveal image={ad.image} waves="light" />}
+            header={
+              <CardTitle
+                // className={styles.cardImage}
+                // style={{ backgroundImage: `url(${ad.image})` }}
+                image={ad.image}
+                reveal
+                waves="light"
+              />
+            }
             title={ad.adTitle}
             reveal={
               <div>
