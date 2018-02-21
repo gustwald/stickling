@@ -10,6 +10,7 @@
   }
 }
 .adContainer {
+  position: relative;
   width: 40%;
 }
 
@@ -20,4 +21,10 @@
   //     transform: translateX(0);
   //   }
   transition: transform 0.4s ease-in-out;
+}
+
+.adClose {
+  position: absolute;
+  top: 0;
+  right: 0;
 }

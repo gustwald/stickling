@@ -19,9 +19,9 @@ class CreateAd extends Component {
     adPrice: '',
     error: '',
     files: [],
-    adShips: true,
+    adShips: false,
     adFreightCost: '',
-    adPickup: true,
+    adPickup: false,
     addToMap: false,
     adLatitude: '',
     adLongitude: ''
@@ -70,7 +70,9 @@ class CreateAd extends Component {
     console.log({ email, credential, code, message });
   };
 
-  createAd = async () => {
+  createAd = async e => {
+    e.preventDefault();
+    console.log('skapar annons');
     const { uID } = this.props.currentUser;
     const date = getCurrentTime();
     const {
@@ -109,53 +111,57 @@ class CreateAd extends Component {
     if (!this.props.currentUser) return null;
     return (
       <div className={styles.createAd}>
-        <Modal header="Skapa annons" trigger={<Button>Skapa annons</Button>}>
-          <form className={styles.createAdForm}>
-            <Input required type="text" name="adTitle" label="Titel" onChange={this.onChange} />
-            <Input required type="textarea" name="adText" label="Text" onChange={this.onChange} />
-            <Input required type="number" name="adPrice" label="Pris" onChange={this.onChange} />
-            <Input
-              name="adShips"
-              type="checkbox"
-              label="Skickas"
-              defaultChecked={this.state.adShips}
-              onChange={this.onCheckBoxChange}
-            />
-            <Input
-              type="checkbox"
-              name="adPickup"
-              label="Hämtas"
-              defaultChecked={this.state.adPickup}
-              onChange={this.onCheckBoxChange}
-            />
-            <Input type="text" name="adFreightCost" label="Fraktkostnad" onChange={this.onChange} />
-            <Input
-              type="checkbox"
-              name="addToMap"
-              label="Lägg till i kartan"
-              defaultChecked={this.state.addToMap}
-              onChange={this.onCheckBoxMapChange}
-            />
-            <section>
-              <div className="dropzone">
-                <Dropzone accept="image/jpeg, image/png" multiple={false} onDrop={this.onDrop}>
-                  <p>Try dropping some files here, or click to select files to upload.</p>
-                </Dropzone>
-              </div>
-              <aside>
-                <ul>
-                  {this.state.files.map(f => (
-                    <li key={f.name}>
-                      {f.name} - {f.size} bytes
-                    </li>
-                  ))}
-                </ul>
-              </aside>
-            </section>
-            <Button onClick={this.createAd}>Skapa annons</Button>
-            <p>{this.state.error}</p>
-          </form>
-        </Modal>
+        <form className={styles.createAdForm}>
+          <Input required type="text" name="adTitle" label="Titel" onChange={this.onChange} />
+          <Input required type="text" name="adText" label="Text" onChange={this.onChange} />
+          <Input required type="number" name="adPrice" label="Pris" onChange={this.onChange} />
+          <Input
+            name="adShips"
+            type="checkbox"
+            label="Skickas"
+            // defaultChecked={this.state.adShips}
+            onChange={this.onCheckBoxChange}
+          />
+          <Input
+            type="checkbox"
+            name="adPickup"
+            label="Hämtas"
+            // defaultChecked={this.state.adPickup}
+            onChange={this.onCheckBoxChange}
+          />
+          <Input type="text" name="adFreightCost" label="Fraktkostnad" onChange={this.onChange} />
+          <Input
+            type="checkbox"
+            name="addToMap"
+            label="Lägg till i kartan"
+            // defaultChecked={this.state.addToMap}
+            onChange={this.onCheckBoxMapChange}
+          />
+          <section>
+            <div className="dropzone">
+              <Dropzone accept="image/jpeg, image/png" multiple={false} onDrop={this.onDrop}>
+                <p>Try dropping some files here, or click to select files to upload.</p>
+              </Dropzone>
+            </div>
+            <aside>
+              <ul>
+                {this.state.files.map(f => (
+                  <li key={f.name}>
+                    {f.name} - {f.size} bytes
+                  </li>
+                ))}
+              </ul>
+            </aside>
+          </section>
+          <Button
+            onClick={e => {
+              this.createAd(e);
+            }}
+          >
+            Skapa annons
+          </Button>
+          <p>{this.state.error}</p>
+        </form>
       </div>
     );
   }

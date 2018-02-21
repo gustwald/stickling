@@ -39,12 +39,35 @@ class MapPage extends React.PureComponent {
         />
         {this.state.mapWidth === '100%' ? null : (
           <div className={styles.adContainer}>
-            <a onClick={this.closeMarkerClick}>
+            <a className={styles.adClose} onClick={this.closeMarkerClick}>
               <Icon>close</Icon>
             </a>
-            <h1 className={this.state.adItem}>{this.state.ad.adTitle}</h1>
-            <p className={this.state.adItem}>{this.state.ad.adText}</p>
-            <p className={this.state.adItem}>{this.state.ad.adPrice}</p>
+            <h1>{this.state.ad.adTitle}</h1>
+            <p>{this.state.ad.adText}</p>
+            <p>
+              <Icon>attach_money</Icon>
+              {this.state.ad.adPrice}
+            </p>
+            {this.state.ad.adShips ? (
+              <p>
+                {' '}
+                <Icon>local_shipping</Icon>Kan skickas
+              </p>
+            ) : (
+              <p>
+                {' '}
+                <Icon>location_off</Icon>Skickas inte
+              </p>
+            )}
+            {this.state.ad.adPickup ? (
+              <p>
+                <Icon>local_shipping</Icon>Kan hämtas
+              </p>
+            ) : (
+              <p>
+                <Icon>location_off</Icon>Hämtas inte
+              </p>
+            )}
           </div>
         )}
       </div>
