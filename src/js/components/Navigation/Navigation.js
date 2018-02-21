@@ -27,7 +27,10 @@ const Navigation = ({ currentUser }) => (
     {currentUser ? (
       [
         <Link className={styles.links} to="/profil">
-          <CurrentUser />
+          <Button className={styles.userBtn} waves="light">
+            {currentUser.first}
+            <Icon left>person</Icon>
+          </Button>
         </Link>,
         <SignOut />
       ]
