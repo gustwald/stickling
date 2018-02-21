@@ -9,6 +9,14 @@
   outline: none;
 }
 
+@mixin standard-btn {
+  font-family: $Mont;
+  font-style: italic;
+  text-transform: lowercase;
+  background-color: $c-primary;
+  margin: 0 20px;
+}
+
 @mixin b($width) {
   @media (min-width: $width) {
     @content;

@@ -1,11 +1,16 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import { Link } from 'react-router';
+import { CSSTransitionGroup } from 'react-transition-group';
+import { Button, Icon, Modal } from 'react-materialize';
+import CurrentUser from '../CurrentUser/CurrentUser';
+import SignOut from '../SignOut/SignOut';
+import { getCurrentUser } from '../../Selector';
 import styles from './Navigation.scss';
 import logo from './../../../../assets/logo.svg';
-import { CSSTransitionGroup } from 'react-transition-group';
-import { Icon } from 'react-materialize';
+import LoginModal from '../LoginModal/LoginModal';
 
-const Navigation = () => (
+const Navigation = ({ currentUser }) => (
   <div className={styles.navBar}>
     <Link className={styles.links} to="/">
       <span>Hem</span>
@@ -19,6 +24,24 @@ const Navigation = () => (
     <Link className={styles.links} to="/karta">
       <span>karta</span>
     </Link>
+    {currentUser ? (
+      [
+        <Link className={styles.links} to="/profil">
+          <CurrentUser />
+        </Link>,
+        <SignOut />
+      ]
+    ) : (
+      <Modal
+        trigger={
+          <Button className={styles.loginBtn} waves="light">
+            Logga in<Icon left>person</Icon>
+          </Button>
+        }
+      >
+        <LoginModal />
+      </Modal>
+    )}
   </div>
 );
 
@@ -39,5 +62,8 @@ const Navigation = () => (
 //     <li className={styles.links} to="/karta">Karta</li>
 //   </CSSTransitionGroup>
 // );
+const mapStateToProps = state => ({
+  currentUser: getCurrentUser(state)
+});
 
-export default Navigation;
+export default connect(mapStateToProps)(Navigation);

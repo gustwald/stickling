@@ -8,9 +8,10 @@ import Navigation from '../components/Navigation/Navigation';
 import SignOut from '../components/SignOut/SignOut';
 import styles from './HomePage.scss';
 import logo from '../../../assets/logo.svg';
-import { Row, Col } from 'react-materialize';
+import { Modal } from 'react-materialize';
 
 class HomePage extends Component {
+  state = {};
   render() {
     return (
       <div className={styles.wrapper}>
@@ -22,7 +23,11 @@ class HomePage extends Component {
           </h3>
           <h5>
             {' '}
-            Skapa ett <span>konto</span> för att komma igång{' '}
+            Skapa ett{' '}
+            <Modal trigger={<span>konto</span>}>
+              <p>HÄR SKA VI HA REGISTRERA COMPONENT</p>
+            </Modal>{' '}
+            för att komma igång{' '}
           </h5>
         </div>
         {/* {this.props.currentUser ? null : <LoginModal />}

@@ -1,4 +1,5 @@
 import React from 'react';
+import { Button, Icon } from 'react-materialize';
 import { signOutUser } from '../../utils/firebase';
 import styles from './SignOut.scss';
 
@@ -16,7 +17,9 @@ const signOut = () => {
 
 const SignOut = () => (
   <div className="Signout">
-    <button onClick={signOut}>Logga ut</button>
+    <Button className={styles.signOutBtn} onClick={signOut}>
+      Logga ut
+    </Button>
   </div>
 );
 
