@@ -5,10 +5,20 @@ import styles from './MapPage.scss';
 
 class MapPage extends React.PureComponent {
   state = {
-    isMarkerShown: true,
+    isMarkerShown: false,
     mapWidth: '100%',
     ad: {},
     adItem: styles.adItem
+  };
+
+  componentDidMount() {
+    this.delayedShowMarker();
+  }
+
+  delayedShowMarker = () => {
+    setTimeout(() => {
+      this.setState({ isMarkerShown: true });
+    }, 2000);
   };
 
   handleMarkerClick = ad => {

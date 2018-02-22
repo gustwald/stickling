@@ -9,7 +9,6 @@
   "dependencies": {
     "@firebase/firestore": "^0.3.2",
     "@version/react-router-v3": "^1.0.0",
-    "antd": "^3.2.0",
     "babel-core": "^6.26.0",
     "babel-eslint": "^7.2.3",
     "babel-loader": "^7.1.2",
