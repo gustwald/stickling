@@ -1,6 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import { Row, Col, Card, CardTitle } from 'react-materialize';
+
 import styles from './DisplayAds.scss';
 
 const DisplayAds = ({ ads }) => (
@@ -23,7 +25,7 @@ const DisplayAds = ({ ads }) => (
             reveal={
               <div>
                 <p>{ad.adText}</p>
-                <p>{ad.adPrice + 'kr'}</p>
+                <p>{`${ad.adPrice}kr`}</p>
                 {ad.adShips ? <p>Kan skickas</p> : <p>Skickas inte</p>}
                 {ad.adPickup ? <p>Kan hämtas</p> : <p>Hämtas inte</p>}
               </div>
@@ -42,4 +44,9 @@ const DisplayAds = ({ ads }) => (
 const mapStateToProps = state => ({
   ads: state.adsReducer
 });
+
+DisplayAds.propTypes = {
+  ads: PropTypes.array.isRequired
+};
+
 export default connect(mapStateToProps)(DisplayAds);
