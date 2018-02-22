@@ -26,8 +26,6 @@ class Profile extends Component {
           </Col>
         </Row>
         <DisplayAds ads={this.props.userAds} />
-        {/* <h1>{this.props.currentUser.first + ' ' + this.props.currentUser.last}</h1>
-            <h3>{this.props.currentUser.email}</h3> */}
       </div>
     );
   }
@@ -35,7 +33,6 @@ class Profile extends Component {
 
 const mapStateToProps = state => {
   const userAds = state.adsReducer.filter(ad => ad.uId === state.currentUser.id);
-  console.log(userAds);
 
   return {
     currentUser: getCurrentUser(state),

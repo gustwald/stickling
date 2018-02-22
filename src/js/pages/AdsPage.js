@@ -4,15 +4,16 @@ import { getCurrentUser } from '../Selector';
 import CreateAd from '../components/CreateAd/CreateAd';
 import DisplayAds from '../components/DisplayAds/DisplayAds';
 
-const AdsPage = () => (
+const AdsPage = ({ ads }) => (
   <div>
     <h1>Ads</h1>
     <CreateAd />
-    <DisplayAds />
+    <DisplayAds ads={ads} />
   </div>
 );
 const mapStateToProps = state => ({
-  currentUser: getCurrentUser(state)
+  currentUser: getCurrentUser(state),
+  ads: state.adsReducer
 });
 
 export default connect(mapStateToProps)(AdsPage);

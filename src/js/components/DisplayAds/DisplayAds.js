@@ -1,5 +1,4 @@
 import React from 'react';
-import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Row, Col, Card, CardTitle } from 'react-materialize';
 
@@ -41,12 +40,8 @@ const DisplayAds = ({ ads }) => (
   </div>
 );
 
-const mapStateToProps = state => ({
-  ads: state.adsReducer
-});
-
 DisplayAds.propTypes = {
   ads: PropTypes.array.isRequired
 };
 
-export default connect(mapStateToProps)(DisplayAds);
+export default DisplayAds;
