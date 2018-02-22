@@ -15,9 +15,12 @@ const Navigation = ({ currentUser }) => (
     <Link className={styles.links} to="/">
       <span>Hem</span>
     </Link>
-    <Link className={styles.links} to="/profil">
-      <span>Profil</span>
-    </Link>
+    {currentUser ? (
+      <Link className={styles.links} to="/profil">
+        <span>Profil</span>
+      </Link>
+    ) : null}
+
     <Link className={styles.links} to="/annonser">
       <span>Annonser</span>
     </Link>
