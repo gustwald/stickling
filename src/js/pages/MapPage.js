@@ -41,7 +41,7 @@ class MapPage extends React.PureComponent {
           containerElement={
             <div
               className={styles.mapContainer}
-              style={{ height: `100vh`, width: this.state.mapWidth }}
+              style={{ height: `90vh`, width: this.state.mapWidth }}
             />
           }
           mapElement={<div style={{ height: `100%` }} />}
