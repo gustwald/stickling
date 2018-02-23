@@ -18,9 +18,7 @@ class HomePage extends Component {
         <div className={styles.mainLogo} style={{ backgroundImage: `url(${logo})` }} />
         <div className={styles.textWrapper}>
           <h1>Sticklingar.se</h1>
-          <h3>
-            Vi är sveriges ledande marknadsplats <br /> för köp&sälj av stickingar!
-          </h3>
+          <h3>Vi är sveriges ledande marknadsplats för köp&sälj av sticklingar!</h3>
           <h5>
             {' '}
             Skapa ett{' '}

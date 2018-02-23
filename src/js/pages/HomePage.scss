@@ -5,8 +5,119 @@
   position: relative;
 
   .textWrapper {
-    margin-left: 450px;
-    margin-top: 70px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    @include bm(0, $b-mobile) {
+    }
+
+    @include bm (451px, $b-tablet) {
+      margin-left: 270px;
+      align-items: flex-start;
+    }
+
+    @include bm(801px, $b-full) {
+      align-items: flex-start;
+      margin-left: 370px;
+    }
+
+    @include b(1401px) {
+      align-items: flex-start;
+      margin-left: 450px;
+    }
+
+    h1 {
+      font-family: $Mont;
+      font-style: italic;
+      color: white;
+      font-weight: 700;
+      background-color: $c-primary;
+      display: inline-block;
+      padding: 10px;
+      text-transform: lowercase;
+      font-size: 36px;
+      text-align: center;
+
+      @include bm(376px, $b-mobile) {
+        font-size: 46px;
+      }
+
+      @include bm(451px, $b-tablet) {
+        font-size: 50px;
+        text-align: left;
+      }
+
+      @include bm(801px, $b-full) {
+        text-align: left;
+        font-size: 70px;
+      }
+
+      @include b(1401px) {
+        text-align: left;
+        font-size: 90px;
+      }
+    }
+
+    h3 {
+      font-family: $Raleway;
+      font-size: 26px;
+      padding-left: 10px;
+      padding-right: 10px;
+      text-align: center;
+
+      @include bm(376px, $b-mobile) {
+        font-size: 30px;
+      }
+
+      @include bm(451px, $b-tablet) {
+        font-size: 36px;
+        text-align: left;
+      }
+
+      @include bm(801px, $b-full) {
+        text-align: left;
+        font-size: 50px;
+      }
+
+      @include b(1401px) {
+        text-align: left;
+        font-size: 70px;
+      }
+    }
+
+    h5 {
+      font-family: $Raleway;
+      font-size: 22px;
+      padding-left: 10px;
+      padding-right: 10px;
+      line-height: 28px;
+      text-align: center;
+
+      @include bm(376px, $b-mobile) {
+        font-size: 26px;
+        line-height: 34px;
+      }
+
+      @include bm(451px, $b-tablet) {
+        font-size: 30px;
+        line-height: 36px;
+        text-align: left;
+      }
+
+      @include bm(801px, $b-full) {
+        text-align: left;
+        font-size: 36px;
+        line-height: 40px;
+      }
+
+      @include b(1401px) {
+        text-align: left;
+        font-size: 52px;
+        line-height: 58px;
+      }
+    }
 
     span {
       background-color: rgba(136, 68, 1, 0.7);
@@ -17,31 +128,38 @@
       font-family: $Mont;
       font-weight: 700;
     }
-
-    h5 {
-      font-family: $Raleway;
-    }
-    h3 {
-      font-family: $Raleway;
-      margin-bottom: 40px;
-    }
-    h1 {
-      font-family: $Mont;
-      font-style: italic;
-      color: white;
-      font-weight: 700;
-      background-color: $c-primary;
-      display: inline-block;
-      padding: 10px;
-      text-transform: lowercase;
-    }
   }
 
   .mainLogo {
+    display: block;
     position: absolute;
     bottom: 0;
-    left: -150px;
-    height: 650px;
-    width: 650px;
+    left: -140px;
+    height: 350px;
+    width: 350px;
+
+    @include bm(451px, $b-tablet) {
+      height: 500px;
+      width: 500px;
+      left: -110px;
+    }
+
+    @include bm(801px, $b-full) {
+      height: 600px;
+      width: 600px;
+      left: -130px;
+    }
+
+    @include b(1401px) {
+      height: 700px;
+      width: 700px;
+    }
   }
 }
+
+// @include b(1281px) {
+//   display: block;
+//   height: 900px;
+//   width: 900px;
+//   left: -200px;
+// }
