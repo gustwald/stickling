@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Button } from 'antd';
 import { Row, Col, Card, CardTitle } from 'react-materialize';
 
 import styles from './DisplayAds.scss';
@@ -9,6 +10,7 @@ const DisplayAds = ({ ads }) => (
     <Row>
       {ads.map(ad => (
         <Col className={styles.gridItem} key={ad.id} s={12} m={6} l={4}>
+          <Button type="primary">Primary</Button>
           <Card
             className={styles.card}
             header={
