@@ -47,17 +47,18 @@ class Navigation extends Component {
         </Link>
         {this.props.currentUser ? (
           [
-            <Link key="profile" className={styles.links} to="/profil">
-              <Button className={styles.userBtn}>{this.props.currentUser.first}</Button>
+            <Link key="profile" to="/profil">
+              <Avatar src={this.props.currentUser.photo} />
             </Link>,
-            <SignOut key="signout" />
+            <Link key="home" to="/">
+              <SignOut />
+            </Link>
           ]
         ) : (
           <Button className={styles.loginBtn} onClick={this.showModal}>
             Logga in
           </Button>
         )}
-        <Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />
         <Modal visible={this.state.visible} onOk={this.handleOk} onCancel={this.handleCancel}>
           <LoginModal />
         </Modal>
