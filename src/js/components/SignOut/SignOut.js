@@ -17,7 +17,7 @@ const signOut = () => {
 
 const SignOut = () => (
   <div className="Signout">
-    <Button className={styles.signOutBtn} onClick={signOut}>
+    <Button icon="logout" className={styles.signOutBtn} onClick={signOut}>
       Logga ut
     </Button>
   </div>

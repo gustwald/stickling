@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
 // import { CSSTransitionGroup } from 'react-transition-group';
-import { Button, Modal } from 'antd';
+import { Button, Modal, Avatar } from 'antd';
 import SignOut from '../SignOut/SignOut';
 import { getCurrentUser } from '../../Selector';
 import styles from './Navigation.scss';
@@ -48,9 +48,7 @@ class Navigation extends Component {
         {this.props.currentUser ? (
           [
             <Link key="profile" className={styles.links} to="/profil">
-              <Button className={styles.userBtn} waves="light">
-                {this.props.currentUser.first}
-              </Button>
+              <Button className={styles.userBtn}>{this.props.currentUser.first}</Button>
             </Link>,
             <SignOut key="signout" />
           ]
@@ -59,6 +57,7 @@ class Navigation extends Component {
             Logga in
           </Button>
         )}
+        <Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />
         <Modal visible={this.state.visible} onOk={this.handleOk} onCancel={this.handleCancel}>
           <LoginModal />
         </Modal>

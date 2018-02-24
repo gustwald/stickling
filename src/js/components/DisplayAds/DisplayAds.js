@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Pagination } from 'antd';
 import styles from './DisplayAds.scss';
 
 const DisplayAds = ({ ads }) => (
@@ -13,6 +14,7 @@ const DisplayAds = ({ ads }) => (
         {ad.adPickup ? <p>Kan hämtas</p> : <p>Hämtas inte</p>}
       </div>
     ))}
+    <Pagination defaultCurrent={1} total={50} />
   </div>
 );
 
