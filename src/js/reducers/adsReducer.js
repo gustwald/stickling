@@ -1,4 +1,4 @@
-import { ADD_AD, ADD_ADS } from '../constants/action-types';
+import { ADD_AD, ADD_ADS, REMOVE_AD } from '../constants/action-types';
 
 const initialState = {};
 
@@ -8,6 +8,9 @@ const reducer = (state = [], action) => {
       return [...state, action.ad];
     case ADD_ADS:
       return [...action.ads];
+    case REMOVE_AD:
+      console.log('tjena');
+      return state.adsReducer.filter(id => id !== action.id);
     default:
       return state;
   }

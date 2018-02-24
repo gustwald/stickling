@@ -9,3 +9,12 @@ export const openAdNotification = title => {
     duration: 8
   });
 };
+
+export const removedAdNotification = id => {
+  notification.open({
+    message: `Du har raderat annonsen med id: ${id}`,
+    description: '...men du kan alltid skapa en ny!',
+    icon: <Icon type="meh-o" style={{ color: '#327c32' }} />,
+    duration: 8
+  });
+};

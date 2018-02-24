@@ -109,3 +109,13 @@ export const uploadFile = (img, adTitle) => {
       .catch(reject);
   });
 };
+
+export const deleteAd = (id, onSucces, onFailure) => {
+  const db = firebase.firestore();
+  db
+    .collection('ads')
+    .doc(id)
+    .delete()
+    .then(onSucces)
+    .catch(onFailure);
+};

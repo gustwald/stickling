@@ -38,10 +38,8 @@ class GoogleSignup extends React.Component {
     );
   }
 }
-const mapDispatchToProps = dispatch => {
-  return {
-    addUser: (firstName, lastName, email, uid) => dispatch(addUser(firstName, lastName, email, uid))
-  };
-};
+const mapDispatchToProps = dispatch => ({
+  addUser: (firstName, lastName, email, uid) => dispatch(addUser(firstName, lastName, email, uid))
+});
 
 export default connect(null, mapDispatchToProps)(GoogleSignup);
