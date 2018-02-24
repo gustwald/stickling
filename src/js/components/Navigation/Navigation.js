@@ -1,55 +1,71 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
-import { CSSTransitionGroup } from 'react-transition-group';
-import { Button, Icon, Modal } from 'react-materialize';
-import CurrentUser from '../CurrentUser/CurrentUser';
+// import { CSSTransitionGroup } from 'react-transition-group';
+import { Button, Modal } from 'antd';
 import SignOut from '../SignOut/SignOut';
 import { getCurrentUser } from '../../Selector';
 import styles from './Navigation.scss';
-import logo from './../../../../assets/logo.svg';
 import LoginModal from '../LoginModal/LoginModal';
 
-const Navigation = ({ currentUser }) => (
-  <div className={styles.navBar}>
-    <Link className={styles.links} to="/">
-      <span>Hem</span>
-    </Link>
-    {currentUser ? (
-      <Link className={styles.links} to="/profil">
-        <span>Profil</span>
-      </Link>
-    ) : null}
+class Navigation extends Component {
+  state = { visible: false };
+  showModal = () => {
+    this.setState({
+      visible: true
+    });
+  };
+  handleOk = e => {
+    console.log(e);
+    this.setState({
+      visible: false
+    });
+  };
+  handleCancel = e => {
+    console.log(e);
+    this.setState({
+      visible: false
+    });
+  };
+  render() {
+    return (
+      <div className={styles.navBar}>
+        <Link className={styles.links} to="/">
+          <span>Hem</span>
+        </Link>
+        {this.props.currentUser ? (
+          <Link className={styles.links} to="/profil">
+            <span>Profil</span>
+          </Link>
+        ) : null}
 
-    <Link className={styles.links} to="/annonser">
-      <span>Annonser</span>
-    </Link>
-    <Link className={styles.links} to="/karta">
-      <span>karta</span>
-    </Link>
-    {currentUser ? (
-      [
-        <Link key="profile" className={styles.links} to="/profil">
-          <Button className={styles.userBtn} waves="light">
-            {currentUser.first}
-            <Icon left>person</Icon>
+        <Link className={styles.links} to="/annonser">
+          <span>Annonser</span>
+        </Link>
+        <Link className={styles.links} to="/karta">
+          <span>karta</span>
+        </Link>
+        {this.props.currentUser ? (
+          [
+            <Link key="profile" className={styles.links} to="/profil">
+              <Button className={styles.userBtn} waves="light">
+                {this.props.currentUser.first}
+              </Button>
+            </Link>,
+            <SignOut key="signout" />
+          ]
+        ) : (
+          <Button className={styles.loginBtn} onClick={this.showModal}>
+            Logga in
           </Button>
-        </Link>,
-        <SignOut key="signout" />
-      ]
-    ) : (
-      <Modal
-        trigger={
-          <Button className={styles.loginBtn} waves="light">
-            Logga in<Icon left>person</Icon>
-          </Button>
-        }
-      >
-        <LoginModal />
-      </Modal>
-    )}
-  </div>
-);
+        )}
+        <Modal visible={this.state.visible} onOk={this.handleOk} onCancel={this.handleCancel}>
+          <LoginModal />
+        </Modal>
+      </div>
+    );
+  }
+}
 
 // const Navigation = () => (
 //   <CSSTransitionGroup

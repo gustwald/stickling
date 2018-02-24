@@ -1,14 +1,12 @@
 import React from 'react';
 import Map from '../components/Map/Map';
-import { Icon } from 'react-materialize';
 import styles from './MapPage.scss';
 
 class MapPage extends React.PureComponent {
   state = {
     isMarkerShown: false,
     mapWidth: '100%',
-    ad: {},
-    adItem: styles.adItem
+    ad: {}
   };
 
   componentDidMount() {
@@ -50,34 +48,13 @@ class MapPage extends React.PureComponent {
         {this.state.mapWidth === '100%' ? null : (
           <div className={styles.adContainer}>
             <a className={styles.adClose} onClick={this.closeMarkerClick}>
-              <Icon>close</Icon>
+              stäng
             </a>
             <h1>{this.state.ad.adTitle}</h1>
             <p>{this.state.ad.adText}</p>
-            <p>
-              <Icon>attach_money</Icon>
-              {this.state.ad.adPrice}
-            </p>
-            {this.state.ad.adShips ? (
-              <p>
-                {' '}
-                <Icon>local_shipping</Icon>Kan skickas
-              </p>
-            ) : (
-              <p>
-                {' '}
-                <Icon>location_off</Icon>Skickas inte
-              </p>
-            )}
-            {this.state.ad.adPickup ? (
-              <p>
-                <Icon>local_shipping</Icon>Kan hämtas
-              </p>
-            ) : (
-              <p>
-                <Icon>location_off</Icon>Hämtas inte
-              </p>
-            )}
+            <p>{this.state.ad.adPrice}</p>
+            {this.state.ad.adShips ? <p> Kan skickas</p> : <p> Skickas inte</p>}
+            {this.state.ad.adPickup ? <p>Kan hämtas</p> : <p>Hämtas inte</p>}
           </div>
         )}
       </div>

@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Col, Row } from 'react-materialize';
 import { getCurrentUser } from '../../Selector';
 import DisplayAds from '../DisplayAds/DisplayAds';
 import styles from './Profile.scss';
@@ -13,18 +12,18 @@ class Profile extends Component {
   render() {
     return (
       <div className="container">
-        <Row className={styles.profileInfoWrapper}>
+        {/* <Row className={styles.profileInfoWrapper}>
           <Col className={styles.profilePic} s={2} style={{ backgroundImage: `url(${gurt})` }} />
-          <Col className={styles.profileInfo} s={10}>
-            <h3>
-              <span>{`${this.props.currentUser.first} ${this.props.currentUser.last}`}</span>
-            </h3>
-            <div className={styles.socialMedia}>
-              <div className={styles.instagram} style={{ backgroundImage: `url(${insta})` }} />
-              <div className={styles.twitter} style={{ backgroundImage: `url(${twitter})` }} />
-            </div>
-          </Col>
-        </Row>
+          <Col className={styles.profileInfo} s={10}> */}
+        <h3>
+          <span>{`${this.props.currentUser.first} ${this.props.currentUser.last}`}</span>
+        </h3>
+        <div className={styles.socialMedia}>
+          <div className={styles.instagram} style={{ backgroundImage: `url(${insta})` }} />
+          <div className={styles.twitter} style={{ backgroundImage: `url(${twitter})` }} />
+        </div>
+        {/* </Col> */}
+        {/* </Row> */}
         <DisplayAds ads={this.props.userAds} />
       </div>
     );

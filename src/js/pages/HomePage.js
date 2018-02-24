@@ -1,17 +1,33 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import CurrentUser from '../components/CurrentUser/CurrentUser';
+import { Modal } from 'antd';
 import { getCurrentUser } from '../Selector';
-import LoginModal from '../components/LoginModal/LoginModal';
-import HomePageAds from '../components/HomePageAds/HomePageAds';
-import Navigation from '../components/Navigation/Navigation';
-import SignOut from '../components/SignOut/SignOut';
 import styles from './HomePage.scss';
 import logo from '../../../assets/logo.svg';
-import { Modal } from 'react-materialize';
 
 class HomePage extends Component {
-  state = {};
+  state = {
+    visible: false
+  };
+  showModal = () => {
+    this.setState({
+      visible: true
+    });
+  };
+
+  handleOk = e => {
+    console.log(e);
+    this.setState({
+      visible: false
+    });
+  };
+  handleCancel = e => {
+    console.log(e);
+    this.setState({
+      visible: false
+    });
+  };
+
   render() {
     return (
       <div className={styles.wrapper}>
@@ -21,16 +37,17 @@ class HomePage extends Component {
           <h3>Vi är sveriges ledande marknadsplats för köp&sälj av sticklingar!</h3>
           <h5>
             {' '}
-            Skapa ett{' '}
-            <Modal trigger={<span>konto</span>}>
-              <p>HÄR SKA VI HA REGISTRERA COMPONENT</p>
-            </Modal>{' '}
-            för att komma igång{' '}
+            Skapa ett <span onClick={this.showModal}>konto</span> för att komma igång{' '}
           </h5>
+          <Modal
+            title="register"
+            visible={this.state.visible}
+            onOk={this.handleOk}
+            onCancel={this.handleCancel}
+          >
+            <p>register things</p>
+          </Modal>
         </div>
-        {/* {this.props.currentUser ? null : <LoginModal />}
-          {this.props.currentUser ? <SignOut /> : null} */}
-        {/* <CurrentUser /> */}
       </div>
     );
   }

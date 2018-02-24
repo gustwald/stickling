@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import Dropzone from 'react-dropzone';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { Input, Button, Modal } from 'react-materialize';
 import uuidv1 from 'uuid';
+import { Button } from 'antd';
 import { addAdToFirestore, uploadFile } from '../../utils/firebase';
 import { getCurrentPosition } from '../../utils/getCurrentPosition';
 import { getCurrentUser } from '../../Selector';
@@ -112,25 +112,25 @@ class CreateAd extends Component {
     return (
       <div className={styles.createAd}>
         <form className={styles.createAdForm}>
-          <Input required type="text" name="adTitle" label="Titel" onChange={this.onChange} />
-          <Input required type="text" name="adText" label="Text" onChange={this.onChange} />
-          <Input required type="number" name="adPrice" label="Pris" onChange={this.onChange} />
-          <Input
+          <input required type="text" name="adTitle" label="Titel" onChange={this.onChange} />
+          <input required type="text" name="adText" label="Text" onChange={this.onChange} />
+          <input required type="number" name="adPrice" label="Pris" onChange={this.onChange} />
+          <input
             name="adShips"
             type="checkbox"
             label="Skickas"
             // defaultChecked={this.state.adShips}
             onChange={this.onCheckBoxChange}
           />
-          <Input
+          <input
             type="checkbox"
             name="adPickup"
             label="Hämtas"
             // defaultChecked={this.state.adPickup}
             onChange={this.onCheckBoxChange}
           />
-          <Input type="text" name="adFreightCost" label="Fraktkostnad" onChange={this.onChange} />
-          <Input
+          <input type="text" name="adFreightCost" label="Fraktkostnad" onChange={this.onChange} />
+          <input
             type="checkbox"
             name="addToMap"
             label="Lägg till i kartan"
