@@ -62,7 +62,7 @@ class CreateAd extends Component {
       ...model
     };
     this.props.addAd(ad);
-    openAdNotification();
+    openAdNotification(ad.adTitle);
   };
 
   onFailure = error => {
