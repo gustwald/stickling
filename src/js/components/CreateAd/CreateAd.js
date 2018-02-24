@@ -3,6 +3,7 @@ import Dropzone from 'react-dropzone';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import uuidv1 from 'uuid';
+import { openAdNotification } from '../Notification/Notification';
 import { Button, Input, Checkbox } from 'antd';
 import { addAdToFirestore, uploadFile } from '../../utils/firebase';
 import { getCurrentPosition } from '../../utils/getCurrentPosition';
@@ -61,6 +62,7 @@ class CreateAd extends Component {
       ...model
     };
     this.props.addAd(ad);
+    openAdNotification();
   };
 
   onFailure = error => {
