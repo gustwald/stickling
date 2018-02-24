@@ -7,12 +7,13 @@ import {
   ADD_ADS
 } from '../constants/action-types';
 
-export const addUser = (firstName, lastName, email, uid) => ({
+export const addUser = (firstName, lastName, email, uid, photo) => ({
   type: ADD_USER,
   firstName,
   lastName,
   email,
-  uid
+  uid,
+  photo
 });
 
 export const addUsers = users => ({

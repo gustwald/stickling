@@ -75,12 +75,13 @@ class FirebaseSetup extends Component {
   onUsersSuccess = result => {
     const users = [];
     result.forEach(doc => {
-      const { first, last, email, uID } = doc.data();
+      const { first, last, email, uID, photo } = doc.data();
       users.push({
         first,
         last,
         email,
-        uID
+        uID,
+        photo
       });
     });
     this.props.addUsers(users);

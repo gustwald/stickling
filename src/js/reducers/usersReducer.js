@@ -9,7 +9,8 @@ const reducer = (state = [], action) => {
           first: action.firstName,
           last: action.lastName,
           email: action.email,
-          uID: action.uid
+          uID: action.uid,
+          photo: action.photo
         }
       ];
     case ADD_USERS:

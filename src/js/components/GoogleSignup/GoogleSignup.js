@@ -8,13 +8,15 @@ import styles from './GoogleSignup.scss';
 
 class GoogleSignup extends React.Component {
   onSuccess = result => {
+    console.log(result);
     const uID = result.user.uid;
     const email = result.user.email;
     const fName = result.additionalUserInfo.profile.given_name;
     const lName = result.additionalUserInfo.profile.family_name;
+    const photo = result.user.photoURL;
 
-    this.props.addUser(fName, lName, email, uID);
-    addUserToFirestore(uID, fName, lName, email);
+    this.props.addUser(fName, lName, email, uID, photo);
+    addUserToFirestore(uID, fName, lName, email, photo);
   };
 
   onFailure = error => {
