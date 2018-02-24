@@ -3,7 +3,7 @@ import Dropzone from 'react-dropzone';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import uuidv1 from 'uuid';
-import { Button } from 'antd';
+import { Button, Input, Checkbox } from 'antd';
 import { addAdToFirestore, uploadFile } from '../../utils/firebase';
 import { getCurrentPosition } from '../../utils/getCurrentPosition';
 import { getCurrentUser } from '../../Selector';
@@ -112,16 +112,23 @@ class CreateAd extends Component {
     return (
       <div className={styles.createAd}>
         <form className={styles.createAdForm}>
-          <input required type="text" name="adTitle" label="Titel" onChange={this.onChange} />
-          <input required type="text" name="adText" label="Text" onChange={this.onChange} />
-          <input required type="number" name="adPrice" label="Pris" onChange={this.onChange} />
+          <Input required type="text" name="adTitle" placeholder="Titel" onChange={this.onChange} />
+          <Input required type="text" name="adText" placeholder="Text" onChange={this.onChange} />
+          <Input
+            required
+            type="number"
+            name="adPrice"
+            placeholder="Pris"
+            onChange={this.onChange}
+          />
+          skickas
           <input
             name="adShips"
             type="checkbox"
-            label="Skickas"
             // defaultChecked={this.state.adShips}
             onChange={this.onCheckBoxChange}
           />
+          hämtas
           <input
             type="checkbox"
             name="adPickup"
@@ -129,7 +136,13 @@ class CreateAd extends Component {
             // defaultChecked={this.state.adPickup}
             onChange={this.onCheckBoxChange}
           />
-          <input type="text" name="adFreightCost" label="Fraktkostnad" onChange={this.onChange} />
+          <Input
+            type="text"
+            name="adFreightCost"
+            placeholder="Fraktkostnad"
+            onChange={this.onChange}
+          />
+          lägg till i kartan
           <input
             type="checkbox"
             name="addToMap"
