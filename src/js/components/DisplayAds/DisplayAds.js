@@ -12,6 +12,7 @@ const DisplayAds = ({ ads }) => (
         <p>{`${ad.adPrice}kr`}</p>
         {ad.adShips ? <p>Kan skickas</p> : <p>Skickas inte</p>}
         {ad.adPickup ? <p>Kan hämtas</p> : <p>Hämtas inte</p>}
+        <img className={styles.adImage} src={ad.image} alt={ad.title} />
       </div>
     ))}
     <Pagination defaultCurrent={1} total={50} />
