@@ -1,4 +1,5 @@
 import React from 'react';
+import { Icon } from 'antd';
 import Map from '../components/Map/Map';
 import styles from './MapPage.scss';
 
@@ -47,9 +48,7 @@ class MapPage extends React.PureComponent {
         />
         {this.state.mapWidth === '100%' ? null : (
           <div className={styles.adContainer}>
-            <a className={styles.adClose} onClick={this.closeMarkerClick}>
-              stäng
-            </a>
+            <Icon className={styles.adClose} type="close-square" onClick={this.closeMarkerClick} />
             <h1>{this.state.ad.adTitle}</h1>
             <p>{this.state.ad.adText}</p>
             <p>{this.state.ad.adPrice}</p>
