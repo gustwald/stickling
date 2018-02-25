@@ -7,9 +7,11 @@ class MapPage extends React.PureComponent {
   state = {
     isMarkerShown: false,
     mapWidth: '100%',
+    mapHeight: '90vh',
+    windowWidth: window.innerWidth,
     ad: {}
   };
-
+  // 450px;
   componentDidMount() {
     this.delayedShowMarker();
   }
@@ -21,13 +23,17 @@ class MapPage extends React.PureComponent {
   };
 
   handleMarkerClick = ad => {
-    console.log(ad);
-    this.setState({ mapWidth: '60%', ad });
+    // console.log(ad);
+    if (this.state.windowWidth > 450) {
+      this.setState({ mapWidth: '60%', ad });
+    } else this.setState({ mapHeight: '40vh', ad });
   };
 
   closeMarkerClick = () => {
     console.log('stänger');
-    this.setState({ ad: {}, mapWidth: '100%' });
+    if (this.state.windowWidth > 450) {
+      this.setState({ ad: {}, mapWidth: '100%' });
+    } else this.setState({ ad: {}, mapHeight: '90vh' });
   };
 
   render() {
@@ -40,13 +46,13 @@ class MapPage extends React.PureComponent {
           containerElement={
             <div
               className={styles.mapContainer}
-              style={{ height: `90vh`, width: this.state.mapWidth }}
+              style={{ height: this.state.mapHeight, width: this.state.mapWidth }}
             />
           }
           mapElement={<div style={{ height: `100%` }} />}
           onMarkerClick={this.handleMarkerClick}
         />
-        {this.state.mapWidth === '100%' ? null : (
+        {this.state.mapWidth === '100%' && this.state.mapHeight === '90vh' ? null : (
           <div className={styles.adContainer}>
             <Icon className={styles.adClose} type="close-square" onClick={this.closeMarkerClick} />
             <h1>{this.state.ad.adTitle}</h1>
