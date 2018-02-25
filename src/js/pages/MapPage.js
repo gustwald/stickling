@@ -8,6 +8,7 @@ class MapPage extends React.PureComponent {
     isMarkerShown: false,
     mapWidth: '100%',
     mapHeight: '90vh',
+    adItem: styles.adItem,
     windowWidth: window.innerWidth,
     ad: {}
   };
@@ -23,6 +24,7 @@ class MapPage extends React.PureComponent {
   };
 
   handleMarkerClick = ad => {
+    // this.setState({ adItem: styles.showAdItem });
     // console.log(ad);
     if (this.state.windowWidth > 450) {
       this.setState({ mapWidth: '60%', ad });
@@ -55,11 +57,19 @@ class MapPage extends React.PureComponent {
         {this.state.mapWidth === '100%' && this.state.mapHeight === '90vh' ? null : (
           <div className={styles.adContainer}>
             <Icon className={styles.adClose} type="close-square" onClick={this.closeMarkerClick} />
-            <h1>{this.state.ad.adTitle}</h1>
-            <p>{this.state.ad.adText}</p>
-            <p>{this.state.ad.adPrice}</p>
-            {this.state.ad.adShips ? <p> Kan skickas</p> : <p> Skickas inte</p>}
-            {this.state.ad.adPickup ? <p>Kan hämtas</p> : <p>Hämtas inte</p>}
+            <h1 className={this.state.adItem}>{this.state.ad.adTitle}</h1>
+            <p className={this.state.adItem}>{this.state.ad.adText}</p>
+            <p className={this.state.adItem}>{this.state.ad.adPrice}</p>
+            {this.state.ad.adShips ? (
+              <p className={this.state.adItem}> Kan skickas</p>
+            ) : (
+              <p className={this.state.adItem}> Skickas inte</p>
+            )}
+            {this.state.ad.adPickup ? (
+              <p className={this.state.adItem}>Kan hämtas</p>
+            ) : (
+              <p className={this.state.adItem}>Hämtas inte</p>
+            )}
           </div>
         )}
       </div>
