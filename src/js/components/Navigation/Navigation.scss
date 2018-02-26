@@ -20,14 +20,15 @@
   justify-content: center;
   height: 50%;
   font-style: italic;
-  transition: all 0.7s ease;
+
   span {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100%;
     width: 130%;
-    transition: all 0.7s ease;
+    transition: color 0.4s ease;
+    transition: background-color 0.5s ease;
   }
   :visited {
     color: $c-black;
@@ -38,18 +39,25 @@
   & span {
     background-color: $c-primary;
     font-style: italic;
+
     color: white;
-    transition: all 0.5s ease;
+    transition: background-color 0.5s ease;
+    transition: color 0.4s ease;
   }
 }
 
 .loginBtn {
   @include standard-btn;
   font-weight: 700;
+  color: white;
+  border: none;
+  padding: 0 20px;
+  border-radius: 0px;
 }
 
 .loginBtn:hover {
   background-color: rgba(5, 175, 117, 0.8);
+  color: white;
 }
 
 .userBtn {
@@ -66,4 +74,8 @@
 
 .userBtn:focus {
   background-color: rgba(136, 68, 1, 0.7);
+}
+
+.avatar {
+  margin: 0 10px;
 }

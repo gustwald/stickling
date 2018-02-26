@@ -1,5 +1,12 @@
-// .ant-btn:hover,
-// .ant-btn:focus {
-//   background-color: none;
-//   color: none;
-// }
+.ant-btn {
+  color: rgba(255, 255, 255, 1) !important;
+}
+
+a:focus {
+  text-decoration: none;
+}
+
+a:hover {
+  color: inherit;
+  transition: none;
+}

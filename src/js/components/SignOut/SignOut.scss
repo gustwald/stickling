@@ -1,9 +1,15 @@
 .signOutBtn {
   @include standard-btn;
   font-weight: 700;
-  margin-left: 5px;
+  margin-left: 10px;
+  color: white;
+  border: none;
+  padding: 0 20px;
+  border-radius: 0px;
 }
 
 .signOutBtn:hover {
   background-color: rgba(5, 175, 117, 0.8);
+  color: white;
+  border: none;
 }
