@@ -1,5 +1,5 @@
 import React from 'react';
-import { Icon } from 'antd';
+import { Icon, Avatar } from 'antd';
 import Map from '../components/Map/Map';
 import styles from './MapPage.scss';
 
@@ -57,6 +57,8 @@ class MapPage extends React.PureComponent {
         {this.state.mapWidth === '100%' && this.state.mapHeight === '90vh' ? null : (
           <div className={styles.adContainer}>
             <Icon className={styles.adClose} type="close-square" onClick={this.closeMarkerClick} />
+            <img className={styles.adImage} alt={this.state.ad.adTitle} src={this.state.ad.image} />
+
             <h1 className={this.state.adItem}>{this.state.ad.adTitle}</h1>
             <p className={this.state.adItem}>{this.state.ad.adText}</p>
             <p className={this.state.adItem}>{this.state.ad.adPrice}</p>
