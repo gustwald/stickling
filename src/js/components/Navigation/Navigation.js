@@ -2,14 +2,17 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
 // import { CSSTransitionGroup } from 'react-transition-group';
-import { Button, Modal, Avatar } from 'antd';
+import { Button, Modal, Avatar, Icon } from 'antd';
 import SignOut from '../SignOut/SignOut';
 import { getCurrentUser } from '../../Selector';
 import styles from './Navigation.scss';
 import LoginModal from '../LoginModal/LoginModal';
 
 class Navigation extends Component {
-  state = { visible: false };
+  state = {
+    visible: false,
+    windowWidth: window.innerWidth
+  };
   showModal = () => {
     this.setState({
       visible: true
@@ -30,28 +33,53 @@ class Navigation extends Component {
   render() {
     return (
       <div className={styles.navBar}>
-        <Link className={styles.links} to="/">
-          <span>Hem</span>
-        </Link>
-        {this.props.currentUser ? (
+        {this.state.windowWidth > 450 ? (
+          <Link className={styles.links} to="/">
+            <span>Hem</span>
+          </Link>
+        ) : (
+          <Link className={styles.links} to="/">
+            <Icon type="home" style={{ fontSize: 38, color: '#a77a50' }} />
+          </Link>
+        )}
+
+        {/* {this.props.currentUser ? (
           <Link className={styles.links} to="/profil">
             <span>Profil</span>
           </Link>
-        ) : null}
+        ) : null} */}
+        {this.state.windowWidth > 450 ? (
+          <Link className={styles.links} to="/annonser">
+            <span>Annonser</span>
+          </Link>
+        ) : (
+          <Link className={styles.links} to="/annonser">
+            <Icon type="profile" style={{ fontSize: 38, color: '#a77a50' }} />
+          </Link>
+        )}
 
-        <Link className={styles.links} to="/annonser">
-          <span>Annonser</span>
-        </Link>
-        <Link className={styles.links} to="/karta">
-          <span>karta</span>
-        </Link>
+        {this.state.windowWidth > 450 ? (
+          <Link className={styles.links} to="/karta">
+            <span>karta</span>
+          </Link>
+        ) : (
+          <Link className={styles.links} to="/karta">
+            <Icon type="environment-o" style={{ fontSize: 38, color: '#a77a50' }} />
+          </Link>
+        )}
+
         {this.props.currentUser ? (
           [
             <Link key="profile" to="/profil" className={styles.avatar}>
               {this.props.currentUser.photo ? (
-                <Avatar src={this.props.currentUser.photo} />
+                <Avatar size="large" src={this.props.currentUser.photo} />
               ) : (
-                <Avatar icon="user" />
+                <Avatar
+                  style={{ backgroundColor: '#a77a50', verticalAlign: 'middle' }}
+                  size="large"
+                >
+                  {this.props.currentUser.first}
+                </Avatar>
               )}
             </Link>,
             <Link key="home" to="/">
