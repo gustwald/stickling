@@ -9,8 +9,8 @@ const reducer = (state = [], action) => {
     case ADD_ADS:
       return [...action.ads];
     case REMOVE_AD:
-      console.log('tjena');
-      return state.adsReducer.filter(id => id !== action.id);
+      console.log(action.id);
+      return state.filter(obj => obj.id !== action.id);
     default:
       return state;
   }
