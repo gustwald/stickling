@@ -28,31 +28,33 @@ class DisplayAds extends Component {
   };
   render() {
     return (
-      <div className="container">
-        <Col span={24}>
+      <div className={styles.container}>
+        <Row className={styles.adRow} gutter={24}>
           {this.props.ads.map(ad => (
-            <div key={ad.id} className={styles.ad}>
-              <div className={styles.adImage} style={{ backgroundImage: `url(${ad.image})` }} />
-              <div className={styles.adInfo}>
-                <h1>
-                  <span>{ad.adTitle}</span>
-                </h1>
-                <p className={styles.adText}>{ad.adText}</p>
-                <p>{`${ad.adPrice}kr`}</p>
-                {ad.adShips ? <p>Kan skickas</p> : <p>Skickas inte</p>}
-                {ad.adPickup ? <p>Kan hämtas</p> : <p>Hämtas inte</p>}
-                {ad.uId === this.props.currentUserId ? (
-                  <Icon
-                    className={styles.deleteAd}
-                    type="delete"
-                    onClick={() => this.aDdelete(ad.id)}
-                  />
-                ) : null}
+            <Col xs={20} sm={20} md={10} lg={7} key={ad.id}>
+              <div key={ad.id} className={styles.ad}>
+                <div className={styles.adImage} style={{ backgroundImage: `url(${ad.image})` }} />
+                <div className={styles.adInfo}>
+                  <h1>
+                    <span>{ad.adTitle}</span>
+                  </h1>
+                  <p className={styles.adText}>{ad.adText}</p>
+                  <p>{`${ad.adPrice}kr`}</p>
+                  {ad.adShips ? <p>Kan skickas</p> : <p>Skickas inte</p>}
+                  {ad.adPickup ? <p>Kan hämtas</p> : <p>Hämtas inte</p>}
+                  {ad.uId === this.props.currentUserId ? (
+                    <Icon
+                      className={styles.deleteAd}
+                      type="delete"
+                      onClick={() => this.aDdelete(ad.id)}
+                    />
+                  ) : null}
+                </div>
               </div>
-            </div>
+            </Col>
           ))}
-        </Col>
-        <Pagination defaultCurrent={1} total={50} />
+          {/* <Pagination defaultCurrent={1} total={50} /> */}
+        </Row>
       </div>
     );
   }

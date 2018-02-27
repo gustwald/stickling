@@ -33,7 +33,7 @@ class Navigation extends Component {
   render() {
     return (
       <div className={styles.navBar}>
-        {this.state.windowWidth > 450 ? (
+        {/* {this.state.windowWidth > 450 ? (
           <Link className={styles.links} to="/">
             <span>Hem</span>
           </Link>
@@ -43,11 +43,7 @@ class Navigation extends Component {
           </Link>
         )}
 
-        {/* {this.props.currentUser ? (
-          <Link className={styles.links} to="/profil">
-            <span>Profil</span>
-          </Link>
-        ) : null} */}
+
         {this.state.windowWidth > 450 ? (
           <Link className={styles.links} to="/annonser">
             <span>Annonser</span>
@@ -93,7 +89,7 @@ class Navigation extends Component {
         )}
         <Modal visible={this.state.visible} onOk={this.handleOk} onCancel={this.handleCancel}>
           <LoginModal />
-        </Modal>
+        </Modal> */}
       </div>
     );
   }

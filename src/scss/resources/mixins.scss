@@ -23,12 +23,6 @@
   }
 }
 
-@mixin mobile($max-lang) {
-  @media only screen and (max-width: $max-lang) {
-    @content;
-  }
-}
-
 @mixin bm($min, $max) {
   @media (min-width: $min) and (max-width: $max) {
     @content;

@@ -12,9 +12,9 @@ class Profile extends Component {
   state = {};
   render() {
     return (
-      <div className="container">
+      <div className={styles.container}>
         <Row>
-          <Col span={24} className={styles.profileInfo}>
+          <Col md={24} className={styles.profileInfo}>
             <div
               className={styles.profilePic}
               style={{ backgroundImage: `url(${this.props.currentUser.photo})` }}
@@ -27,7 +27,7 @@ class Profile extends Component {
               <div className={styles.twitter} style={{ backgroundImage: `url(${twitter})` }} />
             </div>
           </Col>
-          <Col span={24} className={styles.profileAds}>
+          <Col md={24} className={styles.profileAds}>
             <DisplayAds ads={this.props.userAds} />
           </Col>
         </Row>

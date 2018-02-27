@@ -8,17 +8,17 @@ class App extends Component {
   componentDidMount() {}
   render() {
     return (
-      <div className={styles.container}>
-        {/* <CurrentUser />
-        {this.props.currentUser
-          ? null
-          : [
-            <GoogleSignup key="googleSignup" />,
-            <StandardSignup key="signIn" />,
-            <StandardSignin key="standardSignIn" />
-          ]}
-        {this.props.currentUser ? <SignOut /> : null} */}
-      </div>
+      // <div className={styles.container}>
+      //   <CurrentUser />
+      //   {this.props.currentUser
+      //     ? null
+      //     : [
+      //       <GoogleSignup key="googleSignup" />,
+      //       <StandardSignup key="signIn" />,
+      //       <StandardSignin key="standardSignIn" />
+      //     ]}
+      //   {this.props.currentUser ? <SignOut /> : null}
+      // </div>
     );
   }
 }
