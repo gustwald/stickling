@@ -6,6 +6,7 @@ import { removeAd } from '../../actions/index';
 import { removedAdNotification } from '../Notification/Notification';
 import { deleteAd } from '../../utils/firebase';
 import styles from './DisplayAds.scss';
+import { Col, Row } from 'antd';
 
 class DisplayAds extends Component {
   state = {
@@ -28,23 +29,29 @@ class DisplayAds extends Component {
   render() {
     return (
       <div className="container">
-        {this.props.ads.map(ad => (
-          <div key={ad.id}>
-            {ad.uId === this.props.currentUserId ? (
-              <Icon
-                className={styles.deleteAd}
-                type="delete"
-                onClick={() => this.aDdelete(ad.id)}
-              />
-            ) : null}
-            <h1>{ad.adTitle}</h1>
-            <p>{ad.adText}</p>
-            <p>{`${ad.adPrice}kr`}</p>
-            {ad.adShips ? <p>Kan skickas</p> : <p>Skickas inte</p>}
-            {ad.adPickup ? <p>Kan hämtas</p> : <p>Hämtas inte</p>}
-            <img className={styles.adImage} src={ad.image} alt={ad.title} />
-          </div>
-        ))}
+        <Col span={24}>
+          {this.props.ads.map(ad => (
+            <div key={ad.id} className={styles.ad}>
+              <div className={styles.adImage} style={{ backgroundImage: `url(${ad.image})` }} />
+              <div className={styles.adInfo}>
+                <h1>
+                  <span>{ad.adTitle}</span>
+                </h1>
+                <p className={styles.adText}>{ad.adText}</p>
+                <p>{`${ad.adPrice}kr`}</p>
+                {ad.adShips ? <p>Kan skickas</p> : <p>Skickas inte</p>}
+                {ad.adPickup ? <p>Kan hämtas</p> : <p>Hämtas inte</p>}
+                {ad.uId === this.props.currentUserId ? (
+                  <Icon
+                    className={styles.deleteAd}
+                    type="delete"
+                    onClick={() => this.aDdelete(ad.id)}
+                  />
+                ) : null}
+              </div>
+            </div>
+          ))}
+        </Col>
         <Pagination defaultCurrent={1} total={50} />
       </div>
     );

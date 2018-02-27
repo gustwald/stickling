@@ -1,8 +1,54 @@
-.adImage {
-  height: 100px;
-  width: 100px;
-}
+.ad {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+  position: relative;
 
-.deleteAd {
-  cursor: pointer;
+  .adImage {
+    height: 400px;
+    width: 300px;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: relative;
+  }
+
+  .adInfo {
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    width: 100%;
+    padding-left: 50px;
+    margin-top: 10px;
+    position: relative;
+
+    .deleteAd {
+      font-size: 40px;
+      color: $c-red;
+      position: absolute;
+      top: 0;
+      right: 50px;
+    }
+
+    h1 {
+      font-family: $Mont;
+      color: $c-white;
+      font-style: italic;
+      font-weight: 700;
+      font-size: 32px;
+
+      span {
+        background-color: $c-brown;
+        padding: 0 10px;
+      }
+    }
+
+    .adText {
+      font-family: $Raleway;
+      text-align: left;
+      font-size: 22px;
+    }
+  }
 }

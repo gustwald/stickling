@@ -1,65 +1,52 @@
-.profileInfoWrapper {
+.profileInfo {
   display: flex;
-  position: relative;
-
-  &:after {
-    content: '';
-    position: absolute;
-    bottom: -40px;
-    left: 0;
-    width: 100%;
-    height: 2px;
-    background-color: black;
-  }
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 20px;
 
   .profilePic {
+    background-color: red;
     height: 150px;
     width: 150px;
     border-radius: 150px;
-    background-color: red;
     background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
+    background-size: contain;
   }
 
-  .profileInfo {
-    display: flex;
-    flex-direction: column;
-    padding-left: 40px;
+  h3 {
+    color: $c-white;
+    font-family: $Mont;
+    font-style: italic;
+    font-weight: 700;
+    font-size: 32px;
+    margin-top: 10px;
 
-    h3 {
-      font-family: $Raleway;
-      color: white;
-      font-weight: 700;
-      font-style: italic;
-      span {
-        display: inline-block;
-        background-color: $c-primary;
-        padding: 5px;
-      }
+    span {
+      background-color: $c-primary;
+      padding: 5px 10px 5px 10px;
+    }
+  }
+
+  .socialMedia {
+    display: flex;
+    flex-direction: row;
+
+    .instagram {
+      height: 50px;
+      width: 50px;
+      margin-left: 5px;
+      margin-right: 5px;
     }
 
-    .socialMedia {
-      display: flex;
-      flex-direction: row;
-
-      .twitter,
-      .instagram {
-        height: 25px;
-        width: 25px;
-        margin-right: 5px;
-      }
+    .twitter {
+      height: 50px;
+      width: 50px;
+      margin-left: 5px;
+      margin-right: 5px;
     }
   }
 }
 
-.adsWrapper {
-  margin-top: 70px;
-
-  .adslang {
-    .hora {
-      height: 200px;
-      background-color: red;
-    }
-  }
+.profileAds {
 }
