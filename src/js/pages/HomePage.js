@@ -4,6 +4,7 @@ import { Modal } from 'antd';
 import { getCurrentUser } from '../Selector';
 import styles from './HomePage.scss';
 import logo from '../../../assets/logo.svg';
+import StandardSignup from '../components/StandardSignup/StandardSignup';
 
 class HomePage extends Component {
   state = {
@@ -45,7 +46,7 @@ class HomePage extends Component {
             onOk={this.handleOk}
             onCancel={this.handleCancel}
           >
-            <p>register things</p>
+            <StandardSignup />
           </Modal>
         </div>
       </div>

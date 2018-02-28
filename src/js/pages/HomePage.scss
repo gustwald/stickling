@@ -4,6 +4,7 @@
   flex-direction: column;
   position: relative;
   @include bm(0, $b-mobile) {
+    padding-top: 10vh;
     height: 80vh;
   }
   .textWrapper {

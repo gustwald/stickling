@@ -9,7 +9,7 @@
     flex-wrap: wrap;
   }
 
-  @include bm(769px, $b-full) {
+  @include b(769px) {
     flex-direction: row;
     flex-wrap: wrap;
   }
@@ -20,7 +20,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-top: 40px;
+  margin-top: 17px;
   position: relative;
   border: 1px solid #e8e8e8;
   background-color: $c-white;

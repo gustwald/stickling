@@ -32,9 +32,9 @@ class DisplayAds extends Component {
   render() {
     return (
       <div className={styles.container}>
-        <Row className={styles.adRow} gutter={24}>
+        <Row className={styles.adRow} gutter={{ xs: 0, sm: 0, md: 12, lg: 24 }}>
           {this.props.ads.map(ad => (
-            <Col xs={20} sm={20} md={10} lg={7} key={ad.id}>
+            <Col xs={22} sm={22} md={10} lg={7} key={ad.id}>
               <div key={ad.id} className={styles.ad}>
                 <div className={styles.adImage} style={{ backgroundImage: `url(${ad.image})` }} />
                 <div className={styles.adInfoWrapper}>

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { createUserWithEmail, addUserToFirestore } from '../../utils/firebase';
 import styles from './StandardSignup.scss';
-import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
+import leaf from '../../../../assets/leaf.svg';
 
 class StandardSignup extends Component {
   state = {
@@ -39,7 +39,8 @@ class StandardSignup extends Component {
   render() {
     return (
       <div className={styles.signUp}>
-        <form className="SignupForm">
+        <div className={styles.leaf} style={{ backgroundImage: `url(${leaf})` }} />
+        <form className={styles.SignUpForm}>
           <label htmlFor="Email">
             <input
               type="email"
