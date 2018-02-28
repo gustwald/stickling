@@ -12,7 +12,13 @@ export default {
       component: HomePage
     },
     {
-      path: '/profil',
+      path: '/user',
+      childRoutes: [
+        {
+          path: ':userId',
+          component: ProfilePage
+        }
+      ],
       component: ProfilePage
     },
     {

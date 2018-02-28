@@ -71,7 +71,7 @@ class Navigation extends Component {
 
         {this.props.currentUser ? (
           [
-            <Link key="profile" to="/profil" className={styles.avatar}>
+            <Link key="profile" to="/user" className={styles.avatar}>
               {this.props.currentUser.photo ? (
                 <Avatar className={styles.avatar} size="large" src={this.props.currentUser.photo} />
               ) : (

@@ -42,10 +42,12 @@ import Profile from '../components/Profile/Profile';
 import styles from './Profilepage.scss';
 
 class ProfilePage extends Component {
+  state = {};
   render() {
+    console.log(this.props);
     return (
       <div className={styles.container}>
-        <Profile />
+        <Profile userId={this.props.params.userId} />
       </div>
     );
   }

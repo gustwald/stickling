@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { getCurrentUser } from '../../Selector';
+import { getCurrentUser, getUserById, getAdsByUser } from '../../Selector';
 import DisplayAds from '../DisplayAds/DisplayAds';
 import styles from './Profile.scss';
 import gurt from '../../../../assets/gurt.png';
@@ -11,16 +11,17 @@ import { Row, Col } from 'antd';
 class Profile extends Component {
   state = {};
   render() {
+    if (!this.props.user) return <h1>Användaren hittades inte.</h1>;
     return (
       <div className={styles.container}>
         <Row>
           <Col md={24} className={styles.profileInfo}>
             <div
               className={styles.profilePic}
-              style={{ backgroundImage: `url(${this.props.currentUser.photo})` }}
+              style={{ backgroundImage: `url(${this.props.user.photo})` }}
             />
             <h3>
-              <span>{`${this.props.currentUser.first} ${this.props.currentUser.last}`}</span>
+              <span>{`${this.props.user.first} ${this.props.user.last}`}</span>
             </h3>
             <div className={styles.socialMedia}>
               <div className={styles.instagram} style={{ backgroundImage: `url(${insta})` }} />
@@ -36,12 +37,14 @@ class Profile extends Component {
   }
 }
 
-const mapStateToProps = state => {
-  const userAds = state.adsReducer.filter(ad => ad.uId === state.currentUser.id);
+const mapStateToProps = (state, ownProps) => {
+  const currentUser = getCurrentUser(state);
 
   return {
-    currentUser: getCurrentUser(state),
-    userAds
+    user: ownProps.userId ? getUserById(state, ownProps.userId) : currentUser,
+    userAds: ownProps.userId
+      ? getAdsByUser(state, ownProps.userId)
+      : getAdsByUser(state, currentUser.id)
   };
 };
 

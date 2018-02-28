@@ -62,7 +62,7 @@ class TopNavigation extends Component {
         />
         {this.props.currentUser ? (
           <div className={styles.topNavIcon}>
-            <Link key="profile" to="/profil" className={styles.avatar}>
+            <Link key="profile" to="/user" className={styles.avatar}>
               {this.props.currentUser.photo ? (
                 <Avatar size="large" src={this.props.currentUser.photo} />
               ) : (

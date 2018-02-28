@@ -30,15 +30,12 @@ class MapPage extends React.PureComponent {
   };
 
   handleMarkerClick = ad => {
-    // this.setState({ adItem: styles.showAdItem });
-    // console.log(ad);
     if (this.state.windowWidth > 450) {
       this.setState({ mapWidth: '60%', ad });
     } else this.setState({ mapHeight: '40vh', ad });
   };
 
   closeMarkerClick = () => {
-    console.log('stänger');
     if (this.state.windowWidth > 450) {
       this.setState({ ad: {}, mapWidth: '100%' });
     } else if (this.state.windowWidth > 450) {
