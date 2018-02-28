@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
-import { Icon, Avatar, Button, Modal } from 'antd';
+import { Icon, Avatar, Modal } from 'antd';
+import { scrollToTop } from '../../utils/scrollTop';
 import LoginModal from '../LoginModal/LoginModal';
 import { getCurrentUser } from '../../Selector';
 import styles from './TopNavigation.scss';
@@ -28,6 +29,11 @@ class TopNavigation extends Component {
       modalLogin: false
     });
   };
+
+  scrollTop = () => {
+    scrollToTop();
+  };
+
   render() {
     return (
       <div className={styles.container}>
@@ -49,7 +55,11 @@ class TopNavigation extends Component {
           </div>
         )}
 
-        <div className={styles.mainLogo} style={{ backgroundImage: `url(${logo})` }} />
+        <div
+          onClick={this.scrollTop}
+          className={styles.mainLogo}
+          style={{ backgroundImage: `url(${logo})` }}
+        />
         {this.props.currentUser ? (
           <div className={styles.topNavIcon}>
             <Link key="profile" to="/profil" className={styles.avatar}>
