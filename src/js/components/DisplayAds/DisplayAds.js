@@ -7,6 +7,9 @@ import { removedAdNotification } from '../Notification/Notification';
 import { deleteAd } from '../../utils/firebase';
 import styles from './DisplayAds.scss';
 import { Col, Row } from 'antd';
+import shipping from '../../../../assets/delivery.svg';
+import manPackage from '../../../../assets/package2.svg';
+import cross from '../../../../assets/multiply.svg';
 
 class DisplayAds extends Component {
   state = {
@@ -34,14 +37,51 @@ class DisplayAds extends Component {
             <Col xs={20} sm={20} md={10} lg={7} key={ad.id}>
               <div key={ad.id} className={styles.ad}>
                 <div className={styles.adImage} style={{ backgroundImage: `url(${ad.image})` }} />
-                <div className={styles.adInfo}>
-                  <h1>
-                    <span>{ad.adTitle}</span>
-                  </h1>
-                  <p className={styles.adText}>{ad.adText}</p>
-                  <p>{`${ad.adPrice}kr`}</p>
-                  {ad.adShips ? <p>Kan skickas</p> : <p>Skickas inte</p>}
-                  {ad.adPickup ? <p>Kan hämtas</p> : <p>Hämtas inte</p>}
+                <div className={styles.adInfoWrapper}>
+                  <div className={styles.adInfo}>
+                    <h1>
+                      <span>{ad.adTitle}</span>
+                    </h1>
+                    <p className={styles.adText}>{ad.adText}</p>
+                  </div>
+                  <div className={styles.adShipping}>
+                    <div className={styles.adShippingWrapper}>
+                      <p>{`${ad.adPrice}kr`}</p>
+                    </div>
+                    <div className={styles.adShippingWrapper}>
+                      {ad.adShips ? (
+                        <div
+                          className={styles.shipping}
+                          style={{ backgroundImage: `url(${shipping})` }}
+                        />
+                      ) : (
+                        <div
+                          className={styles.shipping}
+                          style={{ backgroundImage: `url(${shipping})` }}
+                        >
+                          <Icon className={styles.noShipping} type="close" />
+                        </div>
+                      )}
+                    </div>
+                    <div className={styles.adShippingWrapper}>
+                      {ad.adPickup ? (
+                        <div
+                          className={styles.pickup}
+                          style={{ backgroundImage: `url(${manPackage})` }}
+                        />
+                      ) : (
+                        <div
+                          className={styles.pickup}
+                          style={{ backgroundImage: `url(${manPackage})` }}
+                        >
+                          <Icon className={styles.noShipping} type="close" />
+                        </div>
+                      )}
+                    </div>
+                    {/* <p>{`${ad.adPrice}kr`}</p>
+                    {ad.adShips ? <p>Kan skickas</p> : <p>Skickas inte</p>}
+                    {ad.adPickup ? <p>Kan hämtas</p> : <p>Hämtas inte</p>} */}
+                  </div>
                   {ad.uId === this.props.currentUserId ? (
                     <Icon
                       className={styles.deleteAd}
