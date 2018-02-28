@@ -33,16 +33,17 @@ class Navigation extends Component {
   render() {
     return (
       <div className={styles.navBar}>
-        {/* {this.state.windowWidth > 450 ? (
+        {this.state.windowWidth > 450 ? (
           <Link className={styles.links} to="/">
             <span>Hem</span>
           </Link>
         ) : (
           <Link className={styles.links} to="/">
-            <Icon type="home" style={{ fontSize: 38, color: '#a77a50' }} />
+            <Icon type="home" style={{ fontSize: 38, color: '#a77a50' }}>
+              <span className={styles.iconText}>Hem</span>
+            </Icon>
           </Link>
         )}
-
 
         {this.state.windowWidth > 450 ? (
           <Link className={styles.links} to="/annonser">
@@ -50,7 +51,9 @@ class Navigation extends Component {
           </Link>
         ) : (
           <Link className={styles.links} to="/annonser">
-            <Icon type="profile" style={{ fontSize: 38, color: '#a77a50' }} />
+            <Icon type="profile" style={{ fontSize: 38, color: '#a77a50' }}>
+              <span className={styles.iconText}>Annonser</span>
+            </Icon>
           </Link>
         )}
 
@@ -60,7 +63,9 @@ class Navigation extends Component {
           </Link>
         ) : (
           <Link className={styles.links} to="/karta">
-            <Icon type="environment-o" style={{ fontSize: 38, color: '#a77a50' }} />
+            <Icon type="environment-o" style={{ fontSize: 38, color: '#a77a50' }}>
+              <span className={styles.iconText}>Karta</span>
+            </Icon>
           </Link>
         )}
 
@@ -68,7 +73,7 @@ class Navigation extends Component {
           [
             <Link key="profile" to="/profil" className={styles.avatar}>
               {this.props.currentUser.photo ? (
-                <Avatar size="large" src={this.props.currentUser.photo} />
+                <Avatar className={styles.avatar} size="large" src={this.props.currentUser.photo} />
               ) : (
                 <Avatar
                   style={{ backgroundColor: '#a77a50', verticalAlign: 'middle' }}
@@ -78,8 +83,9 @@ class Navigation extends Component {
                 </Avatar>
               )}
             </Link>,
+
             <Link key="home" to="/">
-              <SignOut />
+              <SignOut windowWidth={this.state.windowWidth} />
             </Link>
           ]
         ) : (
@@ -89,7 +95,7 @@ class Navigation extends Component {
         )}
         <Modal visible={this.state.visible} onOk={this.handleOk} onCancel={this.handleCancel}>
           <LoginModal />
-        </Modal> */}
+        </Modal>
       </div>
     );
   }

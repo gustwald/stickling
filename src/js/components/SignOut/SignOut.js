@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button } from 'antd';
+import { Button, Icon } from 'antd';
 import { signOutUser } from '../../utils/firebase';
 import styles from './SignOut.scss';
 
@@ -15,11 +15,17 @@ const signOut = () => {
   signOutUser(onSuccess, onFailure);
 };
 
-const SignOut = () => (
+const SignOut = ({ windowWidth }) => (
   <div className="Signout">
-    <Button icon="logout" className={styles.signOutBtn} onClick={signOut}>
-      Logga ut
-    </Button>
+    {windowWidth > 450 ? (
+      <Button icon="logout" className={styles.signOutBtn} onClick={signOut}>
+        Logga ut
+      </Button>
+    ) : (
+      <Icon onClick={signOut} type="logout" style={{ fontSize: 38, color: '#a77a50' }}>
+        <span className={styles.iconText}>Logga ut</span>
+      </Icon>
+    )}
   </div>
 );
 

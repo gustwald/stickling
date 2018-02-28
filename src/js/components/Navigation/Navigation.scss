@@ -6,6 +6,14 @@
 
   height: 10vh;
   position: relative;
+  background-color: white;
+  @include bm(0, $b-mobile) {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 20;
+  }
   @include b($b-mobile) {
     padding-right: 20px;
     justify-content: flex-end;
@@ -29,27 +37,32 @@
   }
 
   span {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
-    width: 130%;
-    transition: color 0.4s ease;
-    transition: background-color 0.5s ease;
+    @include b($b-mobile) {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+      width: 130%;
+      transition: color 0.4s ease;
+      transition: background-color 0.5s ease;
+    }
   }
+
   :visited {
     color: $c-black;
   }
 }
 
 .links:hover {
-  & span {
-    background-color: $c-primary;
-    font-style: italic;
+  @include b($b-mobile) {
+    & span {
+      background-color: $c-primary;
+      font-style: italic;
 
-    color: white;
-    transition: background-color 0.5s ease;
-    transition: color 0.4s ease;
+      color: white;
+      transition: background-color 0.5s ease;
+      transition: color 0.4s ease;
+    }
   }
 }
 
@@ -85,4 +98,16 @@
 
 .avatar {
   margin: 0 10px;
+}
+
+.iconText {
+  @include bm(0, $b-mobile) {
+    margin-top: 5px;
+    font-size: 12px;
+    font-style: normal;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+  }
 }

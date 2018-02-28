@@ -1,14 +1,15 @@
 import React from 'react';
 import FirebaseSetup from '../../FirebaseSetup';
 import Navigation from '../Navigation/Navigation';
-import Header from '../Header/Header';
+import TopNavigation from '../TopNavigation/TopNavigation';
 import styles from './Root.scss';
 
 const Root = ({ children }) => (
   <div className={styles.container}>
     <FirebaseSetup />
+    <TopNavigation />
     <Navigation />
-    <Header />
+
     {children}
   </div>
 );
