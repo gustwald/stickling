@@ -63,7 +63,9 @@
 
     label {
       input[type='text'],
-      [type='number'] {
+      [type='number'],
+      [type='email'],
+      [type='password'] {
         background-color: transparent;
         border: none;
         outline: none;
