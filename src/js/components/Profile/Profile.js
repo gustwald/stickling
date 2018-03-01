@@ -10,6 +10,7 @@ import { Row, Col } from 'antd';
 
 class Profile extends Component {
   state = {};
+  componentDidMount() {}
   render() {
     if (!this.props.user) return <h1>Användaren hittades inte.</h1>;
     return (
@@ -39,12 +40,12 @@ class Profile extends Component {
 
 const mapStateToProps = (state, ownProps) => {
   const currentUser = getCurrentUser(state);
-
+  console.log(currentUser);
   return {
     user: ownProps.userId ? getUserById(state, ownProps.userId) : currentUser,
     userAds: ownProps.userId
       ? getAdsByUser(state, ownProps.userId)
-      : getAdsByUser(state, currentUser.id)
+      : getAdsByUser(state, currentUser.uID)
   };
 };
 
