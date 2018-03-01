@@ -40,7 +40,6 @@ class Profile extends Component {
 
 const mapStateToProps = (state, ownProps) => {
   const currentUser = getCurrentUser(state);
-  console.log(currentUser);
   return {
     user: ownProps.userId ? getUserById(state, ownProps.userId) : currentUser,
     userAds: ownProps.userId
