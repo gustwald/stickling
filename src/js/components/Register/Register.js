@@ -5,7 +5,8 @@ import styles from './Register.scss';
 
 class Register extends Component {
   state = {
-    modalRegister: false
+    modalRegister: false,
+    windowWidth: window.innerWidth
   };
   showModal = () => {
     this.setState({
@@ -22,11 +23,20 @@ class Register extends Component {
   render() {
     return (
       <div>
-        <div className={styles.topNavIcon}>
-          <Icon onClick={this.showModal} type="user-add" style={{ fontSize: 38, color: '#a77a50' }}>
-            <span className={styles.iconText}>skapa konto</span>
-          </Icon>
-        </div>
+        {this.state.windowWidth > 450 ? (
+          <span onClick={this.showModal}>konto</span>
+        ) : (
+          <div className={styles.topNavIcon}>
+            <Icon
+              onClick={this.showModal}
+              type="user-add"
+              style={{ fontSize: 38, color: '#a77a50' }}
+            >
+              <span className={styles.iconText}>skapa konto</span>
+            </Icon>
+          </div>
+        )}
+
         <Modal
           footer={null}
           visible={this.state.modalRegister}

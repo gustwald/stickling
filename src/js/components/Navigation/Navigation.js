@@ -7,29 +7,14 @@ import SignOut from '../SignOut/SignOut';
 import { getCurrentUser } from '../../Selector';
 import styles from './Navigation.scss';
 import LoginModal from '../LoginModal/LoginModal';
+import SignIn from '../SignIn/SignIn';
 
 class Navigation extends Component {
   state = {
     visible: false,
     windowWidth: window.innerWidth
   };
-  showModal = () => {
-    this.setState({
-      visible: true
-    });
-  };
-  handleOk = e => {
-    console.log(e);
-    this.setState({
-      visible: false
-    });
-  };
-  handleCancel = e => {
-    console.log(e);
-    this.setState({
-      visible: false
-    });
-  };
+
   render() {
     return (
       <div className={styles.navBar}>
@@ -89,13 +74,8 @@ class Navigation extends Component {
             </Link>
           ]
         ) : (
-          <Button className={styles.loginBtn} onClick={this.showModal}>
-            Logga in
-          </Button>
+          <SignIn />
         )}
-        <Modal visible={this.state.visible} onOk={this.handleOk} onCancel={this.handleCancel}>
-          <LoginModal />
-        </Modal>
       </div>
     );
   }

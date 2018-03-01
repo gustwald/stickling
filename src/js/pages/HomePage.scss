@@ -15,7 +15,7 @@
     flex-direction: column;
     padding-top: 50px;
 
-    @include bm(0, $b-mobile) {
+    @include b($b-mobile) {
     }
 
     @include bm (451px, $b-tablet) {
@@ -115,6 +115,7 @@
         text-align: left;
         font-size: 36px;
         line-height: 40px;
+        display: inherit;
       }
 
       @include b(1401px) {
@@ -164,7 +165,11 @@
     }
   }
 }
-
+.createAccount {
+  @include bm(0,$b-mobile) {
+    display: none;
+  }
+}
 // @include b(1281px) {
 //   display: block;
 //   height: 900px;

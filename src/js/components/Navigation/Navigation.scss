@@ -66,20 +66,6 @@
   }
 }
 
-.loginBtn {
-  @include standard-btn;
-  font-weight: 700;
-  color: white;
-  border: none;
-  padding: 0 20px;
-  border-radius: 0px;
-}
-
-.loginBtn:hover {
-  background-color: rgba(5, 175, 117, 0.8);
-  color: white;
-}
-
 .userBtn {
   background-color: rgba(136, 68, 1, 0.7);
   color: white;

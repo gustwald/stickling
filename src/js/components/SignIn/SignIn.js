@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
-import { Modal, Icon } from 'antd';
+import { Modal, Icon, Button } from 'antd';
 import StandardSingIn from '../StandardSingIn/StandardSignin';
 import GoogleSignup from '../GoogleSignup/GoogleSignup';
 import styles from './SignIn.scss';
 
 class SignIn extends Component {
   state = {
-    modalLogin: false
+    modalLogin: false,
+    windowWidth: window.innerWidth
   };
   showModal = () => {
     this.setState({
@@ -23,11 +24,18 @@ class SignIn extends Component {
   render() {
     return (
       <div>
-        <div className={styles.topNavIcon}>
-          <Icon onClick={this.showModal} type="user" style={{ fontSize: 38, color: '#a77a50' }}>
-            <span className={styles.iconText}>logga in</span>
-          </Icon>
-        </div>
+        {this.state.windowWidth > 450 ? (
+          <Button className={styles.loginBtn} onClick={this.showModal}>
+            Logga in
+          </Button>
+        ) : (
+          <div className={styles.topNavIcon}>
+            <Icon onClick={this.showModal} type="user" style={{ fontSize: 38, color: '#a77a50' }}>
+              <span className={styles.iconText}>logga in</span>
+            </Icon>
+          </div>
+        )}
+
         <Modal
           footer={null}
           visible={this.state.modalLogin}
