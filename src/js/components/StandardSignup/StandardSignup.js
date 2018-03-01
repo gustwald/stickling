@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import { createUserWithEmail, addUserToFirestore } from '../../utils/firebase';
+import { addUser } from '../../actions/index';
 import styles from './StandardSignup.scss';
 import leaf from '../../../../assets/leaf.svg';
 
@@ -22,7 +24,7 @@ class StandardSignup extends Component {
     const email = this.state.username;
     const photo = '';
 
-    console.log({ uID, fName, lName });
+    this.props.addUser(fName, lName, email, uID, photo);
     addUserToFirestore(uID, fName, lName, email, photo);
     this.props.closeModal();
   };
@@ -89,4 +91,9 @@ class StandardSignup extends Component {
   }
 }
 
-export default StandardSignup;
+const mapDispatchToProps = dispatch => ({
+  addUser: (firstName, lastName, email, uid, photo) =>
+    dispatch(addUser(firstName, lastName, email, uid, photo))
+});
+
+export default connect(null, mapDispatchToProps)(StandardSignup);
