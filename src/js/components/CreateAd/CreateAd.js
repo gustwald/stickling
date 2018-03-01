@@ -114,7 +114,83 @@ class CreateAd extends Component {
     return (
       <div className={styles.createAd}>
         <form className={styles.createAdForm}>
-          <Input required type="text" name="adTitle" placeholder="Titel" onChange={this.onChange} />
+          <label htmlFor="adTitle">
+            <input
+              required
+              type="text"
+              name="adTitle"
+              placeholder="Titel"
+              id="adTitle"
+              onChange={this.onChange}
+            />
+          </label>
+          <label htmlFor="adDescription">
+            <input
+              required
+              type="text"
+              name="adText"
+              id="adDescription"
+              placeholder="Text"
+              onChange={this.onChange}
+            />
+          </label>
+          <label htmlFor="adPrice">
+            <input
+              required
+              type="number"
+              name="adPrice"
+              id="adPrice"
+              placeholder="Pris"
+              onChange={this.onChange}
+            />
+          </label>
+          <div className={styles.customCheckboxWrapper}>
+            <label htmlFor="adShips">
+              <input name="adShips" id="adShips" type="checkbox" onChange={this.onCheckBoxChange} />
+              <div className={styles.customCheckbox}>
+                <span />
+              </div>
+            </label>
+            <h3>Skickas</h3>
+          </div>
+          <div className={styles.customCheckboxWrapper}>
+            <label htmlFor="adPickup">
+              <input
+                name="adPickup"
+                id="adPickup"
+                type="checkbox"
+                onChange={this.onCheckBoxChange}
+              />
+              <div className={styles.customCheckbox}>
+                <span />
+              </div>
+            </label>
+            <h3>Hämtas</h3>
+          </div>
+          <label htmlFor="adFreightCost">
+            <input
+              name="adFreightCost"
+              id="adFreightCost"
+              type="text"
+              placeholder="Fraktkostnad"
+              onChange={this.onChange}
+            />
+          </label>
+          <div className={styles.customCheckboxWrapper}>
+            <label htmlFor="addToMap">
+              <input
+                name="addToMap"
+                id="addToMap"
+                type="checkbox"
+                onChange={this.onCheckBoxChange}
+              />
+              <div className={styles.customCheckbox}>
+                <span />
+              </div>
+            </label>
+            <h3>Lägg till på kartan</h3>
+          </div>
+          {/* <Input required type="text" name="adTitle" placeholder="Titel" onChange={this.onChange} />
           <Input required type="text" name="adText" placeholder="Text" onChange={this.onChange} />
           <Input
             required
@@ -151,7 +227,7 @@ class CreateAd extends Component {
             label="Lägg till i kartan"
             // defaultChecked={this.state.addToMap}
             onChange={this.onCheckBoxMapChange}
-          />
+          /> */}
           <section>
             <div className="dropzone">
               <Dropzone accept="image/jpeg, image/png" multiple={false} onDrop={this.onDrop}>
@@ -168,13 +244,13 @@ class CreateAd extends Component {
               </ul>
             </aside>
           </section>
-          <Button
+          <button
             onClick={e => {
               this.createAd(e);
             }}
           >
             Skapa annons
-          </Button>
+          </button>
           <p>{this.state.error}</p>
         </form>
       </div>

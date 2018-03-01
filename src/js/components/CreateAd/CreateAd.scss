@@ -2,10 +2,16 @@
   width: 100%;
   display: flex;
   justify-content: center;
+
+  @include standard-form;
 }
 
 .createAdForm {
   width: 500px;
   background-color: $c-white;
   padding: 20px;
+
+  button {
+    @include primary-btn;
+  }
 }
