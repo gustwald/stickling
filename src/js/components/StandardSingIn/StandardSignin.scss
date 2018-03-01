@@ -1,9 +1,5 @@
 .container {
-  form {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-  }
+  @include standard-form;
 
   button {
     width: 100%;
