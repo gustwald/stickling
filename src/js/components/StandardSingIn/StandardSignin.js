@@ -9,12 +9,8 @@ class StandardSignin extends Component {
     error: ''
   };
 
-  signIn = result => {
-    logInWithEmail(this.onSuccess, this.onFailure, this.state);
-  };
-
   onSuccess = result => {
-    console.log('inloggad');
+    this.props.closeModal();
   };
 
   onFailure = error => {
@@ -24,6 +20,10 @@ class StandardSignin extends Component {
   };
 
   onChange = e => this.setState({ [e.target.name]: e.target.value });
+
+  signIn = result => {
+    logInWithEmail(this.onSuccess, this.onFailure, this.state);
+  };
 
   render() {
     return (

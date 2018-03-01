@@ -17,6 +17,7 @@ class GoogleSignup extends React.Component {
 
     this.props.addUser(fName, lName, email, uID, photo);
     addUserToFirestore(uID, fName, lName, email, photo);
+    this.props.closeModal();
   };
 
   onFailure = error => {

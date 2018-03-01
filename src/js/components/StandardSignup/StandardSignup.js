@@ -14,19 +14,17 @@ class StandardSignup extends Component {
 
   onChange = e => this.setState({ [e.target.name]: e.target.value });
 
-  register = result => {
-    createUserWithEmail(this.onSucces, this.onFailure, this.state);
-  };
-
   onSucces = result => {
     console.log('inne i succes');
     const uID = result.uid;
     const fName = this.state.firstName;
     const lName = this.state.lastName;
     const email = this.state.username;
+    const photo = '';
 
     console.log({ uID, fName, lName });
-    addUserToFirestore(uID, fName, lName, email);
+    addUserToFirestore(uID, fName, lName, email, photo);
+    this.props.closeModal();
   };
 
   onFailure = error => {
@@ -34,6 +32,10 @@ class StandardSignup extends Component {
     this.setState({ error: error.message });
     const { email, credential, code, message } = error;
     console.log({ email, credential, code, message });
+  };
+
+  register = result => {
+    createUserWithEmail(this.onSucces, this.onFailure, this.state);
   };
 
   render() {

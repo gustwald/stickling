@@ -1,0 +1,16 @@
+.topNavIcon {
+  padding: 0 5px 0 5px;
+}
+
+.iconText {
+  @include bm(0, $b-mobile) {
+    margin-top: 5px;
+    font-size: 12px;
+    font-style: normal;
+    text-transform: capitalize;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+  }
+}

@@ -2,34 +2,14 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
 import { Icon, Avatar, Modal } from 'antd';
+import Register from '../Register/Register';
 import { scrollToTop } from '../../utils/scrollTop';
-import LoginModal from '../LoginModal/LoginModal';
+import SignIn from '../SignIn/SignIn';
 import { getCurrentUser } from '../../Selector';
 import styles from './TopNavigation.scss';
 import logo from '../../../../assets/logo.svg';
 
 class TopNavigation extends Component {
-  state = {
-    modalLogin: false
-  };
-  showModal = () => {
-    this.setState({
-      modalLogin: true
-    });
-  };
-  handleOk = e => {
-    console.log(e);
-    this.setState({
-      modalLogin: false
-    });
-  };
-  handleCancel = e => {
-    console.log(e);
-    this.setState({
-      modalLogin: false
-    });
-  };
-
   scrollTop = () => {
     scrollToTop();
   };
@@ -44,15 +24,7 @@ class TopNavigation extends Component {
             </Link>
           </div>
         ) : (
-          <div className={styles.topNavIcon}>
-            <Icon
-              onClick={this.showModal}
-              type="user-add"
-              style={{ fontSize: 38, color: '#a77a50' }}
-            >
-              <span className={styles.iconText}>skapa konto</span>
-            </Icon>
-          </div>
+          <Register />
         )}
 
         <div
@@ -76,15 +48,8 @@ class TopNavigation extends Component {
             </Link>
           </div>
         ) : (
-          <div className={styles.topNavIcon}>
-            <Icon onClick={this.showModal} type="user" style={{ fontSize: 38, color: '#a77a50' }}>
-              <span className={styles.iconText}>logga in</span>
-            </Icon>
-          </div>
+          <SignIn />
         )}
-        <Modal visible={this.state.modalLogin} onOk={this.handleOk} onCancel={this.handleCancel}>
-          <LoginModal />
-        </Modal>
       </div>
     );
   }
