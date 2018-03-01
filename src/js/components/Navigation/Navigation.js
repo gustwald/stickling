@@ -2,16 +2,14 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
 // import { CSSTransitionGroup } from 'react-transition-group';
-import { Button, Modal, Avatar, Icon } from 'antd';
+import { Avatar, Icon } from 'antd';
 import SignOut from '../SignOut/SignOut';
 import { getCurrentUser } from '../../Selector';
 import styles from './Navigation.scss';
-import LoginModal from '../LoginModal/LoginModal';
 import SignIn from '../SignIn/SignIn';
 
 class Navigation extends Component {
   state = {
-    visible: false,
     windowWidth: window.innerWidth
   };
 
@@ -54,28 +52,30 @@ class Navigation extends Component {
           </Link>
         )}
 
-        {this.props.currentUser ? (
-          [
-            <Link key="profile" to="/user" className={styles.avatar}>
-              {this.props.currentUser.photo ? (
-                <Avatar className={styles.avatar} size="large" src={this.props.currentUser.photo} />
-              ) : (
-                <Avatar
-                  style={{ backgroundColor: '#a77a50', verticalAlign: 'middle' }}
-                  size="large"
-                >
-                  {this.props.currentUser.first}
-                </Avatar>
-              )}
-            </Link>,
+        {this.props.currentUser
+          ? [
+              <Link key="profile" to="/user" className={styles.avatar}>
+                {this.props.currentUser.photo ? (
+                  <Avatar
+                    className={styles.avatar}
+                    size="large"
+                    src={this.props.currentUser.photo}
+                  />
+                ) : (
+                  <Avatar
+                    style={{ backgroundColor: '#a77a50', verticalAlign: 'middle' }}
+                    size="large"
+                  >
+                    {this.props.currentUser.first}
+                  </Avatar>
+                )}
+              </Link>,
 
-            <Link key="home" to="/">
-              <SignOut windowWidth={this.state.windowWidth} />
-            </Link>
-          ]
-        ) : (
-          <SignIn />
-        )}
+              <Link key="home" to="/">
+                <SignOut windowWidth={this.state.windowWidth} />
+              </Link>
+            ]
+          : null}
       </div>
     );
   }

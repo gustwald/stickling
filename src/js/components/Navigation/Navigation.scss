@@ -84,6 +84,9 @@
 
 .avatar {
   margin: 0 10px;
+  @include bm(0, $b-mobile) {
+    display: none;
+  }
 }
 
 .iconText {
