@@ -52,30 +52,28 @@ class Navigation extends Component {
           </Link>
         )}
 
-        {this.props.currentUser
-          ? [
-              <Link key="profile" to="/user" className={styles.avatar}>
-                {this.props.currentUser.photo ? (
-                  <Avatar
-                    className={styles.avatar}
-                    size="large"
-                    src={this.props.currentUser.photo}
-                  />
-                ) : (
-                  <Avatar
-                    style={{ backgroundColor: '#a77a50', verticalAlign: 'middle' }}
-                    size="large"
-                  >
-                    {this.props.currentUser.first}
-                  </Avatar>
-                )}
-              </Link>,
+        {this.props.currentUser ? (
+          [
+            <Link key="profile" to="/user" className={styles.avatar}>
+              {this.props.currentUser.photo ? (
+                <Avatar className={styles.avatar} size="large" src={this.props.currentUser.photo} />
+              ) : (
+                <Avatar
+                  style={{ backgroundColor: '#a77a50', verticalAlign: 'middle' }}
+                  size="large"
+                >
+                  {this.props.currentUser.first}
+                </Avatar>
+              )}
+            </Link>,
 
-              <Link key="home" to="/">
-                <SignOut windowWidth={this.state.windowWidth} />
-              </Link>
-            ]
-          : null}
+            <Link key="home" to="/">
+              <SignOut windowWidth={this.state.windowWidth} />
+            </Link>
+          ]
+        ) : (
+          <SignIn />
+        )}
       </div>
     );
   }
