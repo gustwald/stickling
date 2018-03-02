@@ -16,7 +16,7 @@ const signOut = () => {
 };
 
 const SignOut = ({ windowWidth }) => (
-  <div className="Signout">
+  <div className={styles.container}>
     {windowWidth > 450 ? (
       <Button icon="logout" className={styles.signOutBtn} onClick={signOut}>
         Logga ut

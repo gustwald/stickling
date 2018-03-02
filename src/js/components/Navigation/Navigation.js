@@ -67,12 +67,12 @@ class Navigation extends Component {
               )}
             </Link>,
 
-            <Link key="home" to="/">
+            <Link className={this.state.windowWidth < 450 ? styles.links : null} key="home" to="/">
               <SignOut windowWidth={this.state.windowWidth} />
             </Link>
           ]
         ) : (
-          <SignIn />
+          <div>{this.state.windowWidth > 450 ? <SignIn /> : null}</div>
         )}
       </div>
     );

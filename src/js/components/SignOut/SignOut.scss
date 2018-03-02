@@ -1,3 +1,10 @@
+.container {
+  @include bm(0, $b-mobile) {
+    display: flex;
+    align-items: center;
+  }
+}
+
 .signOutBtn {
   @include standard-btn;
   font-weight: 700;
@@ -19,7 +26,6 @@
     margin-top: 5px;
     font-size: 12px;
     font-style: normal;
-    text-transform: capitalize;
     display: flex;
     justify-content: center;
     align-items: center;
