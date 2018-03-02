@@ -19,7 +19,7 @@ class TopNavigation extends Component {
       <div className={styles.container}>
         {this.props.currentUser ? (
           <div className={styles.topNavIcon}>
-            <Link className={styles.links} to="/annonser">
+            <Link to="/annonser">
               <Icon type="edit" style={{ fontSize: 38, color: '#a77a50' }} />
             </Link>
           </div>
