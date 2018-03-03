@@ -5,16 +5,15 @@
   border: none;
   padding: 10px 20px 10px 20px;
   font-size: 14px;
-  font-weight: 400;
-  outline: none;
-}
-
-@mixin standard-btn {
-  font-family: $Mont;
+  font-weight: 700;
   font-style: italic;
-  text-transform: lowercase;
-  background-color: $c-primary;
-  margin: 0 20px;
+  outline: none;
+  cursor: pointer;
+  transition: background-color 0.7s ease;
+
+  &:hover {
+    background-color: rgba(5, 175, 117, 0.8);
+  }
 }
 
 @mixin standard-form {
@@ -91,6 +90,261 @@
           font-family: $open-sans;
           font-style: italic;
           opacity: 0.5;
+        }
+      }
+    }
+  }
+}
+
+@mixin standard-title {
+  h1 {
+    font-size: 24px;
+    color: $c-white;
+    font-family: $Mont;
+    font-weight: 700;
+    font-style: italic;
+    span {
+      background-color: $c-primary;
+      padding: 10px 10px;
+    }
+  }
+}
+
+@mixin standard-paragraph {
+  p {
+    font-family: $Raleway;
+    text-align: left;
+  }
+}
+
+@mixin ad-card {
+  .ad {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 17px;
+    position: relative;
+    border: 1px solid #e8e8e8;
+    background-color: $c-white;
+
+    .adImage {
+      height: 450px;
+      width: 100%;
+      background-position: center;
+      background-size: cover;
+      background-repeat: no-repeat;
+      position: relative;
+    }
+
+    .adInfoWrapper {
+      display: flex;
+      justify-content: flex-start;
+      flex-direction: column;
+      width: 100%;
+      margin-top: 10px;
+      position: relative;
+
+      .adInfo {
+        padding: 0 10px;
+      }
+
+      .deleteAd {
+        font-size: 40px;
+        color: $c-red;
+        position: absolute;
+        top: 0;
+        right: 10px;
+      }
+
+      h1 {
+        font-family: $Mont;
+        color: $c-white;
+        font-style: italic;
+        font-weight: 700;
+        font-size: 32px;
+
+        span {
+          background-color: $c-brown;
+          padding: 0 10px;
+        }
+      }
+
+      h3 {
+        font-family: $Mont;
+        font-weight: 700;
+        font-size: 22px;
+      }
+
+      .adText {
+        font-family: $Raleway;
+        text-align: left;
+        font-size: 22px;
+      }
+    }
+
+    .adShipping {
+      display: flex;
+      flex-direction: row;
+      background-color: #fafafa;
+      border-top: 1px solid #e8e8e8;
+
+      .adShippingWrapper {
+        width: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        padding: 10px 0;
+
+        &:last-child:after {
+          height: 0%;
+        }
+
+        &:after {
+          content: '';
+          position: absolute;
+          height: 70%;
+          right: 0;
+          top: 7px;
+          width: 1px;
+          background-color: #e8e8e8;
+        }
+
+        .shipping,
+        .pickup {
+          width: 40px;
+          height: 40px;
+          position: relative;
+
+          .noShipping {
+            font-size: 55px;
+            color: red;
+            position: absolute;
+            top: -7px;
+            left: -7px;
+          }
+        }
+      }
+    }
+  }
+}
+
+@mixin ad-map-card {
+  .ad {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    border: 1px solid #e8e8e8;
+    background-color: $c-white;
+    margin-top: 20px;
+    width: 90%;
+    margin-bottom: 12.5vh;
+
+    @include b(500px) {
+      margin-top: 0px;
+      width: 50%;
+    }
+
+    .adImage {
+      height: 450px;
+      width: 100%;
+      background-position: center;
+      background-size: cover;
+      background-repeat: no-repeat;
+      position: relative;
+    }
+
+    .adInfoWrapper {
+      display: flex;
+      justify-content: flex-start;
+      flex-direction: column;
+      width: 100%;
+      margin-top: 10px;
+      position: relative;
+
+      .adInfo {
+        padding: 0 10px;
+      }
+
+      .deleteAd {
+        font-size: 40px;
+        color: $c-red;
+        position: absolute;
+        top: 0;
+        right: 10px;
+      }
+
+      h1 {
+        font-family: $Mont;
+        color: $c-white;
+        font-style: italic;
+        font-weight: 700;
+        font-size: 32px;
+
+        span {
+          background-color: $c-brown;
+          padding: 0 10px;
+        }
+      }
+
+      h3 {
+        font-family: $Mont;
+        font-weight: 700;
+        font-size: 22px;
+      }
+
+      p {
+        font-family: $Raleway;
+        text-align: left;
+        font-size: 22px;
+      }
+    }
+
+    .adShipping {
+      display: flex;
+      flex-direction: row;
+      background-color: #fafafa;
+      border-top: 1px solid #e8e8e8;
+      width: 100%;
+
+      .adShippingWrapper {
+        width: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        padding: 10px 0;
+
+        &:last-child:after {
+          height: 0%;
+        }
+
+        &:after {
+          content: '';
+          position: absolute;
+          height: 70%;
+          right: 0;
+          top: 7px;
+          width: 1px;
+          background-color: #e8e8e8;
+        }
+
+        .shipping,
+        .pickup {
+          width: 40px;
+          height: 40px;
+          position: relative;
+
+          .noShipping {
+            font-size: 55px;
+            color: red;
+            position: absolute;
+            top: -7px;
+            left: -7px;
+          }
         }
       }
     }

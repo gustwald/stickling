@@ -1,69 +1,142 @@
 .mapContainer {
+  padding-top: 10vh;
+  transition: all 0.4s ease;
+
   @include b($b-mobile) {
   }
-  transition: all 0.4s ease;
+  @include b(500px);
+  padding-top: 0vh;
 }
 
 .container {
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
   @include b($b-mobile) {
     flex-direction: row;
   }
-}
-.adContainer {
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  position: relative;
-  width: 100%;
-  @include b($b-mobile) {
-    width: 40%;
+
+  @include b(500px) {
+    justify-content: flex-start;
+    align-items: flex-start;
   }
-  h1 {
-    font-family: $Mont;
-    text-transform: capitalize;
-  }
+
+  @include ad-map-card;
 }
 
-.adItem {
-  font-family: $roboto;
-  opacity: 0;
-  transform: translateY(20px);
-  animation-name: opacity, transform;
-  animation-duration: 0.8s;
-  animation-delay: 0.2s;
-  animation-fill-mode: forwards;
-  animation-timing-function: ease-in-out;
-}
-@keyframes opacity {
-  from {
-    opacity: 0;
+.ad {
+  .adClose {
+    position: absolute;
+    font-size: 30px;
+    top: 0;
+    right: 0;
+    z-index: 2;
   }
-  to {
-    opacity: 1;
-  }
-}
-@keyframes transform {
-  from {
-    transform: translateY(20px);
-  }
-  to {
-    transform: translateY(0px);
-  }
-}
+  // width: 100%;
+  // display: flex;
+  // flex-direction: column;
+  // align-items: center;
+  // margin-top: 20px;
+  // position: relative;
+  // padding-bottom: 10.5vh;
 
-.adClose {
-  font-size: 24px;
-  cursor: pointer;
-  position: absolute;
-  top: 0;
-  right: 0;
-  z-index: 20;
-}
+  // @include b($b-mobile) {
+  //   width: 40%;
+  // }
 
-.adImage {
-  width: 50px;
-  height: 50px;
+  // .adClose {
+  //   font-size: 24px;
+  //   cursor: pointer;
+  //   position: absolute;
+  //   top: -20px;
+  //   right: 0;
+  //   z-index: 20;
+  // }
+
+  // .adImage {
+  //   width: 150px;
+  //   height: 150px;
+  //   border-radius: 10000px;
+  //   background-position: center;
+  //   background-repeat: no-repeat;
+  //   background-size: cover;
+
+  //   @include b(500px) {
+  //     width: 250px;
+  //     height: 250px;
+  //   }
+  // }
+
+  // .adInfoWrapper {
+  //   margin-top: 20px;
+  //   width: 70%;
+
+  //   @include standard-title;
+  //   @include standard-paragraph;
+  //   p {
+  //     margin-top: 20px;
+  //     padding-left: 5px;
+  //   }
+  //   .adItem {
+  //     opacity: 0;
+  //     transform: translateY(20px);
+  //     animation-name: opacity, transform;
+  //     animation-duration: 0.8s;
+  //     animation-delay: 0.2s;
+  //     animation-fill-mode: forwards;
+  //     animation-timing-function: ease-in-out;
+  //   }
+  //   @keyframes opacity {
+  //     from {
+  //       opacity: 0;
+  //     }
+  //     to {
+  //       opacity: 1;
+  //     }
+  //   }
+  //   @keyframes transform {
+  //     from {
+  //       transform: translateY(20px);
+  //     }
+  //     to {
+  //       transform: translateY(0px);
+  //     }
+  //   }
+  // }
+  // .adShipping {
+  //   display: flex;
+  //   flex-direction: row;
+  //   width: 70%;
+
+  //   .adShippingWrapper {
+  //     display: flex;
+  //     justify-content: center;
+  //     align-items: center;
+  //     position: relative;
+  //     padding: 10px 0;
+  //     width: 33.3333%;
+
+  //     h3 {
+  //       margin: 0;
+  //       font-family: $Raleway;
+  //     }
+
+  //     .shipping,
+  //     .pickup {
+  //       position: relative;
+  //       height: 40px;
+  //       width: 40px;
+
+  //       .noShipping {
+  //         font-size: 55px;
+  //         color: red;
+  //         position: absolute;
+  //         top: -7px;
+  //         left: -7px;
+  //       }
+  //     }
+  //   }
+  // }
 }

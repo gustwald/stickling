@@ -43,11 +43,12 @@ class DisplayAds extends Component {
                       <span>{ad.adTitle}</span>
                     </h1>
                     <p className={styles.adText}>{ad.adText}</p>
+                    <h3>{`${ad.adPrice} kr`}</h3>
                   </div>
                   <div className={styles.adShipping}>
-                    <div className={styles.adShippingWrapper}>
+                    {/* <div className={styles.adShippingWrapper}>
                       <p>{`${ad.adPrice}kr`}</p>
-                    </div>
+                    </div> */}
                     <div className={styles.adShippingWrapper}>
                       {ad.adShips ? (
                         <div

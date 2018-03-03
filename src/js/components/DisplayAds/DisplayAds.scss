@@ -2,127 +2,20 @@
   display: flex;
   justify-content: center;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
+  padding-bottom: 12.5vh;
 
   @include bm(500px, $b-tablet) {
     flex-direction: row;
     flex-wrap: wrap;
+    padding-bottom: 2.5vh;
+    align-items: flex-start;
   }
 
   @include b(769px) {
     flex-direction: row;
     flex-wrap: wrap;
   }
-}
 
-.ad {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  margin-top: 17px;
-  position: relative;
-  border: 1px solid #e8e8e8;
-  background-color: $c-white;
-
-  .adImage {
-    height: 450px;
-    width: 100%;
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat;
-    position: relative;
-  }
-
-  .adInfoWrapper {
-    display: flex;
-    justify-content: flex-start;
-    flex-direction: column;
-    width: 100%;
-    margin-top: 10px;
-    position: relative;
-
-    .adInfo {
-      padding: 0 10px;
-    }
-
-    .deleteAd {
-      font-size: 40px;
-      color: $c-red;
-      position: absolute;
-      top: 0;
-      right: 10px;
-    }
-
-    h1 {
-      font-family: $Mont;
-      color: $c-white;
-      font-style: italic;
-      font-weight: 700;
-      font-size: 32px;
-
-      span {
-        background-color: $c-brown;
-        padding: 0 10px;
-      }
-    }
-
-    .adText {
-      font-family: $Raleway;
-      text-align: left;
-      font-size: 22px;
-    }
-  }
-
-  .adShipping {
-    display: flex;
-    flex-direction: row;
-    background-color: #fafafa;
-    border-top: 1px solid #e8e8e8;
-
-    .adShippingWrapper {
-      width: 33.3333333%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      position: relative;
-      padding: 10px 0;
-
-      p {
-        margin-bottom: 0;
-        font-family: $Raleway;
-        font-weight: 700;
-        font-size: 20px;
-      }
-
-      &:last-child:after {
-        height: 0%;
-      }
-
-      &:after {
-        content: '';
-        position: absolute;
-        height: 70%;
-        right: 0;
-        top: 7px;
-        width: 1px;
-        background-color: #e8e8e8;
-      }
-
-      .shipping,
-      .pickup {
-        width: 40px;
-        height: 40px;
-        position: relative;
-
-        .noShipping {
-          font-size: 55px;
-          color: red;
-          position: absolute;
-          top: -7px;
-          left: -7px;
-        }
-      }
-    }
-  }
+  @include ad-card;
 }

@@ -16,7 +16,7 @@
 }
 
 .loginBtn {
-  @include standard-btn;
+  @include primary-btn;
   font-weight: 700;
   color: white;
   border: none;

@@ -2,6 +2,8 @@ import React from 'react';
 import { Icon, Avatar } from 'antd';
 import Map from '../components/Map/Map';
 import styles from './MapPage.scss';
+import shipping from '../../../assets/delivery.svg';
+import manPackage from '../../../assets/package2.svg';
 
 class MapPage extends React.PureComponent {
   state = {
@@ -61,23 +63,47 @@ class MapPage extends React.PureComponent {
         />
         {(this.state.mapWidth === '100%' && this.state.mapHeight === '90vh') ||
         this.state.mapHeight === '80vh' ? null : (
-          <div className={styles.adContainer}>
+          <div className={styles.ad}>
             <Icon className={styles.adClose} type="close-square" onClick={this.closeMarkerClick} />
-            {/* <img className={styles.adImage} alt={this.state.ad.adTitle} src={this.state.ad.image} /> */}
-            <Avatar size="large" src={this.state.ad.image} />
-            <h1 className={this.state.adItem}>{this.state.ad.adTitle}</h1>
-            <p className={this.state.adItem}>{this.state.ad.adText}</p>
-            <p className={this.state.adItem}>{this.state.ad.adPrice}</p>
-            {this.state.ad.adShips ? (
-              <p className={this.state.adItem}> Kan skickas</p>
-            ) : (
-              <p className={this.state.adItem}> Skickas inte</p>
-            )}
-            {this.state.ad.adPickup ? (
-              <p className={this.state.adItem}>Kan hämtas</p>
-            ) : (
-              <p className={this.state.adItem}>Hämtas inte</p>
-            )}
+            <div
+              className={styles.adImage}
+              style={{ backgroundImage: `url(${this.state.ad.image})` }}
+            />
+            <div className={styles.adInfoWrapper}>
+              <div className={styles.adInfo}>
+                <h1 className={this.state.adItem}>
+                  <span>{this.state.ad.adTitle}</span>
+                </h1>
+                <p className={this.state.adItem}>{this.state.ad.adText}</p>
+                <h3>{this.state.ad.adPrice + ' ' + 'kr'}</h3>
+              </div>
+            </div>
+            <div className={styles.adShipping}>
+              <div className={styles.adShippingWrapper}>
+                {this.state.ad.adShips ? (
+                  <div
+                    className={styles.shipping}
+                    style={{ backgroundImage: `url(${shipping})` }}
+                  />
+                ) : (
+                  <div className={styles.shipping} style={{ backgroundImage: `url(${shipping})` }}>
+                    <Icon className={styles.noShipping} type="close" />
+                  </div>
+                )}
+              </div>
+              <div className={styles.adShippingWrapper}>
+                {this.state.ad.adPickup ? (
+                  <div
+                    className={styles.pickup}
+                    style={{ backgroundImage: `url(${manPackage})` }}
+                  />
+                ) : (
+                  <div className={styles.pickup} style={{ backgroundImage: `url(${manPackage})` }}>
+                    <Icon className={styles.noShipping} type="close" />
+                  </div>
+                )}
+              </div>
+            </div>
           </div>
         )}
       </div>

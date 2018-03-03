@@ -6,7 +6,7 @@
 }
 
 .signOutBtn {
-  @include standard-btn;
+  @include primary-btn;
   font-weight: 700;
   margin-left: 10px;
   color: white;
