@@ -110,8 +110,10 @@ export const uploadFile = (img, adTitle) => {
   });
 };
 
-export const deleteAd = (id, onSucces, onFailure) => {
+export const deleteAd = (id, image, onSucces, onFailure) => {
   const db = firebase.firestore();
+  const photoref = firebase.storage().refFromURL(image);
+
   db
     .collection('ads')
     .doc(id)

@@ -30,9 +30,9 @@ class DisplayAds extends Component {
     this.setState({ searchWord });
   };
 
-  adDelete = id => {
+  adDelete = (id, image) => {
     this.setState({ deleteId: id });
-    deleteAd(id, this.onSucces, this.onFailure);
+    deleteAd(id, image, this.onSucces, this.onFailure);
   };
 
   render() {
@@ -122,7 +122,7 @@ class DisplayAds extends Component {
                     <Icon
                       className={styles.deleteAd}
                       type="delete"
-                      onClick={() => this.adDelete(ad.id)}
+                      onClick={() => this.adDelete(ad.id, ad.image)}
                     />
                   ) : null}
                 </div>
