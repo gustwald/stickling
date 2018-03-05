@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import Dropzone from 'react-dropzone';
+import { Link } from 'react-router';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import uuidv1 from 'uuid';
-import { Button, Input } from 'antd';
+import { Button, Modal, Icon } from 'antd';
 import { openAdNotification } from '../Notification/Notification';
 import { addAdToFirestore, uploadFile } from '../../utils/firebase';
 import { getCurrentPosition } from '../../utils/getCurrentPosition';
@@ -15,6 +16,8 @@ import styles from './CreateAd.scss';
 
 class CreateAd extends Component {
   state = {
+    createModal: false,
+    // windowWidth: window.innerWidth,
     adTitle: '',
     adText: '',
     adPrice: '',
@@ -109,88 +112,126 @@ class CreateAd extends Component {
     addAdToFirestore(result => this.onSucces(result, ad), this.onFailure, ad);
   };
 
+  showModal = () => {
+    this.setState({
+      createModal: true
+    });
+  };
+  handleOk = e => {
+    console.log(e);
+    this.setState({
+      createModal: false
+    });
+  };
+  handleCancel = e => {
+    console.log(e);
+    this.setState({
+      createModal: false
+    });
+  };
+
   render() {
     if (!this.props.currentUser) return null;
     return (
-      <div className={styles.createAd}>
-        <form className={styles.createAdForm}>
-          <label htmlFor="adTitle">
-            <input
-              required
-              type="text"
-              name="adTitle"
-              placeholder="Titel"
-              id="adTitle"
-              onChange={this.onChange}
-            />
-          </label>
-          <label htmlFor="adDescription">
-            <input
-              required
-              type="text"
-              name="adText"
-              id="adDescription"
-              placeholder="Text"
-              onChange={this.onChange}
-            />
-          </label>
-          <label htmlFor="adPrice">
-            <input
-              required
-              type="number"
-              name="adPrice"
-              id="adPrice"
-              placeholder="Pris"
-              onChange={this.onChange}
-            />
-          </label>
-          <div className={styles.customCheckboxWrapper}>
-            <label htmlFor="adShips">
-              <input name="adShips" id="adShips" type="checkbox" onChange={this.onCheckBoxChange} />
-              <div className={styles.customCheckbox}>
-                <span />
+      <div className={styles.container}>
+        <div className={styles.topNavIcon}>
+          <Link to="/annonser">
+            <Icon type="edit" onClick={this.showModal} style={{ fontSize: 38, color: '#a77a50' }} />
+          </Link>
+        </div>
+        {/* <Button type="primary" onClick={this.showModal}>
+          Skapa annons
+        </Button> */}
+        <Modal
+          visible={this.state.createModal}
+          onOk={this.handleOk}
+          onCancel={this.handleCancel}
+          footer={null}
+        >
+          <div className={styles.createAd}>
+            <form className={styles.createAdForm}>
+              <label htmlFor="adTitle">
+                <input
+                  required
+                  type="text"
+                  name="adTitle"
+                  placeholder="Titel"
+                  id="adTitle"
+                  onChange={this.onChange}
+                />
+              </label>
+              <label htmlFor="adDescription">
+                <input
+                  required
+                  type="text"
+                  name="adText"
+                  id="adDescription"
+                  placeholder="Text"
+                  onChange={this.onChange}
+                />
+              </label>
+              <label htmlFor="adPrice">
+                <input
+                  required
+                  type="number"
+                  name="adPrice"
+                  id="adPrice"
+                  placeholder="Pris"
+                  onChange={this.onChange}
+                />
+              </label>
+              <div className={styles.customCheckboxWrapper}>
+                <label htmlFor="adShips">
+                  <input
+                    name="adShips"
+                    id="adShips"
+                    type="checkbox"
+                    onChange={this.onCheckBoxChange}
+                  />
+                  <div className={styles.customCheckbox}>
+                    <span />
+                  </div>
+                </label>
+                <h3>Skickas</h3>
               </div>
-            </label>
-            <h3>Skickas</h3>
-          </div>
-          <div className={styles.customCheckboxWrapper}>
-            <label htmlFor="adPickup">
-              <input
-                name="adPickup"
-                id="adPickup"
-                type="checkbox"
-                onChange={this.onCheckBoxChange}
-              />
-              <div className={styles.customCheckbox}>
-                <span />
+              <div className={styles.customCheckboxWrapper}>
+                <label htmlFor="adPickup">
+                  <input
+                    name="adPickup"
+                    id="adPickup"
+                    type="checkbox"
+                    onChange={this.onCheckBoxChange}
+                  />
+                  <div className={styles.customCheckbox}>
+                    <span />
+                  </div>
+                </label>
+                <h3>Hämtas</h3>
               </div>
-            </label>
-            <h3>Hämtas</h3>
-          </div>
-          <label htmlFor="adFreightCost">
-            <input
-              name="adFreightCost"
-              id="adFreightCost"
-              type="text"
-              placeholder="Fraktkostnad"
-              onChange={this.onChange}
-            />
-          </label>
-          <div className={styles.customCheckboxWrapper}>
-            <label htmlFor="addToMap">
-              <input
-                name="addToMap"
-                id="addToMap"
-                type="checkbox"
-                onChange={this.onCheckBoxChange}
-              />
-              <div className={styles.customCheckbox}>
-                <span />
+              <label htmlFor="adFreightCost">
+                <input
+                  name="adFreightCost"
+                  id="adFreightCost"
+                  type="text"
+                  placeholder="Fraktkostnad"
+                  onChange={this.onChange}
+                />
+              </label>
+              <div className={styles.customCheckboxWrapper}>
+                <label htmlFor="addToMap">
+                  <input
+                    name="addToMap"
+                    id="addToMap"
+                    type="checkbox"
+                    onChange={this.onCheckBoxChange}
+                  />
+                  <div className={styles.customCheckbox}>
+                    <span />
+                  </div>
+                </label>
+                <h3>Lägg till på kartan</h3>
               </div>
-            </label>
-            <h3>Lägg till på kartan</h3>
-          </div>
-          {/* <Input required type="text" name="adTitle" placeholder="Titel" onChange={this.onChange} />
+              {/* <Input required type="text" name="adTitle" placeholder="Titel" onChange={this.onChange} />
           <Input required type="text" name="adText" placeholder="Text" onChange={this.onChange} />
           <Input
             required
@@ -228,31 +269,33 @@ class CreateAd extends Component {
             // defaultChecked={this.state.addToMap}
             onChange={this.onCheckBoxMapChange}
           /> */}
-          <section>
-            <div className="dropzone">
-              <Dropzone accept="image/jpeg, image/png" multiple={false} onDrop={this.onDrop}>
-                <p>Try dropping some files here, or click to select files to upload.</p>
-              </Dropzone>
-            </div>
-            <aside>
-              <ul>
-                {this.state.files.map(f => (
-                  <li key={f.name}>
-                    {f.name} - {f.size} bytes
-                  </li>
-                ))}
-              </ul>
-            </aside>
-          </section>
-          <button
-            onClick={e => {
-              this.createAd(e);
-            }}
-          >
-            Skapa annons
-          </button>
-          <p>{this.state.error}</p>
-        </form>
+              <section>
+                <div className="dropzone">
+                  <Dropzone accept="image/jpeg, image/png" multiple={false} onDrop={this.onDrop}>
+                    <p>Try dropping some files here, or click to select files to upload.</p>
+                  </Dropzone>
+                </div>
+                <aside>
+                  <ul>
+                    {this.state.files.map(f => (
+                      <li key={f.name}>
+                        {f.name} - {f.size} bytes
+                      </li>
+                    ))}
+                  </ul>
+                </aside>
+              </section>
+              <button
+                onClick={e => {
+                  this.createAd(e);
+                }}
+              >
+                Skapa annons
+              </button>
+              {/* <p>{this.state.error}</p> */}
+            </form>
+          </div>
+        </Modal>
       </div>
     );
   }

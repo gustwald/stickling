@@ -9,7 +9,7 @@ const AdsPage = ({ ads }) => (
   <div>
     <h1>Ads</h1>
     <AdSearch />
-    <CreateAd />
+    {/* <CreateAd /> */}
     <DisplayAds ads={ads} />
   </div>
 );

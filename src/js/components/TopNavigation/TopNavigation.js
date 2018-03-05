@@ -8,6 +8,7 @@ import SignIn from '../SignIn/SignIn';
 import { getCurrentUser } from '../../Selector';
 import styles from './TopNavigation.scss';
 import logo from '../../../../assets/logo.svg';
+import CreateAd from '../CreateAd/CreateAd';
 
 class TopNavigation extends Component {
   scrollTop = () => {
@@ -17,15 +18,7 @@ class TopNavigation extends Component {
   render() {
     return (
       <div className={styles.container}>
-        {this.props.currentUser ? (
-          <div className={styles.topNavIcon}>
-            <Link to="/annonser">
-              <Icon type="edit" style={{ fontSize: 38, color: '#a77a50' }} />
-            </Link>
-          </div>
-        ) : (
-          <Register />
-        )}
+        {this.props.currentUser ? <CreateAd /> : <Register />}
 
         <div
           onClick={this.scrollTop}
