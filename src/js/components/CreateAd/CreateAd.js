@@ -226,7 +226,7 @@ class CreateAd extends Component {
                     name="addToMap"
                     id="addToMap"
                     type="checkbox"
-                    onChange={this.onCheckBoxChange}
+                    onChange={this.onCheckBoxMapChange}
                   />
                   <div className={styles.customCheckbox}>
                     <span />
