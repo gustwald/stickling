@@ -110,6 +110,9 @@ class CreateAd extends Component {
     };
 
     addAdToFirestore(result => this.onSucces(result, ad), this.onFailure, ad);
+    this.setState({
+      createModal: false
+    });
   };
 
   showModal = () => {
