@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import moment from 'moment';
 import PropTypes from 'prop-types';
-import { Pagination, Icon, Col, Row } from 'antd';
+import { Pagination, Icon, Col, Row, Tooltip } from 'antd';
 import { removeAd } from '../../actions/index';
 import { removedAdNotification } from '../Notification/Notification';
 import { deleteAd } from '../../utils/firebase';
@@ -68,36 +68,52 @@ class DisplayAds extends Component {
                     {/* <div className={styles.adShippingWrapper}>
                       <p>{`${ad.adPrice}kr`}</p>
                     </div> */}
-                    <div className={styles.adShippingWrapper}>
-                      {ad.adShips ? (
-                        <div
-                          className={styles.shipping}
-                          style={{ backgroundImage: `url(${shipping})` }}
-                        />
-                      ) : (
-                        <div
-                          className={styles.shipping}
-                          style={{ backgroundImage: `url(${shipping})` }}
-                        >
-                          <Icon className={styles.noShipping} type="close" />
-                        </div>
-                      )}
-                    </div>
-                    <div className={styles.adShippingWrapper}>
-                      {ad.adPickup ? (
-                        <div
-                          className={styles.pickup}
-                          style={{ backgroundImage: `url(${manPackage})` }}
-                        />
-                      ) : (
-                        <div
-                          className={styles.pickup}
-                          style={{ backgroundImage: `url(${manPackage})` }}
-                        >
-                          <Icon className={styles.noShipping} type="close" />
-                        </div>
-                      )}
-                    </div>
+                    <Tooltip
+                      title={
+                        ad.adShips
+                          ? 'Den här sticklingen kan skickas'
+                          : 'Den här sticklingen kan inte skickas'
+                      }
+                    >
+                      <div className={styles.adShippingWrapper}>
+                        {ad.adShips ? (
+                          <div
+                            className={styles.shipping}
+                            style={{ backgroundImage: `url(${shipping})` }}
+                          />
+                        ) : (
+                          <div
+                            className={styles.shipping}
+                            style={{ backgroundImage: `url(${shipping})` }}
+                          >
+                            <Icon className={styles.noShipping} type="close" />
+                          </div>
+                        )}
+                      </div>
+                    </Tooltip>
+                    <Tooltip
+                      title={
+                        ad.adPickup
+                          ? 'Den här sticklingen kan hämtas'
+                          : 'Den här sticklingen kan inte hämtas'
+                      }
+                    >
+                      <div className={styles.adShippingWrapper}>
+                        {ad.adPickup ? (
+                          <div
+                            className={styles.pickup}
+                            style={{ backgroundImage: `url(${manPackage})` }}
+                          />
+                        ) : (
+                          <div
+                            className={styles.pickup}
+                            style={{ backgroundImage: `url(${manPackage})` }}
+                          >
+                            <Icon className={styles.noShipping} type="close" />
+                          </div>
+                        )}
+                      </div>
+                    </Tooltip>
                     {/* <p>{`${ad.adPrice}kr`}</p>
                     {ad.adShips ? <p>Kan skickas</p> : <p>Skickas inte</p>}
                     {ad.adPickup ? <p>Kan hämtas</p> : <p>Hämtas inte</p>} */}
