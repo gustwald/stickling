@@ -4,13 +4,9 @@ import styles from './AdSearch.scss';
 
 const SearchField = Input.Search;
 
-const AdSearch = ({ ads }) => (
+const AdSearch = ({ ads, onSearch }) => (
   <div className={styles.container}>
-    <SearchField
-      placeholder=""
-      onChange={e => console.log(e.target.value)}
-      style={{ width: 200 }}
-    />
+    <SearchField placeholder="" onChange={e => onSearch(e.target.value)} style={{ width: 200 }} />
   </div>
 );
 

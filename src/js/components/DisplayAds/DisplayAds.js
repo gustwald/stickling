@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import moment from 'moment';
 import PropTypes from 'prop-types';
-import { Pagination, Icon } from 'antd';
+import { Pagination, Icon, Col, Row } from 'antd';
 import { removeAd } from '../../actions/index';
 import { removedAdNotification } from '../Notification/Notification';
 import { deleteAd } from '../../utils/firebase';
 import styles from './DisplayAds.scss';
-import { Col, Row } from 'antd';
+import AdSearch from '../AdSearch/AdSearch';
 import shipping from '../../../../assets/delivery.svg';
 import manPackage from '../../../../assets/package2.svg';
 import cross from '../../../../assets/multiply.svg';
@@ -25,15 +26,33 @@ class DisplayAds extends Component {
     console.log(error);
   };
 
-  aDdelete = id => {
+  onSearch = searchWord => {
+    this.setState({ searchWord });
+  };
+
+  adDelete = id => {
     this.setState({ deleteId: id });
     deleteAd(id, this.onSucces, this.onFailure);
   };
+
   render() {
+    let { ads } = this.props;
+    console.log(ads);
+    const { searchWord } = this.state;
+    if (searchWord) {
+      ads = ads.filter(ad => ad.adTitle.includes(searchWord));
+    }
+    const sorted = ads.sort((a, b) => {
+      const dateA = moment(a.date);
+      const dateB = moment(b.date);
+      return dateA.isBefore(dateB);
+      // return a.adTitle.localeCompare(b.adTitle);
+    });
     return (
       <div className={styles.container}>
+        <AdSearch onSearch={this.onSearch} />
         <Row className={styles.adRow} gutter={{ xs: 0, sm: 0, md: 12, lg: 24 }}>
-          {this.props.ads.map(ad => (
+          {sorted.map(ad => (
             <Col xs={22} sm={22} md={10} lg={7} key={ad.id}>
               <div key={ad.id} className={styles.ad}>
                 <div className={styles.adImage} style={{ backgroundImage: `url(${ad.image})` }} />
@@ -87,7 +106,7 @@ class DisplayAds extends Component {
                     <Icon
                       className={styles.deleteAd}
                       type="delete"
-                      onClick={() => this.aDdelete(ad.id)}
+                      onClick={() => this.adDelete(ad.id)}
                     />
                   ) : null}
                 </div>
