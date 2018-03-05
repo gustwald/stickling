@@ -37,16 +37,16 @@ class DisplayAds extends Component {
 
   render() {
     let { ads } = this.props;
-    console.log(ads);
     const { searchWord } = this.state;
+
     if (searchWord) {
       ads = ads.filter(ad => ad.adTitle.includes(searchWord));
     }
+
     const sorted = ads.sort((a, b) => {
       const dateA = moment(a.date);
       const dateB = moment(b.date);
       return dateA.isBefore(dateB);
-      // return a.adTitle.localeCompare(b.adTitle);
     });
     return (
       <div className={styles.container}>
