@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Row, Col } from 'antd';
 import { getCurrentUser, getUserById, getAdsByUser } from '../../Selector';
 import DisplayAds from '../DisplayAds/DisplayAds';
 import styles from './Profile.scss';
-import gurt from '../../../../assets/gurt.png';
 import twitter from '../../../../assets/twitter.svg';
 import insta from '../../../../assets/instagram.svg';
-import { Row, Col } from 'antd';
 
 class Profile extends Component {
   state = {};
@@ -17,10 +16,13 @@ class Profile extends Component {
       <div className={styles.container}>
         <Row>
           <Col md={24} className={styles.profileInfo}>
-            <div
-              className={styles.profilePic}
-              style={{ backgroundImage: `url(${this.props.user.photo})` }}
-            />
+            {this.props.user.photo ? (
+              <div
+                className={styles.profilePic}
+                style={{ backgroundImage: `url(${this.props.user.photo})` }}
+              />
+            ) : null}
+
             <h3>
               <span>{`${this.props.user.first} ${this.props.user.last}`}</span>
             </h3>
