@@ -114,6 +114,8 @@ export const deleteAd = (id, image, onSucces, onFailure, imageDeleteSucces, imag
   const db = firebase.firestore();
   const imageRef = firebase.storage().refFromURL(image);
 
+  // should be using promises or delete image when successfully delete ad
+
   db
     .collection('ads')
     .doc(id)

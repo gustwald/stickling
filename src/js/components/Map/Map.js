@@ -2,8 +2,6 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { compose, withProps } from 'recompose';
 import { withScriptjs, withGoogleMap, GoogleMap, Marker } from 'react-google-maps';
-import leaf from '../../../../assets/leaf.svg';
-import styles from './Map.scss';
 
 const mapStyle = [
   {
