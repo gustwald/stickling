@@ -30,9 +30,24 @@ class DisplayAds extends Component {
     this.setState({ searchWord });
   };
 
+  imageDeleteSucces = () => {
+    console.log('raderat bild');
+  };
+
+  imageDeleteFailure = error => {
+    console.log(error);
+  };
+
   adDelete = (id, image) => {
     this.setState({ deleteId: id });
-    deleteAd(id, image, this.onSucces, this.onFailure);
+    deleteAd(
+      id,
+      image,
+      this.onSucces,
+      this.onFailure,
+      this.imageDeleteSucces,
+      this.imageDeleteFailure
+    );
   };
 
   render() {

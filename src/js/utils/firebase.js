@@ -110,9 +110,9 @@ export const uploadFile = (img, adTitle) => {
   });
 };
 
-export const deleteAd = (id, image, onSucces, onFailure) => {
+export const deleteAd = (id, image, onSucces, onFailure, imageDeleteSucces, imageDeleteFailure) => {
   const db = firebase.firestore();
-  const photoref = firebase.storage().refFromURL(image);
+  const imageRef = firebase.storage().refFromURL(image);
 
   db
     .collection('ads')
@@ -120,4 +120,9 @@ export const deleteAd = (id, image, onSucces, onFailure) => {
     .delete()
     .then(onSucces)
     .catch(onFailure);
+
+  imageRef
+    .delete()
+    .then(imageDeleteSucces)
+    .catch(imageDeleteFailure);
 };
