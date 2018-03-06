@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router';
 import moment from 'moment';
 import PropTypes from 'prop-types';
 import { Pagination, Icon, Col, Row, Tooltip } from 'antd';
@@ -84,7 +85,9 @@ class DisplayAds extends Component {
                     <a href={`mailto:${ad.email}?subject=Intresserad av din annons: ${ad.adTitle}`}>
                       Kontakta
                     </a>
-                    <a href={`/user/${ad.uId}`}>Till profilen</a>
+                    <Link className={styles.links} to={`/user/${ad.uId}`}>
+                      till profilen
+                    </Link>
                   </div>
                   <div className={styles.adShipping}>
                     {/* <div className={styles.adShippingWrapper}>
