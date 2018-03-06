@@ -81,6 +81,7 @@ class DisplayAds extends Component {
                     <a href={`mailto:${ad.email}?subject=Intresserad av din annons: ${ad.adTitle}`}>
                       Kontakta
                     </a>
+                    <a href={`/user/${ad.uId}`}>Till profilen</a>
                   </div>
                   <div className={styles.adShipping}>
                     {/* <div className={styles.adShippingWrapper}>
