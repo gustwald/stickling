@@ -4,7 +4,8 @@ import { Link } from 'react-router';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import uuidv1 from 'uuid';
-import { Button, Modal, Icon } from 'antd';
+import Loader from '../Loader/Loader';
+import { Modal, Icon } from 'antd';
 import { openAdNotification } from '../Notification/Notification';
 import { addAdToFirestore, uploadFile } from '../../utils/firebase';
 import { getCurrentPosition } from '../../utils/getCurrentPosition';
@@ -28,7 +29,8 @@ class CreateAd extends Component {
     adPickup: false,
     addToMap: false,
     adLatitude: '',
-    adLongitude: ''
+    adLongitude: '',
+    loading: false
   };
 
   onDrop = files => {
@@ -47,6 +49,7 @@ class CreateAd extends Component {
 
   onPositionFailure = error => {
     console.log(error);
+    this.setState({ error: 'Vi kunde inte hämta din position.', loading: false });
   };
 
   onCheckBoxMapChange = e => {
@@ -66,16 +69,23 @@ class CreateAd extends Component {
     };
     this.props.addAd(ad);
     openAdNotification(ad.adTitle);
+    this.setState({ loading: false });
+    this.handleOk();
   };
 
   onFailure = error => {
     console.log(error);
-    this.setState({ error: error.message });
+    console.log('errorororo');
+    this.setState({
+      error: 'Något gick fel när du försökte skapa annonsen, har du fyllt i alla fält?',
+      loading: false
+    });
     const { email, credential, code, message } = error;
     console.log({ email, credential, code, message });
   };
 
   createAd = async e => {
+    this.setState({ loading: true });
     e.preventDefault();
     console.log('skapar annons');
     const { uID, email } = this.props.currentUser;
@@ -111,9 +121,6 @@ class CreateAd extends Component {
     };
 
     addAdToFirestore(result => this.onSucces(result, ad), this.onFailure, ad);
-    this.setState({
-      createModal: false
-    });
   };
 
   showModal = () => {
@@ -121,14 +128,14 @@ class CreateAd extends Component {
       createModal: true
     });
   };
-  handleOk = e => {
-    console.log(e);
+
+  handleOk = () => {
     this.setState({
       createModal: false
     });
   };
-  handleCancel = e => {
-    console.log(e);
+
+  handleCancel = () => {
     this.setState({
       createModal: false
     });
@@ -147,12 +154,14 @@ class CreateAd extends Component {
           Skapa annons
         </Button> */}
         <Modal
+          className={styles.createAdModal}
           visible={this.state.createModal}
           onOk={this.handleOk}
           onCancel={this.handleCancel}
           footer={null}
         >
           <div className={styles.createAd}>
+            {this.state.loading ? <Loader /> : null}
             <form className={styles.createAdForm}>
               <label htmlFor="adTitle">
                 <input
@@ -235,44 +244,6 @@ class CreateAd extends Component {
                 </label>
                 <h3>Lägg till på kartan</h3>
               </div>
-              {/* <Input required type="text" name="adTitle" placeholder="Titel" onChange={this.onChange} />
-          <Input required type="text" name="adText" placeholder="Text" onChange={this.onChange} />
-          <Input
-            required
-            type="number"
-            name="adPrice"
-            placeholder="Pris"
-            onChange={this.onChange}
-          />
-          skickas
-          <input
-            name="adShips"
-            type="checkbox"
-            // defaultChecked={this.state.adShips}
-            onChange={this.onCheckBoxChange}
-          />
-          hämtas
-          <input
-            type="checkbox"
-            name="adPickup"
-            label="Hämtas"
-            // defaultChecked={this.state.adPickup}
-            onChange={this.onCheckBoxChange}
-          />
-          <Input
-            type="text"
-            name="adFreightCost"
-            placeholder="Fraktkostnad"
-            onChange={this.onChange}
-          />
-          lägg till i kartan
-          <input
-            type="checkbox"
-            name="addToMap"
-            label="Lägg till i kartan"
-            // defaultChecked={this.state.addToMap}
-            onChange={this.onCheckBoxMapChange}
-          /> */}
               <section>
                 <div className="dropzone">
                   <Dropzone accept="image/jpeg, image/png" multiple={false} onDrop={this.onDrop}>
@@ -296,7 +267,7 @@ class CreateAd extends Component {
               >
                 Skapa annons
               </button>
-              {/* <p>{this.state.error}</p> */}
+              <p>{this.state.error}</p>
             </form>
           </div>
         </Modal>
