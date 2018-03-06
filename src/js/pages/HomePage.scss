@@ -5,7 +5,10 @@
   position: relative;
   @include bm(0, $b-mobile) {
     padding-top: 10vh;
-    height: 80vh;
+    height: 70vh;
+
+    justify-content: center;
+    align-items: center;
   }
   .textWrapper {
     display: flex;
@@ -21,6 +24,7 @@
     @include bm (451px, $b-tablet) {
       margin-left: 270px;
       align-items: flex-start;
+      padding-top: 130px;
     }
 
     @include bm(801px, $b-full) {
@@ -148,9 +152,9 @@
     }
 
     @include bm(451px, $b-tablet) {
-      height: 500px;
-      width: 500px;
-      left: -110px;
+      height: 800px;
+      width: 800px;
+      left: -350px;
     }
 
     @include bm(801px, $b-full) {

@@ -22,7 +22,7 @@ class Register extends Component {
 
   render() {
     return (
-      <div>
+      <div className={styles.container}>
         {this.state.windowWidth > 450 ? (
           <span onClick={this.showModal}>konto</span>
         ) : (

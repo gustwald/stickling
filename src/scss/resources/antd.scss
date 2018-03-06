@@ -11,6 +11,12 @@ a:hover {
   transition: none;
 }
 
+.ant-input {
+  &:focus {
+    border-color: inherit;
+  }
+}
+
 // .anticon {
 //   padding: 0 5px 0 5px;
 // }

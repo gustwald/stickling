@@ -66,7 +66,7 @@ class DisplayAds extends Component {
     return (
       <div className={styles.container}>
         <AdSearch onSearch={this.onSearch} />
-        <Row className={styles.adRow} gutter={{ xs: 0, sm: 0, md: 12, lg: 24 }}>
+        <Row className={styles.adRow} gutter={{ xs: 0, sm: 0, md: 0, lg: 0 }}>
           {sorted.map(ad => (
             <Col xs={22} sm={22} md={10} lg={7} key={ad.id}>
               <div key={ad.id} className={styles.ad}>

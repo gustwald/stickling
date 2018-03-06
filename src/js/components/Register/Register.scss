@@ -1,3 +1,11 @@
+.container {
+  display: inline-block;
+
+  @include b($b-tablet) {
+    margin: 0 10px;
+  }
+}
+
 .topNavIcon {
   padding: 0 5px 0 5px;
 }

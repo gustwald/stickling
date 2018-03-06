@@ -1,0 +1,41 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  @include b($b-mobile) {
+    justify-content: center;
+  }
+  .searchInput {
+    border: none;
+    outline: none;
+    padding: 10px 5px;
+    border: 1px solid #e8e8e8;
+    transition: border 0.7s ease;
+    border-radius: 5px;
+    position: relative;
+
+    &:hover {
+      border: 1px solid $c-primary;
+    }
+    &:focus {
+      border: 1px solid $c-primary;
+    }
+
+    &::placeholder {
+      font-style: italic;
+      color: #e8e8e8;
+      font-family: $Raleway;
+    }
+  }
+
+  .searchInput:after {
+    content: '';
+    height: 20px;
+    width: 20px;
+    background: url('../../../../assets/searchicon.svg') no-repeat cover center;
+    position: absolute;
+    left: 0;
+    top: 0;
+  }
+}

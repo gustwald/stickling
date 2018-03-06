@@ -234,23 +234,24 @@
   .ad {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     position: relative;
-    border: 1px solid #e8e8e8;
+    border-bottom: 1px solid #e8e8e8;
     background-color: $c-white;
-    margin-top: 20px;
-    width: 90%;
-    margin-bottom: 12.5vh;
+    width: 100%;
+    margin-bottom: 10vh;
 
     @include b(500px) {
       margin-top: 0px;
+      margin-bottom: 0;
       width: 50%;
+      min-height: 90vh;
     }
 
     .adImage {
-      height: 450px;
-      width: 100%;
+      height: 200px;
+      width: 200px;
       background-position: center;
       background-size: cover;
       background-repeat: no-repeat;
@@ -309,6 +310,12 @@
       background-color: #fafafa;
       border-top: 1px solid #e8e8e8;
       width: 100%;
+
+      @include b($b-mobile) {
+        position: absolute;
+        left: 0;
+        bottom: 0;
+      }
 
       .adShippingWrapper {
         width: 50%;
