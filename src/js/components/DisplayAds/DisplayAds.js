@@ -78,6 +78,9 @@ class DisplayAds extends Component {
                     </h1>
                     <p className={styles.adText}>{ad.adText}</p>
                     <h3>{`${ad.adPrice} kr`}</h3>
+                    <a href={`mailto:${ad.email}?subject=Intresserad av din annons: ${ad.adTitle}`}>
+                      Kontakta
+                    </a>
                   </div>
                   <div className={styles.adShipping}>
                     {/* <div className={styles.adShippingWrapper}>

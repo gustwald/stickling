@@ -78,7 +78,7 @@ class CreateAd extends Component {
   createAd = async e => {
     e.preventDefault();
     console.log('skapar annons');
-    const { uID } = this.props.currentUser;
+    const { uID, email } = this.props.currentUser;
     const date = getCurrentTime();
     const {
       adTitle,
@@ -106,7 +106,8 @@ class CreateAd extends Component {
       image: uploadedFile.downloadURL,
       adLatitude,
       adLongitude,
-      date
+      date,
+      email
     };
 
     addAdToFirestore(result => this.onSucces(result, ad), this.onFailure, ad);
