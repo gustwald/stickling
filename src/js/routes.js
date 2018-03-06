@@ -23,6 +23,12 @@ export default {
     },
     {
       path: '/annonser',
+      childRoutes: [
+        {
+          path: ':adId',
+          component: AdsPage
+        }
+      ],
       component: AdsPage
     },
     {

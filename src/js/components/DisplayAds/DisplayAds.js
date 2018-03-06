@@ -4,6 +4,7 @@ import moment from 'moment';
 import PropTypes from 'prop-types';
 import { Pagination, Icon, Col, Row, Tooltip } from 'antd';
 import { removeAd } from '../../actions/index';
+import { getCurrentUser, getAdById } from '../../Selector';
 import { removedAdNotification } from '../Notification/Notification';
 import { deleteAd } from '../../utils/firebase';
 import styles from './DisplayAds.scss';
@@ -52,6 +53,7 @@ class DisplayAds extends Component {
 
   render() {
     let { ads } = this.props;
+
     const { searchWord } = this.state;
 
     if (searchWord) {
@@ -63,6 +65,7 @@ class DisplayAds extends Component {
       const dateB = moment(b.date);
       return dateA.isBefore(dateB);
     });
+
     return (
       <div className={styles.container}>
         <AdSearch onSearch={this.onSearch} />
@@ -159,12 +162,16 @@ const mapDispatchToProps = dispatch => ({
   removeAd: id => dispatch(removeAd(id))
 });
 
-const mapStateToProps = state => ({
-  currentUserId: state.currentUser.id
-});
+const mapStateToProps = (state, ownProps) => {
+  // const currentUser = getCurrentUser(state);
+  return {
+    currentUserId: state.currentUser.id,
+    ads: ownProps.adId ? getAdById(state, ownProps.adId) : state.adsReducer
+  };
+};
 
 DisplayAds.propTypes = {
-  ads: PropTypes.array.isRequired,
+  // ads: PropTypes.array.isRequired,
   currentUserId: PropTypes.string.isRequired,
   removeAd: PropTypes.func.isRequired
 };

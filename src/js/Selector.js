@@ -15,3 +15,9 @@ export const getAdsByUser = (state, uID) => {
   const { adsReducer } = state;
   return adsReducer.filter(ad => ad.uId === uID);
 };
+
+export const getAdById = (state, id) => {
+  const { adsReducer } = state;
+
+  return adsReducer.find(ad => ad.id === id);
+};
