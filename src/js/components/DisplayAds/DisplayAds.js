@@ -69,95 +69,17 @@ class DisplayAds extends Component {
     return (
       <div className={styles.container}>
         <AdSearch onSearch={this.onSearch} />
-        <Row className={styles.adRow} gutter={{ xs: 0, sm: 0, md: 0, lg: 0 }}>
+        <div className={styles.adContainer}>
           {sorted.map(ad => (
-            <Col xs={22} sm={22} md={10} lg={7} key={ad.id}>
-              <div key={ad.id} className={styles.ad}>
-                <div className={styles.adImage} style={{ backgroundImage: `url(${ad.image})` }} />
-                <div className={styles.adInfoWrapper}>
-                  <div className={styles.adInfo}>
-                    <h1>
-                      <span>{ad.adTitle}</span>
-                    </h1>
-                    <p className={styles.adText}>{ad.adText}</p>
-                    <h3>{`${ad.adPrice} kr`}</h3>
-                    <a href={`mailto:${ad.email}?subject=Intresserad av din annons: ${ad.adTitle}`}>
-                      Kontakta
-                    </a>
-                    <Link className={styles.links} to={`/user/${ad.uId}`}>
-                      till profilen
-                    </Link>
-                    <Link className={styles.links} to={`/ads/${ad.id}`}>
-                      till annonsen
-                    </Link>
-                  </div>
-                  <div className={styles.adShipping}>
-                    {/* <div className={styles.adShippingWrapper}>
-                      <p>{`${ad.adPrice}kr`}</p>
-                    </div> */}
-                    <Tooltip
-                      title={
-                        ad.adShips
-                          ? 'Den här sticklingen kan skickas'
-                          : 'Den här sticklingen kan inte skickas'
-                      }
-                    >
-                      <div className={styles.adShippingWrapper}>
-                        {ad.adShips ? (
-                          <div
-                            className={styles.shipping}
-                            style={{ backgroundImage: `url(${shipping})` }}
-                          />
-                        ) : (
-                          <div
-                            className={styles.shipping}
-                            style={{ backgroundImage: `url(${shipping})` }}
-                          >
-                            <Icon className={styles.noShipping} type="close" />
-                          </div>
-                        )}
-                      </div>
-                    </Tooltip>
-                    <Tooltip
-                      title={
-                        ad.adPickup
-                          ? 'Den här sticklingen kan hämtas'
-                          : 'Den här sticklingen kan inte hämtas'
-                      }
-                    >
-                      <div className={styles.adShippingWrapper}>
-                        {ad.adPickup ? (
-                          <div
-                            className={styles.pickup}
-                            style={{ backgroundImage: `url(${manPackage})` }}
-                          />
-                        ) : (
-                          <div
-                            className={styles.pickup}
-                            style={{ backgroundImage: `url(${manPackage})` }}
-                          >
-                            <Icon className={styles.noShipping} type="close" />
-                          </div>
-                        )}
-                      </div>
-                    </Tooltip>
-                    {/* <p>{`${ad.adPrice}kr`}</p>
-                    {ad.adShips ? <p>Kan skickas</p> : <p>Skickas inte</p>}
-                    {ad.adPickup ? <p>Kan hämtas</p> : <p>Hämtas inte</p>} */}
-                  </div>
-                  {ad.uId === this.props.currentUserId ? (
-                    <Icon
-                      className={styles.deleteAd}
-                      type="delete"
-                      onClick={() => this.adDelete(ad.id, ad.image)}
-                    />
-                  ) : null}
+            <div key={ad.id} className={styles.ad}>
+              <Link to={`/ads/${ad.id}`}>
+                <div className={styles.adWrapper}>
+                  <div className={styles.adImage} style={{ backgroundImage: `url(${ad.image})` }} />
                 </div>
-              </div>
-            </Col>
+              </Link>
+            </div>
           ))}
-          {/* <Pagination defaultCurrent={1} total={50} /> */}
-        </Row>
+        </div>
       </div>
     );
   }

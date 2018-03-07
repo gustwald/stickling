@@ -110,6 +110,20 @@
   }
 }
 
+@mixin standard-title-brown {
+  h3 {
+    font-size: 20px;
+    color: $c-white;
+    font-family: $Mont;
+    font-weight: 700;
+    font-style: italic;
+    span {
+      background-color: $c-brown;
+      padding: 5px 5px;
+    }
+  }
+}
+
 @mixin standard-paragraph {
   p {
     font-family: $Raleway;
@@ -117,7 +131,56 @@
   }
 }
 
-@mixin ad-card {
+@mixin ad {
+  .adWrapper {
+    overflow: hidden;
+    height: 80vh;
+    width: 100%;
+    margin-top: 10px;
+
+    @include b($b-mobile) {
+      height: 200px;
+      width: 100%;
+      margin-top: 0px;
+    }
+
+    .adImage {
+      height: 100%;
+      width: 100%;
+      background-position: center;
+      background-size: cover;
+      background-repeat: no-repeat;
+      position: relative;
+      transform: scale(1);
+      transition: all 0.3s ease;
+
+      @include b($b-mobile) {
+        border: 1px solid #e8e8e8;
+      }
+
+      &:after {
+        content: '';
+        background-color: rgba(0, 0, 0, 0);
+        transition: all 0.3s ease;
+      }
+
+      &:hover {
+        transform: scale(1.1);
+        &:after {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background-color: rgba(0, 0, 0, 0.2);
+        }
+      }
+    }
+  }
+}
+
+@mixin ad-card-old {
   .ad {
     display: flex;
     flex-direction: column;

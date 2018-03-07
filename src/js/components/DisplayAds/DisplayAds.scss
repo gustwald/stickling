@@ -1,9 +1,12 @@
-.adRow {
+.container {
   display: flex;
   justify-content: center;
   flex-direction: column;
-  align-items: center;
-  padding-bottom: 12.5vh;
+  padding-bottom: 10vh;
+
+  @include b($b-mobile) {
+    padding: 0 20px;
+  }
 
   @include bm(500px, $b-tablet) {
     flex-direction: row;
@@ -13,10 +16,19 @@
   }
 
   @include b(769px) {
-    flex-direction: row;
-    justify-content: space-between;
-    flex-wrap: wrap;
   }
 
-  @include ad-card;
+  .adContainer {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    width: 100%;
+    margin-top: 20px;
+
+    @include b($b-mobile) {
+      grid-template-columns: repeat(5, 1fr);
+      grid-gap: 10px;
+    }
+  }
+
+  @include ad;
 }
