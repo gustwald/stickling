@@ -2,8 +2,13 @@
   width: 100%;
   display: flex;
   justify-content: center;
-
   @include standard-form;
+}
+.container {
+  text-align: center;
+  button {
+    @include primary-btn;
+  }
 }
 
 .createAdForm {

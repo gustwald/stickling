@@ -18,7 +18,7 @@ class TopNavigation extends Component {
   render() {
     return (
       <div className={styles.container}>
-        {this.props.currentUser ? <CreateAd /> : <Register />}
+        {this.props.currentUser ? <CreateAd showCreate /> : <Register />}
 
         <div
           onClick={this.scrollTop}

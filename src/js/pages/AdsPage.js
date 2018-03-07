@@ -9,7 +9,7 @@ class AdsPage extends Component {
   render() {
     return (
       <div className={styles.container}>
-        <CreateAd />
+        <CreateAd showCreate={false} />
         <DisplayAds ads={this.props.ads} />
         {/* {this.props.children} */}
       </div>

@@ -2,10 +2,10 @@ import React, { Component } from 'react';
 import Dropzone from 'react-dropzone';
 import { Link } from 'react-router';
 import { connect } from 'react-redux';
+import { Modal, Icon } from 'antd';
 import PropTypes from 'prop-types';
 import uuidv1 from 'uuid';
 import Loader from '../Loader/Loader';
-import { Modal, Icon } from 'antd';
 import { openAdNotification } from '../Notification/Notification';
 import { addAdToFirestore, uploadFile } from '../../utils/firebase';
 import { getCurrentPosition } from '../../utils/getCurrentPosition';
@@ -18,7 +18,7 @@ import styles from './CreateAd.scss';
 class CreateAd extends Component {
   state = {
     createModal: false,
-    // windowWidth: window.innerWidth,
+    windowWidth: window.innerWidth,
     adTitle: '',
     adText: '',
     adPrice: '',
@@ -145,14 +145,22 @@ class CreateAd extends Component {
     if (!this.props.currentUser) return null;
     return (
       <div className={styles.container}>
-        <div className={styles.topNavIcon}>
-          <Link to="/ads">
-            <Icon type="edit" onClick={this.showModal} style={{ fontSize: 38, color: '#a77a50' }} />
-          </Link>
-        </div>
-        {/* <Button type="primary" onClick={this.showModal}>
-          Skapa annons
-        </Button> */}
+        {this.state.windowWidth > 450 ? (
+          <button onClick={this.showModal}>Skapa annons</button>
+        ) : (
+          <div className={styles.topNavIcon}>
+            {this.props.showCreate ? (
+              <Link to="/ads">
+                <Icon
+                  type="edit"
+                  onClick={this.showModal}
+                  style={{ fontSize: 38, color: '#a77a50' }}
+                />
+              </Link>
+            ) : null}
+          </div>
+        )}
+
         <Modal
           className={styles.createAdModal}
           visible={this.state.createModal}
