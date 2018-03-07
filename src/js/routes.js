@@ -24,13 +24,11 @@ export default {
     },
     {
       path: '/ads',
-      childRoutes: [
-        {
-          path: ':adId',
-          component: SingleAdPage
-        }
-      ],
       component: AdsPage
+    },
+    {
+      path: '/ads/:adId',
+      component: SingleAdPage
     },
     {
       path: '/map',

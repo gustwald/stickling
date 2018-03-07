@@ -7,6 +7,7 @@ import styles from './SingleAd.scss';
 const SingleAd = ({ ad }) => (
   <div className={styles.container}>
     <h1>singlead</h1>
+    <p>{ad.adTitle}</p>
   </div>
 );
 

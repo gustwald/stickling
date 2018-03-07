@@ -6,7 +6,6 @@ class AdsPage extends Component {
   render() {
     return (
       <div>
-        <h1>sadsda</h1>
         <SingleAd adId={this.props.params.adId} />
       </div>
     );
