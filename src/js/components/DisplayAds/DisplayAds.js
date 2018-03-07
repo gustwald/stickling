@@ -55,7 +55,7 @@ class DisplayAds extends Component {
     const { searchWord } = this.state;
 
     if (searchWord) {
-      ads = ads.filter(ad => ad.adTitle.includes(searchWord));
+      ads = ads.filter(ad => ad.adTitle.toLowerCase().includes(searchWord.toLowerCase()));
     }
 
     const sorted = ads.sort((a, b) => {
