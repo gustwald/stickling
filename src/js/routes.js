@@ -3,6 +3,7 @@ import HomePage from './pages/HomePage';
 import ProfilePage from './pages/ProfilePage';
 import AdsPage from './pages/AdsPage';
 import MapPage from './pages/MapPage';
+import SingleAdPage from './pages/SingleAdPage';
 
 export default {
   component: Root,
@@ -22,17 +23,17 @@ export default {
       component: ProfilePage
     },
     {
-      path: '/annonser',
+      path: '/ads',
       childRoutes: [
         {
           path: ':adId',
-          component: AdsPage
+          component: SingleAdPage
         }
       ],
       component: AdsPage
     },
     {
-      path: '/karta',
+      path: '/map',
       component: MapPage
     }
   ]

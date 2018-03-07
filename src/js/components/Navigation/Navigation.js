@@ -29,11 +29,11 @@ class Navigation extends Component {
         )}
 
         {this.state.windowWidth > 450 ? (
-          <Link className={styles.links} to="/annonser">
+          <Link className={styles.links} to="/ads">
             <span>Annonser</span>
           </Link>
         ) : (
-          <Link className={styles.links} to="/annonser">
+          <Link className={styles.links} to="/ads">
             <Icon type="profile" style={{ fontSize: 38, color: '#a77a50' }}>
               <span className={styles.iconText}>Annonser</span>
             </Icon>
@@ -41,11 +41,11 @@ class Navigation extends Component {
         )}
 
         {this.state.windowWidth > 450 ? (
-          <Link className={styles.links} to="/karta">
+          <Link className={styles.links} to="/map">
             <span>karta</span>
           </Link>
         ) : (
-          <Link className={styles.links} to="/karta">
+          <Link className={styles.links} to="/map">
             <Icon type="environment-o" style={{ fontSize: 38, color: '#a77a50' }}>
               <span className={styles.iconText}>Karta</span>
             </Icon>
@@ -79,23 +79,6 @@ class Navigation extends Component {
   }
 }
 
-// const Navigation = () => (
-//   <CSSTransitionGroup
-//     component="ul"
-//     className={styles.navBar}
-//     transitionName="example"
-//     transitionAppear={true}
-//     transitionAppearTimeout={3000}
-//     transitionEnterTimeout={3000}
-//     transitionLeaveTimeout={3000}
-//     >
-//     <li style={{ backgroundImage: `url(${logo})` }} className={styles.logo} />
-//     <li className={styles.links} to="/">Hem</li>
-//     <li className={styles.links} to="/profil">Profil</li>
-//     <li className={styles.links} to="/annonser">Annonser</li>
-//     <li className={styles.links} to="/karta">Karta</li>
-//   </CSSTransitionGroup>
-// );
 const mapStateToProps = state => ({
   currentUser: getCurrentUser(state)
 });

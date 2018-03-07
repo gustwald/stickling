@@ -54,7 +54,6 @@ class DisplayAds extends Component {
 
   render() {
     let { ads } = this.props;
-
     const { searchWord } = this.state;
 
     if (searchWord) {
@@ -87,6 +86,9 @@ class DisplayAds extends Component {
                     </a>
                     <Link className={styles.links} to={`/user/${ad.uId}`}>
                       till profilen
+                    </Link>
+                    <Link className={styles.links} to={`/ads/${ad.id}`}>
+                      till annonsen
                     </Link>
                   </div>
                   <div className={styles.adShipping}>
@@ -169,7 +171,7 @@ const mapStateToProps = (state, ownProps) => {
   // const currentUser = getCurrentUser(state);
   return {
     currentUserId: state.currentUser.id,
-    ads: ownProps.adId ? getAdById(state, ownProps.adId) : state.adsReducer
+    ads: state.adsReducer
   };
 };
 

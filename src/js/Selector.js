@@ -19,5 +19,11 @@ export const getAdsByUser = (state, uID) => {
 export const getAdById = (state, id) => {
   const { adsReducer } = state;
 
+  // const adArr = [];
+
   return adsReducer.find(ad => ad.id === id);
+
+  // adArr.push(singleAd);
+
+  // return adArr;
 };
