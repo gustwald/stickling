@@ -146,7 +146,7 @@ class CreateAd extends Component {
     return (
       <div className={styles.container}>
         <div className={styles.topNavIcon}>
-          <Link to="/annonser">
+          <Link to="/ads">
             <Icon type="edit" onClick={this.showModal} style={{ fontSize: 38, color: '#a77a50' }} />
           </Link>
         </div>

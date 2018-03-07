@@ -3,9 +3,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router';
 import moment from 'moment';
 import PropTypes from 'prop-types';
-import { Pagination, Icon, Col, Row, Tooltip } from 'antd';
 import { removeAd } from '../../actions/index';
-import { getCurrentUser, getAdById } from '../../Selector';
 import { removedAdNotification } from '../Notification/Notification';
 import { deleteAd } from '../../utils/firebase';
 import styles from './DisplayAds.scss';
@@ -89,18 +87,17 @@ const mapDispatchToProps = dispatch => ({
   removeAd: id => dispatch(removeAd(id))
 });
 
-const mapStateToProps = (state, ownProps) => {
-  // const currentUser = getCurrentUser(state);
-  return {
-    currentUserId: state.currentUser.id,
-    ads: state.adsReducer
-  };
-};
+// const mapStateToProps = state => {
+//   // const currentUser = getCurrentUser(state);
+//   return {
+//     currentUserId: state.currentUser.id
+//   };
+// };
 
 DisplayAds.propTypes = {
-  // ads: PropTypes.array.isRequired,
-  currentUserId: PropTypes.string.isRequired,
+  ads: PropTypes.array.isRequired,
+  // currentUserId: PropTypes.string.isRequired,
   removeAd: PropTypes.func.isRequired
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(DisplayAds);
+export default connect(null, mapDispatchToProps)(DisplayAds);
