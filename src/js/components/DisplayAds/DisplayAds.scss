@@ -22,11 +22,12 @@
     display: grid;
     grid-template-columns: repeat(1, 1fr);
     width: 100%;
-    margin-top: 20px;
+    margin-top: 10px;
 
     @include b($b-mobile) {
       grid-template-columns: repeat(5, 1fr);
       grid-gap: 10px;
+      margin-top: 20px;
     }
   }
 
