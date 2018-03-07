@@ -75,6 +75,14 @@ class DisplayAds extends Component {
                   <div className={styles.adImage} style={{ backgroundImage: `url(${ad.image})` }} />
                 </div>
               </Link>
+              {/* {ad.uId === this.props.currentUserId ? (	
+                    <Icon	
+                      className={styles.deleteAd}	
+                      type="delete"	
+                      onClick={() => this.adDelete(ad.id, ad.image)}	
+                   />	
+                  ) : null} */}
+              {/* <button onClick={() => this.adDelete(ad.id, ad.image)}>radera</button> */}
             </div>
           ))}
         </div>
