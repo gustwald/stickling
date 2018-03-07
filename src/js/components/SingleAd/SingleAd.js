@@ -1,17 +1,17 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { getAdById } from '../../Selector';
+import { getAdById, getUserById, getCurrentUser } from '../../Selector';
 import { Avatar } from 'antd';
 
 import styles from './SingleAd.scss';
 
-const SingleAd = ({ ad }) => (
+const SingleAd = ({ ad, user }) => (
   <div className={styles.container}>
     <div className={styles.adContainer}>
       <div className={styles.adHeader}>
-        <Avatar size="large" />
+        <Avatar size="large" src={user.photo} />
         <h3 className={styles.adPerson}>
-          <span>Profilnamn</span>
+          <span>{`${user.first} ${user.last}`}</span>
         </h3>
       </div>
       <div className={styles.adImage} style={{ backgroundImage: `url(${ad.image})` }} />
@@ -24,8 +24,9 @@ const SingleAd = ({ ad }) => (
 );
 
 const mapStateToProps = (state, ownProps) => {
-  console.log('saddd');
+  const user = getAdById(state, ownProps.adId);
   return {
+    user: getUserById(state, user.uId),
     ad: ownProps.adId ? getAdById(state, ownProps.adId) : null
   };
 };
