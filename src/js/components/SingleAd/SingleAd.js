@@ -2,6 +2,9 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { getAdById, getUserById, getCurrentUser } from '../../Selector';
 import { Avatar } from 'antd';
+import delivery from '../../../../assets/delivery.svg';
+import package2 from '../../../../assets/package3.svg';
+import email from '../../../../assets/mail.svg';
 
 import styles from './SingleAd.scss';
 
@@ -17,7 +20,13 @@ const SingleAd = ({ ad, user }) => (
       <div className={styles.adImage} style={{ backgroundImage: `url(${ad.image})` }} />
       <div className={styles.adInfo}>
         <h1>{ad.adTitle}</h1>
+        <h2>{ad.adPrice + ' ' + 'kr'}</h2>
         <p>{ad.adText}</p>
+        <div className={styles.adIcons}>
+          <div className={styles.Icon} style={{ backgroundImage: `url(${delivery})` }} />
+          <div className={styles.Icon} style={{ backgroundImage: `url(${package2})` }} />
+          <div className={styles.Icon} style={{ backgroundImage: `url(${email})` }} />
+        </div>
       </div>
     </div>
   </div>

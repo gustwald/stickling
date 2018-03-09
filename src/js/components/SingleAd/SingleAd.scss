@@ -1,8 +1,19 @@
 .container {
   padding-top: 10vh;
+  display: flex;
+  justify-content: center;
+  padding-bottom: 10vh;
+  @include b($b-mobile) {
+    padding-bottom: 0;
+  }
   .adContainer {
     display: flex;
     flex-direction: column;
+    width: 100%;
+
+    @include b($b-mobile) {
+      width: 60%;
+    }
     .adHeader {
       display: flex;
       flex-direction: row;
@@ -32,16 +43,35 @@
       background-color: $c-white;
       border-top: 1px solid $c-border;
       border-bottom: 1px solid $c-border;
+      padding-left: 10px;
+      padding-bottom: 10px;
 
       h1 {
         font-family: $Raleway;
-        margin-left: 10px;
         margin-top: 10px;
+        margin-bottom: 0px;
+      }
+
+      h2 {
+        font-family: $Raleway;
+        margin-top: 0px;
       }
 
       p {
         @include standard-paragraph;
-        margin-left: 10px;
+      }
+
+      .adIcons {
+        display: flex;
+        flex-direction: row;
+        .Icon {
+          width: 35px;
+          height: 35px;
+          background-repeat: no-repeat;
+          background-size: cover;
+          background-position: center;
+          margin-right: 10px;
+        }
       }
     }
   }
