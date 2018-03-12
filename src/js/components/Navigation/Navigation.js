@@ -22,7 +22,7 @@ class Navigation extends Component {
           </Link>
         ) : (
           <Link className={styles.links} to="/">
-            <Icon type="home" style={{ fontSize: 38, color: '#a77a50' }}>
+            <Icon type="home" style={{ fontSize: 38, color: 'rgba(5, 175, 117, 1)' }}>
               <span className={styles.iconText}>Hem</span>
             </Icon>
           </Link>
@@ -34,7 +34,7 @@ class Navigation extends Component {
           </Link>
         ) : (
           <Link className={styles.links} to="/ads">
-            <Icon type="profile" style={{ fontSize: 38, color: '#a77a50' }}>
+            <Icon type="profile" style={{ fontSize: 38, color: 'rgba(5, 175, 117, 1)' }}>
               <span className={styles.iconText}>Annonser</span>
             </Icon>
           </Link>
@@ -46,7 +46,7 @@ class Navigation extends Component {
           </Link>
         ) : (
           <Link className={styles.links} to="/map">
-            <Icon type="environment-o" style={{ fontSize: 38, color: '#a77a50' }}>
+            <Icon type="environment-o" style={{ fontSize: 38, color: 'rgba(5, 175, 117, 1)' }}>
               <span className={styles.iconText}>Karta</span>
             </Icon>
           </Link>
@@ -59,7 +59,7 @@ class Navigation extends Component {
                 <Avatar className={styles.avatar} size="large" src={this.props.currentUser.photo} />
               ) : (
                 <Avatar
-                  style={{ backgroundColor: '#a77a50', verticalAlign: 'middle' }}
+                  style={{ backgroundColor: 'rgba(5, 175, 117, 1)', verticalAlign: 'middle' }}
                   size="large"
                 >
                   {this.props.currentUser.first}

@@ -154,7 +154,7 @@ class CreateAd extends Component {
                 <Icon
                   type="edit"
                   onClick={this.showModal}
-                  style={{ fontSize: 38, color: '#a77a50' }}
+                  style={{ fontSize: 38, color: 'rgba(5, 175, 117, 1)' }}
                 />
               </Link>
             ) : null}

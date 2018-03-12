@@ -22,7 +22,7 @@ const SignOut = ({ windowWidth }) => (
         Logga ut
       </Button>
     ) : (
-      <Icon onClick={signOut} type="logout" style={{ fontSize: 38, color: '#a77a50' }}>
+      <Icon onClick={signOut} type="logout" style={{ fontSize: 38, color: 'rgba(5, 175, 117, 1)' }}>
         <span className={styles.iconText}>Logga ut</span>
       </Icon>
     )}
