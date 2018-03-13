@@ -32,12 +32,15 @@ const SingleAd = ({ ad, user }) => (
         <p>{ad.adText}</p>
         <div className={styles.adIcons}>
           {ad.adShips ? (
-            <Tooltip title="Den här sticklingen kan skickas">
+            <Tooltip title={`Den här sticklingen kan skickas för ${ad.adFreightCost} kr`}>
               <div className={styles.Icon} style={{ backgroundImage: `url(${delivery})` }} />
             </Tooltip>
           ) : (
-            <Tooltip title="Den här sticklingen kan skickas">
-              <p>skickas inte</p>
+            <Tooltip title="Den här sticklingen kan inte skickas">
+              <div
+                className={styles.IconDisabled}
+                style={{ backgroundImage: `url(${delivery})` }}
+              />
             </Tooltip>
           )}
           {ad.adPickup ? (
@@ -45,8 +48,11 @@ const SingleAd = ({ ad, user }) => (
               <div className={styles.Icon} style={{ backgroundImage: `url(${package2})` }} />
             </Tooltip>
           ) : (
-            <Tooltip title="Den här sticklingen kan INTE hämtas">
-              <p>hämtas inte</p>
+            <Tooltip title="Den här sticklingen kan inte hämtas">
+              <div
+                className={styles.IconDisabled}
+                style={{ backgroundImage: `url(${package2})` }}
+              />
             </Tooltip>
           )}
 

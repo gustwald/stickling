@@ -4,12 +4,18 @@
   justify-content: center;
   padding-bottom: 10vh;
   @include b($b-mobile) {
-    padding-bottom: 0;
+    padding-bottom: 20px;
+    padding-top: 20px;
   }
   .adContainer {
     display: flex;
     flex-direction: column;
     width: 100%;
+    border-top: 1px solid $c-border;
+    border-bottom: 1px solid $c-border;
+    @include b($b-mobile) {
+      border: 1px solid $c-border;
+    }
 
     @include b($b-mobile) {
       width: 60%;
@@ -20,8 +26,6 @@
       align-items: center;
       width: 100%;
       background-color: $c-white;
-      border-top: 1px solid $c-border;
-      border-bottom: 1px solid $c-border;
       padding: 10px;
 
       @include standard-title-brown;
@@ -41,8 +45,6 @@
 
     .adInfo {
       background-color: $c-white;
-      border-top: 1px solid $c-border;
-      border-bottom: 1px solid $c-border;
       padding-left: 10px;
       padding-bottom: 10px;
 
@@ -71,6 +73,15 @@
           background-size: cover;
           background-position: center;
           margin-right: 10px;
+        }
+        .IconDisabled {
+          width: 35px;
+          height: 35px;
+          background-repeat: no-repeat;
+          background-size: cover;
+          background-position: center;
+          margin-right: 10px;
+          filter: grayscale(1);
         }
       }
     }
