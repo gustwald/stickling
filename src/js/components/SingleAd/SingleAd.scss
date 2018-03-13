@@ -27,7 +27,25 @@
       width: 100%;
       background-color: $c-white;
       padding: 10px;
+      position: relative;
 
+      .deleteAdLink {
+        position: absolute;
+        right: 10px;
+        top: 14px;
+
+        .deleteAd {
+          font-size: 30px;
+          color: red;
+        }
+      }
+
+      a {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        position: relative;
+      }
       @include standard-title-brown;
 
       h3 {

@@ -63,7 +63,7 @@ class SingleAd extends Component {
               </h3>
             </Link>
             {ad.uId === this.props.currentUserId ? (
-              <Link to="/ads">
+              <Link to="/ads" className={styles.deleteAdLink}>
                 <Icon
                   className={styles.deleteAd}
                   type="delete"
