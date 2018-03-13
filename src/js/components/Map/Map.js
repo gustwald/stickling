@@ -140,9 +140,7 @@ const mapStyle = [
     ]
   }
 ];
-// const markerClick = ad => {
-//   console.log(ad);
-// };
+
 const Map = withScriptjs(
   withGoogleMap(props => (
     <GoogleMap

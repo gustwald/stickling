@@ -1,7 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import styles from './CurrentUser.scss';
 import { getCurrentUser } from '../../Selector';
 
@@ -18,8 +17,8 @@ const mapStateToProps = state => ({
   currentUser: getCurrentUser(state)
 });
 
-// CurrentUser.propTypes = {
-//   currentUser: PropTypes.object.isRequired
-// };
+CurrentUser.propTypes = {
+  currentUser: PropTypes.object.isRequired
+};
 
 export default connect(mapStateToProps)(CurrentUser);

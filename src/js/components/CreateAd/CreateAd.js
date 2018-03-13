@@ -75,7 +75,6 @@ class CreateAd extends Component {
 
   onFailure = error => {
     console.log(error);
-    console.log('errorororo');
     this.setState({
       error: 'Något gick fel när du försökte skapa annonsen, har du fyllt i alla fält?',
       loading: false
@@ -87,7 +86,6 @@ class CreateAd extends Component {
   createAd = async e => {
     this.setState({ loading: true });
     e.preventDefault();
-    console.log('skapar annons');
     const { uID, email } = this.props.currentUser;
     const date = getCurrentTime();
     const {
@@ -293,7 +291,8 @@ const mapDispatchToProps = dispatch => ({
 
 CreateAd.propTypes = {
   currentUser: PropTypes.object,
-  addAd: PropTypes.func.isRequired
+  addAd: PropTypes.func.isRequired,
+  showCreate: PropTypes.bool.isRequired
 };
 
 CreateAd.defaultProps = { currentUser: null };

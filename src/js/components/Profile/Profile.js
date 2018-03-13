@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Row, Col } from 'antd';
+import PropTypes from 'prop-types';
 import { getCurrentUser, getUserById, getAdsByUser } from '../../Selector';
 import DisplayAds from '../DisplayAds/DisplayAds';
 import SocialSettings from '../SocialSettings/SocialSettings';
@@ -10,8 +11,6 @@ import insta from '../../../../assets/instagram.svg';
 import noUserPhoto from '../../../../assets/nopp.png';
 
 class Profile extends Component {
-  state = {};
-  componentDidMount() {}
   render() {
     if (!this.props.user) return <h1>Användaren hittades inte.</h1>;
     return (
@@ -26,7 +25,6 @@ class Profile extends Component {
                   : `url(${noUserPhoto})`
               }}
             />
-
             <h3>
               <span>{`${this.props.user.first} ${this.props.user.last}`}</span>
             </h3>
@@ -44,6 +42,12 @@ class Profile extends Component {
     );
   }
 }
+
+Profile.propTypes = {
+  user: PropTypes.object.isRequired,
+  userId: PropTypes.string.isRequired,
+  userAds: PropTypes.array.isRequired
+};
 
 const mapStateToProps = (state, ownProps) => {
   const currentUser = getCurrentUser(state);

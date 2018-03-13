@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
-// import { CSSTransitionGroup } from 'react-transition-group';
+import PropTypes from 'prop-types';
 import { Avatar, Icon } from 'antd';
 import SignOut from '../SignOut/SignOut';
 import { getCurrentUser } from '../../Selector';

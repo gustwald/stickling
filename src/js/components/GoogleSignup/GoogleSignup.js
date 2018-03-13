@@ -1,14 +1,13 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import { googleLogin, addUserToFirestore } from '../../utils/firebase';
 import { addUser } from '../../actions/index';
-import Google from '../../../../assets/Google.svg';
 import GoogleOutline from '../../../../assets/Google-outline.svg';
 import styles from './GoogleSignup.scss';
 
-class GoogleSignup extends React.Component {
+class GoogleSignup extends Component {
   onSuccess = result => {
-    console.log(result);
     const uID = result.user.uid;
     const email = result.user.email;
     const fName = result.additionalUserInfo.profile.given_name;
@@ -39,6 +38,12 @@ class GoogleSignup extends React.Component {
     );
   }
 }
+
+GoogleSignup.propTypes = {
+  addUser: PropTypes.func.isRequired,
+  closeModal: PropTypes.func.isRequired
+};
+
 const mapDispatchToProps = dispatch => ({
   addUser: (firstName, lastName, email, uid) => dispatch(addUser(firstName, lastName, email, uid))
 });

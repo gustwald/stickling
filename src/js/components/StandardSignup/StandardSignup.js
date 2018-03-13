@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import { createUserWithEmail, addUserToFirestore } from '../../utils/firebase';
 import { addUser } from '../../actions/index';
 import styles from './StandardSignup.scss';
@@ -17,7 +18,6 @@ class StandardSignup extends Component {
   onChange = e => this.setState({ [e.target.name]: e.target.value });
 
   onSucces = result => {
-    console.log('inne i succes');
     const uID = result.uid;
     const fName = this.state.firstName;
     const lName = this.state.lastName;
@@ -36,7 +36,7 @@ class StandardSignup extends Component {
     console.log({ email, credential, code, message });
   };
 
-  register = result => {
+  register = () => {
     createUserWithEmail(this.onSucces, this.onFailure, this.state);
   };
 
@@ -90,6 +90,11 @@ class StandardSignup extends Component {
     );
   }
 }
+
+StandardSignup.propTypes = {
+  addUser: PropTypes.func.isRequired,
+  closeModal: PropTypes.func.isRequired
+};
 
 const mapDispatchToProps = dispatch => ({
   addUser: (firstName, lastName, email, uid, photo) =>

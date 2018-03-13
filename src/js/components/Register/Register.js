@@ -8,13 +8,14 @@ class Register extends Component {
     modalRegister: false,
     windowWidth: window.innerWidth
   };
+
   showModal = () => {
     this.setState({
       modalRegister: true
     });
   };
-  handleOk = e => {
-    console.log(e);
+
+  handleOk = () => {
     this.setState({
       modalRegister: false
     });

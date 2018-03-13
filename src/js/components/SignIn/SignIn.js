@@ -14,8 +14,7 @@ class SignIn extends Component {
       modalLogin: true
     });
   };
-  handleOk = e => {
-    console.log(e);
+  handleOk = () => {
     this.setState({
       modalLogin: false
     });

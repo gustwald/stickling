@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
+import PropTypes from 'prop-types';
 import { Avatar, Tooltip } from 'antd';
 import { getAdById, getUserById } from '../../Selector';
 import delivery from '../../../../assets/delivery.svg';
@@ -27,7 +28,7 @@ const SingleAd = ({ ad, user }) => (
       <div className={styles.adImage} style={{ backgroundImage: `url(${ad.image})` }} />
       <div className={styles.adInfo}>
         <h1>{ad.adTitle}</h1>
-        <h2>{ad.adPrice + ' ' + 'kr'}</h2>
+        <h2>{`${ad.adPrice} kr`}</h2>
         <p>{ad.adText}</p>
         <div className={styles.adIcons}>
           {ad.adShips ? (
@@ -59,6 +60,11 @@ const SingleAd = ({ ad, user }) => (
     </div>
   </div>
 );
+
+SingleAd.propTypes = {
+  ad: PropTypes.object.isRequired,
+  user: PropTypes.object.isRequired
+};
 
 const mapStateToProps = (state, ownProps) => {
   const user = getAdById(state, ownProps.adId);
