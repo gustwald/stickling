@@ -45,7 +45,6 @@ class Profile extends Component {
 
 Profile.propTypes = {
   user: PropTypes.object.isRequired,
-  userId: PropTypes.string.isRequired,
   userAds: PropTypes.array.isRequired
 };
 

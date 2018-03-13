@@ -4,50 +4,14 @@ import { Link } from 'react-router';
 import moment from 'moment';
 import PropTypes from 'prop-types';
 import { removeAd } from '../../actions/index';
-import { removedAdNotification } from '../Notification/Notification';
-import { deleteAd } from '../../utils/firebase';
 import styles from './DisplayAds.scss';
 import AdSearch from '../AdSearch/AdSearch';
-import shipping from '../../../../assets/delivery.svg';
-import manPackage from '../../../../assets/package2.svg';
-import cross from '../../../../assets/multiply.svg';
 
 class DisplayAds extends Component {
-  state = {
-    deleteId: ''
-  };
-  onSucces = () => {
-    const { deleteId } = this.state;
-    this.props.removeAd(deleteId);
-    removedAdNotification(deleteId);
-  };
-
-  onFailure = error => {
-    console.log(error);
-  };
+  state = {};
 
   onSearch = searchWord => {
     this.setState({ searchWord });
-  };
-
-  imageDeleteSucces = () => {
-    console.log('raderat bild');
-  };
-
-  imageDeleteFailure = error => {
-    console.log(error);
-  };
-
-  adDelete = (id, image) => {
-    this.setState({ deleteId: id });
-    deleteAd(
-      id,
-      image,
-      this.onSucces,
-      this.onFailure,
-      this.imageDeleteSucces,
-      this.imageDeleteFailure
-    );
   };
 
   render() {
@@ -75,14 +39,6 @@ class DisplayAds extends Component {
                   <div className={styles.adImage} style={{ backgroundImage: `url(${ad.image})` }} />
                 </div>
               </Link>
-              {/* {ad.uId === this.props.currentUserId ? (	
-                    <Icon	
-                      className={styles.deleteAd}	
-                      type="delete"	
-                      onClick={() => this.adDelete(ad.id, ad.image)}	
-                   />	
-                  ) : null} */}
-              {/* <button onClick={() => this.adDelete(ad.id, ad.image)}>radera</button> */}
             </div>
           ))}
         </div>
