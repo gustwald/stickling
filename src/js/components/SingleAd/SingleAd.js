@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router';
 import { Avatar, Tooltip } from 'antd';
 import { getAdById, getUserById } from '../../Selector';
 import delivery from '../../../../assets/delivery.svg';
@@ -11,16 +12,18 @@ import styles from './SingleAd.scss';
 const SingleAd = ({ ad, user }) => (
   <div className={styles.container}>
     <div className={styles.adContainer}>
-      <div className={styles.adHeader}>
-        {user.photo ? (
-          <Avatar className={styles.avatar} size="large" src={user.photo} />
-        ) : (
-          <Avatar src={noUserPhoto} size="large" />
-        )}
-        <h3 className={styles.adPerson}>
-          <span>{`${user.first}`}</span>
-        </h3>
-      </div>
+      <Link to={`/user/${ad.uId}`}>
+        <div className={styles.adHeader}>
+          {user.photo ? (
+            <Avatar className={styles.avatar} size="large" src={user.photo} />
+          ) : (
+            <Avatar src={noUserPhoto} size="large" />
+          )}
+          <h3 className={styles.adPerson}>
+            <span>{`${user.first}`}</span>
+          </h3>
+        </div>
+      </Link>
       <div className={styles.adImage} style={{ backgroundImage: `url(${ad.image})` }} />
       <div className={styles.adInfo}>
         <h1>{ad.adTitle}</h1>

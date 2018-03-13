@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { Row, Col } from 'antd';
 import { getCurrentUser, getUserById, getAdsByUser } from '../../Selector';
 import DisplayAds from '../DisplayAds/DisplayAds';
+import SocialSettings from '../SocialSettings/SocialSettings';
 import styles from './Profile.scss';
 import twitter from '../../../../assets/twitter.svg';
 import insta from '../../../../assets/instagram.svg';
@@ -32,6 +33,7 @@ class Profile extends Component {
             <div className={styles.socialMedia}>
               <div className={styles.instagram} style={{ backgroundImage: `url(${insta})` }} />
               <div className={styles.twitter} style={{ backgroundImage: `url(${twitter})` }} />
+              {this.props.userId ? null : <SocialSettings />}
             </div>
           </Col>
           <Col md={24} className={styles.profileAds}>
@@ -49,7 +51,8 @@ const mapStateToProps = (state, ownProps) => {
     user: ownProps.userId ? getUserById(state, ownProps.userId) : currentUser,
     userAds: ownProps.userId
       ? getAdsByUser(state, ownProps.userId)
-      : getAdsByUser(state, currentUser.uID)
+      : getAdsByUser(state, currentUser.uID),
+    userId: ownProps.userId ? ownProps.userId : null
   };
 };
 
