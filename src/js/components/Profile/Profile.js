@@ -6,6 +6,7 @@ import DisplayAds from '../DisplayAds/DisplayAds';
 import styles from './Profile.scss';
 import twitter from '../../../../assets/twitter.svg';
 import insta from '../../../../assets/instagram.svg';
+import noUserPhoto from '../../../../assets/nopp.png';
 
 class Profile extends Component {
   state = {};
@@ -16,12 +17,14 @@ class Profile extends Component {
       <div className={styles.container}>
         <Row>
           <Col md={24} className={styles.profileInfo}>
-            {this.props.user.photo ? (
-              <div
-                className={styles.profilePic}
-                style={{ backgroundImage: `url(${this.props.user.photo})` }}
-              />
-            ) : null}
+            <div
+              className={styles.profilePic}
+              style={{
+                backgroundImage: this.props.user.photo
+                  ? `url(${this.props.user.photo})`
+                  : `url(${noUserPhoto})`
+              }}
+            />
 
             <h3>
               <span>{`${this.props.user.first} ${this.props.user.last}`}</span>

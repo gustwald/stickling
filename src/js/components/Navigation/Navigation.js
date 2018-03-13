@@ -7,6 +7,7 @@ import SignOut from '../SignOut/SignOut';
 import { getCurrentUser } from '../../Selector';
 import styles from './Navigation.scss';
 import SignIn from '../SignIn/SignIn';
+import noUserPhoto from '../../../../assets/nopp.png';
 
 class Navigation extends Component {
   state = {
@@ -58,12 +59,7 @@ class Navigation extends Component {
               {this.props.currentUser.photo ? (
                 <Avatar className={styles.avatar} size="large" src={this.props.currentUser.photo} />
               ) : (
-                <Avatar
-                  style={{ backgroundColor: 'rgba(5, 175, 117, 1)', verticalAlign: 'middle' }}
-                  size="large"
-                >
-                  {this.props.currentUser.first}
-                </Avatar>
+                <Avatar src={noUserPhoto} size="large" />
               )}
             </Link>,
 
