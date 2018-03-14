@@ -1,7 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { compose, withProps } from 'recompose';
-import { withScriptjs, withGoogleMap, GoogleMap, Marker } from 'react-google-maps';
+import { Link } from 'react-router';
+import { withScriptjs, withGoogleMap, GoogleMap, Marker, InfoWindow } from 'react-google-maps';
+import styles from './Map.scss';
 
 const mapStyle = [
   {
@@ -147,7 +148,6 @@ const Map = withScriptjs(
       defaultZoom={11}
       defaultCenter={{ lat: 59.334591, lng: 18.06324 }}
       defaultOptions={{
-        // these following 7 options turn certain controls off see link below
         streetViewControl: false,
         scaleControl: false,
         mapTypeControl: false,
@@ -167,7 +167,28 @@ const Map = withScriptjs(
             onClick={() => props.onMarkerClick(ad)}
             animation={google.maps.Animation.DROP}
             options={{}}
-          />
+          >
+            {props.infoBox === ad.id && (
+              <InfoWindow onCloseClick={props.onToggleOpen}>
+                <Link to={`/ads/${ad.id}`}>
+                  <div
+                    className={styles.infoBox}
+                    style={{
+                      backgroundImage: `url(${ad.image})`,
+                      width: `200px`,
+                      height: `200px`
+                    }}
+                  >
+                    <p>{ad.adTitle} kr</p>
+                    <p>{ad.adPrice} kr</p>
+                    <p style={{ color: 'red' }}>
+                      klicka på bilden för att komma till annonsen (ska stylas)
+                    </p>
+                  </div>
+                </Link>
+              </InfoWindow>
+            )}
+          </Marker>
         ))}
     </GoogleMap>
   ))

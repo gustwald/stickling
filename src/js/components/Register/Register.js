@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Modal, Icon } from 'antd';
 import StandardSignup from '../StandardSignup/StandardSignup';
+import GoogleSignup from '../GoogleSignup/GoogleSignup';
 import styles from './Register.scss';
 
 class Register extends Component {
@@ -45,6 +46,7 @@ class Register extends Component {
           onCancel={this.handleOk}
         >
           <StandardSignup closeModal={this.handleOk} />
+          <GoogleSignup closeModal={this.handleOk} />
         </Modal>
       </div>
     );

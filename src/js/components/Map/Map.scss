@@ -1,3 +1,8 @@
-.container {
-  color: red;
+.infoBox {
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.infoBox:hover {
+  opacity: 0.5;
 }

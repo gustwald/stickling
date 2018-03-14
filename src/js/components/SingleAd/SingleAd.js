@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Link, hashHistory } from 'react-router';
+import { Link } from 'react-router';
 import PropTypes from 'prop-types';
 import { Avatar, Tooltip, Icon } from 'antd';
 import { removedAdNotification } from '../Notification/Notification';
@@ -46,6 +46,7 @@ class SingleAd extends Component {
       this.imageDeleteFailure
     );
   };
+
   render() {
     const { user, ad } = this.props;
     return (
