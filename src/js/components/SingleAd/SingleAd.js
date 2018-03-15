@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import { Avatar, Tooltip, Icon } from 'antd';
 import { removedAdNotification } from '../Notification/Notification';
 import { deleteAd } from '../../utils/firebase';
-import { getAdById, getUserById } from '../../Selector';
+import { getAdById, getUserById, getCurrentUser } from '../../Selector';
 import { removeAd } from '../../actions/index';
 import delivery from '../../../../assets/delivery.svg';
 import package2 from '../../../../assets/package3.svg';
@@ -104,12 +104,13 @@ class SingleAd extends Component {
                   />
                 </Tooltip>
               )}
-
-              <Tooltip title={`Kontakta ${user.first}`}>
-                <a href={`mailto:${ad.email}?subject=Intresserad av din annons: ${ad.adTitle}`}>
-                  <div className={styles.Icon} style={{ backgroundImage: `url(${email})` }} />
-                </a>
-              </Tooltip>
+              {this.props.currentUser ? (
+                <Tooltip title={`Kontakta ${user.first}`}>
+                  <a href={`mailto:${ad.email}?subject=Intresserad av din annons: ${ad.adTitle}`}>
+                    <div className={styles.Icon} style={{ backgroundImage: `url(${email})` }} />
+                  </a>
+                </Tooltip>
+              ) : null}
             </div>
           </div>
         </div>
@@ -120,7 +121,8 @@ class SingleAd extends Component {
 
 SingleAd.propTypes = {
   ad: PropTypes.object.isRequired,
-  user: PropTypes.object.isRequired
+  user: PropTypes.object.isRequired,
+  currentUser: PropTypes.object.isRequired
 };
 
 const mapStateToProps = (state, ownProps) => {
@@ -128,7 +130,8 @@ const mapStateToProps = (state, ownProps) => {
   return {
     user: getUserById(state, user.uId),
     ad: ownProps.adId ? getAdById(state, ownProps.adId) : null,
-    currentUserId: state.currentUser.id
+    currentUserId: state.currentUser.id,
+    currentUser: getCurrentUser(state)
   };
 };
 
