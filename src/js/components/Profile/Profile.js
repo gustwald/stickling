@@ -5,10 +5,8 @@ import PropTypes from 'prop-types';
 import { getCurrentUser, getUserById, getAdsByUser } from '../../Selector';
 import DisplayAds from '../DisplayAds/DisplayAds';
 import UserRating from '../UserRating/UserRating';
-import SocialSettings from '../SocialSettings/SocialSettings';
+import SocialMedia from '../SocialMedia/SocialMedia';
 import styles from './Profile.scss';
-import twitter from '../../../../assets/twitter.svg';
-import insta from '../../../../assets/instagram.svg';
 import noUserPhoto from '../../../../assets/nopp.png';
 
 class Profile extends Component {
@@ -30,11 +28,7 @@ class Profile extends Component {
               <span>{`${this.props.user.first} ${this.props.user.last}`}</span>
             </h3>
             <UserRating />
-            <div className={styles.socialMedia}>
-              <div className={styles.instagram} style={{ backgroundImage: `url(${insta})` }} />
-              <div className={styles.twitter} style={{ backgroundImage: `url(${twitter})` }} />
-              {this.props.userId ? null : <SocialSettings />}
-            </div>
+            <SocialMedia userId={this.props.userId} />
           </Col>
           <Col md={24} className={styles.profileAds}>
             <DisplayAds ads={this.props.userAds} />

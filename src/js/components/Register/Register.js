@@ -46,7 +46,8 @@ class Register extends Component {
           onCancel={this.handleOk}
         >
           <StandardSignup closeModal={this.handleOk} />
-          <GoogleSignup closeModal={this.handleOk} />
+          <span className={styles.divider}>eller</span>
+          <GoogleSignup btnText="Registrera dig med Google" closeModal={this.handleOk} />
         </Modal>
       </div>
     );

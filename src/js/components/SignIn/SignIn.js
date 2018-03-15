@@ -42,7 +42,8 @@ class SignIn extends Component {
           onCancel={this.handleOk}
         >
           <StandardSingIn closeModal={this.handleOk} />
-          <GoogleSignup closeModal={this.handleOk} />
+          <span className={styles.divider}> eller </span>
+          <GoogleSignup btnText="Logga in med Google" closeModal={this.handleOk} />
         </Modal>
       </div>
     );

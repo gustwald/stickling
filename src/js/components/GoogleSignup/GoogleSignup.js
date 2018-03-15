@@ -32,7 +32,8 @@ class GoogleSignup extends Component {
     return (
       <div className={styles.container}>
         <button onClick={this.signIn}>
-          <span style={{ backgroundImage: `url(${GoogleOutline})` }} />Logga in med Google
+          <span style={{ backgroundImage: `url(${GoogleOutline})` }} />
+          {this.props.btnText}
         </button>
       </div>
     );
