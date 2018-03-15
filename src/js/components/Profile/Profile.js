@@ -4,6 +4,7 @@ import { Row, Col } from 'antd';
 import PropTypes from 'prop-types';
 import { getCurrentUser, getUserById, getAdsByUser } from '../../Selector';
 import DisplayAds from '../DisplayAds/DisplayAds';
+import UserRating from '../UserRating/UserRating';
 import SocialSettings from '../SocialSettings/SocialSettings';
 import styles from './Profile.scss';
 import twitter from '../../../../assets/twitter.svg';
@@ -28,6 +29,7 @@ class Profile extends Component {
             <h3>
               <span>{`${this.props.user.first} ${this.props.user.last}`}</span>
             </h3>
+            <UserRating />
             <div className={styles.socialMedia}>
               <div className={styles.instagram} style={{ backgroundImage: `url(${insta})` }} />
               <div className={styles.twitter} style={{ backgroundImage: `url(${twitter})` }} />
