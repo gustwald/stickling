@@ -55,6 +55,7 @@ class SocialSettings extends Component {
         <Modal footer={null} visible={this.state.socialModal} onCancel={this.handleOk}>
           <form className={styles.socialForm}>
             <label htmlFor="instagram">
+              INstagram
               <input
                 type="text"
                 name="instagram"
@@ -64,6 +65,7 @@ class SocialSettings extends Component {
               />
             </label>
             <label htmlFor="twitter">
+              Twitter
               <input
                 type="text"
                 name="twitter"

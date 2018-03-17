@@ -18,11 +18,11 @@ export const addUser = (firstName, lastName, email, uid, photo) => ({
   photo
 });
 
-export const addSocialLinks = (uid, twitter, instagram) => ({
+export const addSocialLinks = (uid, instagram, twitter) => ({
   type: ADD_SOCIALLINKS,
   uid,
-  twitter,
-  instagram
+  instagram,
+  twitter
 });
 
 export const addUsers = users => ({
