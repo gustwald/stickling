@@ -5,7 +5,8 @@ import {
   REMOVECURRENT_USER,
   ADD_AD,
   ADD_ADS,
-  REMOVE_AD
+  REMOVE_AD,
+  ADD_SOCIALLINKS
 } from '../constants/action-types';
 
 export const addUser = (firstName, lastName, email, uid, photo) => ({
@@ -15,6 +16,13 @@ export const addUser = (firstName, lastName, email, uid, photo) => ({
   email,
   uid,
   photo
+});
+
+export const addSocialLinks = (uid, twitter, instagram) => ({
+  type: ADD_SOCIALLINKS,
+  uid,
+  twitter,
+  instagram
 });
 
 export const addUsers = users => ({

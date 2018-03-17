@@ -4,7 +4,6 @@ import firebase from 'firebase';
 import PropTypes from 'prop-types';
 import { initFirebase, getAllUsers, getAdsFromFirestore } from './utils/firebase';
 import { addUsers, setCurrentUser, removeCurrentUser, addAds } from './actions/index';
-import { getCurrentUser } from './Selector';
 
 class FirebaseSetup extends Component {
   static propTypes = {
@@ -77,13 +76,15 @@ class FirebaseSetup extends Component {
   onUsersSuccess = result => {
     const users = [];
     result.forEach(doc => {
-      const { first, last, email, uID, photo } = doc.data();
+      const { first, last, email, uID, photo, twitter, instagram } = doc.data();
       users.push({
         first,
         last,
         email,
         uID,
-        photo
+        photo,
+        instagram,
+        twitter
       });
     });
     this.props.addUsers(users);

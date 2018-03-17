@@ -1,18 +1,21 @@
-.socialMedia {
+.container {
   display: flex;
   flex-direction: row;
 
-  .instagram {
+  .icon {
     height: 50px;
     width: 50px;
     margin-left: 5px;
     margin-right: 5px;
   }
 
-  .twitter {
+  .disabled {
     height: 50px;
     width: 50px;
     margin-left: 5px;
     margin-right: 5px;
+    filter: grayscale(100%);
+    opacity: 0.4;
+    cursor: initial;
   }
 }

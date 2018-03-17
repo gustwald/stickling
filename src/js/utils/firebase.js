@@ -79,7 +79,6 @@ export const logInWithEmail = (onSucces, onFailure, user) => {
 };
 
 export const addAdToFirestore = (onSucces, onFailure, ad) => {
-  console.log(ad);
   const db = firebase.firestore();
   db
     .collection('ads')
@@ -127,4 +126,20 @@ export const deleteAd = (id, image, onSucces, onFailure, imageDeleteSucces, imag
     .delete()
     .then(imageDeleteSucces)
     .catch(imageDeleteFailure);
+};
+
+export const addSocialMedia = (uId, instagram, twitter, onSucces, onFailure) => {
+  const db = firebase.firestore();
+  const dbRef = db.collection('users').doc(uId);
+
+  dbRef
+    .set(
+      {
+        instagram,
+        twitter
+      },
+      { merge: true }
+    )
+    .then(onSucces)
+    .catch(onFailure);
 };
