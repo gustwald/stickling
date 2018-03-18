@@ -4,6 +4,7 @@ import { Icon, Modal } from 'antd';
 import { getCurrentUser, getUserById } from '../../Selector';
 import { addSocialLinks } from '../../actions/index';
 import { addSocialMedia } from '../../utils/firebase';
+import { errorWhenAddingSocialMedia } from '../Notification/Notification';
 import styles from './SocialSettings.scss';
 
 class SocialSettings extends Component {
@@ -27,6 +28,8 @@ class SocialSettings extends Component {
   };
   onFailre = error => {
     console.log(error);
+
+    errorWhenAddingSocialMedia();
   };
 
   handleOk = () => {
@@ -44,7 +47,16 @@ class SocialSettings extends Component {
   socialMedia = () => {
     const { userId } = this.props;
     const { instagram, twitter } = this.state;
-    addSocialMedia(userId, instagram, twitter, this.onSucces, this.onFailure);
+
+    const expression = /[-a-zA-Z0-9@:%_\+.~#?&//=]{2,256}\.[a-z]{2,4}\b(\/[-a-zA-Z0-9@:%_\+.~#?&//=]*)?/gi;
+    // const s = /^\s*$/;
+    const regex = new RegExp(expression);
+
+    if (instagram.match(regex) && twitter.match(regex)) {
+      addSocialMedia(userId, instagram, twitter, this.onSucces, this.onFailure);
+    } else {
+      errorWhenAddingSocialMedia();
+    }
   };
 
   render() {
