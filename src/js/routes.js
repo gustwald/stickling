@@ -1,9 +1,10 @@
 import Root from './components/Root/Root';
-import HomePage from './pages/HomePage';
-import ProfilePage from './pages/ProfilePage';
-import AdsPage from './pages/AdsPage';
-import MapPage from './pages/MapPage';
-import SingleAdPage from './pages/SingleAdPage';
+import HomePage from './pages/HomePage/HomePage';
+import ProfilePage from './pages/ProfilePage/ProfilePage';
+import AdsPage from './pages/AdsPage/AdsPage';
+import MapPage from './pages/MapPage/MapPage';
+import SingleAdPage from './pages/SingleAdPage/SingleAdPage';
+import PageNotFound from './pages/PageNotFound/PageNotFound';
 
 export default {
   component: Root,
@@ -33,6 +34,10 @@ export default {
     {
       path: '/map',
       component: MapPage
+    },
+    {
+      path: '*',
+      component: PageNotFound
     }
   ]
 };

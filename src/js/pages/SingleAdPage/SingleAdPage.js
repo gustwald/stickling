@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import SingleAd from '../components/SingleAd/SingleAd';
+import SingleAd from '../../components/SingleAd/SingleAd';
 
 class AdsPage extends Component {
   state = {};

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import CreateAd from '../components/CreateAd/CreateAd';
-import DisplayAds from '../components/DisplayAds/DisplayAds';
+import CreateAd from '../../components/CreateAd/CreateAd';
+import DisplayAds from '../../components/DisplayAds/DisplayAds';
 import styles from './AdsPage.scss';
 
 class AdsPage extends Component {

@@ -1,5 +1,5 @@
 import React from 'react';
-import Map from '../components/Map/Map';
+import Map from '../../components/Map/Map';
 import styles from './MapPage.scss';
 
 class MapPage extends React.PureComponent {

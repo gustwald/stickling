@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { getCurrentUser } from '../Selector';
+import { getCurrentUser } from '../../Selector';
 import styles from './HomePage.scss';
-import logo from '../../../assets/logo.svg';
-import Register from '../components/Register/Register';
+import logo from '../../../../assets/logo.svg';
+import Register from '../../components/Register/Register';
 
 class HomePage extends Component {
   state = {};

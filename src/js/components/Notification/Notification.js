@@ -22,7 +22,7 @@ export const removedAdNotification = id => {
 export const errorWhenAddingSocialMedia = () => {
   notification.open({
     message: `Något gick snett när du försökte lägga till information.`,
-    description: 'Formatet på adressen måste matcha: wwww.instagram.com/användare',
+    description: 'Formatet på adressen måste matcha: https://instagram.com/användare',
     icon: <Icon type="frown" style={{ color: '#327c32' }} />,
     duration: 8
   });
