@@ -171,19 +171,9 @@ const Map = withScriptjs(
             {props.infoBox === ad.id && (
               <InfoWindow onCloseClick={props.onToggleOpen}>
                 <Link to={`/ads/${ad.id}`}>
-                  <div
-                    className={styles.infoBox}
-                    style={{
-                      backgroundImage: `url(${ad.image})`,
-                      width: `200px`,
-                      height: `200px`
-                    }}
-                  >
-                    <p>{ad.adTitle} kr</p>
+                  <div className={styles.infoBox}>
+                    <p>{ad.adTitle}</p>
                     <p>{ad.adPrice} kr</p>
-                    <p style={{ color: 'red' }}>
-                      klicka på bilden för att komma till annonsen (ska stylas)
-                    </p>
                   </div>
                 </Link>
               </InfoWindow>
